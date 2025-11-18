@@ -37,7 +37,7 @@ O sistema é projetado para avaliação inicial antes de consultar profissionais
 - Classificação Random Forest
 - Modelos de predição multi-classe
 
-## ⚠️ Desafios
+## ⚠️ Importante
 
 Este projeto não:
 - Substitui diagnóstico médico profissional
