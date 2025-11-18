@@ -63,17 +63,12 @@ Limitações incluem tamanho do conjunto de dados, restrições de idioma e a ne
 - Bibliotecas de IA de código aberto
 
 ## 📁 Estrutura do Projeto
-healthguardian-ai/
-│
-├── app.py
-├── requirements.txt
-├── data/
-│ └── symptom_conditions.csv
-├── models/
-│ └── triage_model.pkl
-└── README.md
 
-text
+projeto/
+├── index.html
+├── styles.css
+├── script.js
+└── vercel.json
 
 ## ⚠️ Aviso 
 
