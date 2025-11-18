@@ -75,7 +75,7 @@ healthguardian-ai/
 
 text
 
-## ⚠️ Aviso Importante
+## ⚠️ Aviso 
 
 Este projeto é desenvolvido **apenas para fins educacionais**. O sistema não é certificado para uso médico e não deve substituir a consulta com profissionais de saúde. Sempre busque orientação de profissionais médicos qualificados para decisões relacionadas à saúde.
 
