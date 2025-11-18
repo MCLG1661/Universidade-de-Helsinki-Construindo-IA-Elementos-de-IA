@@ -67,7 +67,7 @@ Limitações incluem tamanho do conjunto de dados, restrições de idioma e a ne
 
 ## 📁 Estrutura do Projeto
 
-projeto/
+healthguardian-ai/
 ├── index.html
 ├── styles.css
 ├── script.js
