@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏥 HealthGuardian AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🏥 HealthGuardian AI</h1>
+            <p class="subtitle">Sistema Inteligente de Triagem Médica</p>
+        </header>
+
+        <main class="main-content">
+            <section class="symptoms-section">
+                <h2>📋 Descreva Seus Sintomas</h2>
+                <textarea 
+                    id="symptomsInput" 
+                    placeholder="Exemplo: febre, dor de cabeça, coriza, náusea..." 
+                    rows="5"
+                ></textarea>
+                <button id="analyzeButton" class="analyze-btn">
+                    🔍 Analisar Sintomas
+                </button>
+            </section>
+
+            <section id="resultsSection" class="results-section hidden">
+                <div class="divider"></div>
+                <h2>📊 Resultados da Triagem</h2>
+                
+                <div id="urgencyLevel" class="urgency-card">
+                    <!-- Resultado da urgência será inserido aqui -->
+                </div>
+                
+                <div id="conditionResult" class="condition-card">
+                    <!-- Resultado da condição será inserido aqui -->
+                </div>
+
+                <div class="warning-card">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <strong>AVISO IMPORTANTE:</strong><br>
+                        Este é um sistema de triagem preliminar e <strong>NÃO SUBSTITUI</strong>
+                        a avaliação de um profissional de saúde.
+                        Sempre consulte um médico para diagnóstico preciso.
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
