@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏥 HealthGuardian AI - Sistema Inteligente de Triagem Médica</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>HealthGuardian AI - Sistema Inteligente de Triagem Médica</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -21,47 +21,61 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
                 <div class="logo">
                     <i class="fas fa-shield-heart"></i>
                     <h1>HealthGuardian <span>AI</span></h1>
                 </div>
                 <p class="subtitle">Sistema Inteligente de Triagem Médica</p>
             </div>
-            <div class="header-stats">
+            <div class="sidebar-stats">
                 <div class="stat">
                     <i class="fas fa-users"></i>
                     <span>+2.5k</span>
-                    <small>Pacientes</small>
+                    <small>Pacientes Atendidos</small>
                 </div>
                 <div class="stat">
                     <i class="fas fa-check-circle"></i>
                     <span>98%</span>
-                    <small>Precisão</small>
+                    <small>Precisão Média</small>
                 </div>
                 <div class="stat">
                     <i class="fas fa-clock"></i>
                     <span>24/7</span>
-                    <small>Disponível</small>
+                    <small>Disponibilidade</small>
                 </div>
             </div>
-        </header>
+
+            <!-- History Section -->
+            <div class="sidebar-history">
+                <h4><i class="fas fa-history"></i> Histórico Recente</h4>
+                <ul id="historyList">
+                    <!-- Histórico será preenchido pelo JS -->
+                </ul>
+            </div>
+
+            <footer class="sidebar-footer">
+                <button id="theme-switcher" class="theme-btn" title="Mudar tema"><i class="fas fa-moon"></i></button>
+                <span>&copy; 2024 HealthGuardian AI.</span>
+            </footer>
+        </aside>
 
         <!-- Main Content -->
         <main class="main-content">
             <!-- Symptoms Section -->
-            <section class="symptoms-section">
+            <section id="symptomsSection" class="symptoms-section">
                 <div class="section-header">
                     <i class="fas fa-clipboard-list"></i>
                     <h2>Descreva Seus Sintomas</h2>
                 </div>
                 
                 <div class="input-container">
+                    <label for="symptomsInput" class="sr-only">Descreva detalhadamente seus sintomas</label>
                     <textarea 
                         id="symptomsInput" 
-                        placeholder="Descreva detalhadamente seus sintomas. Exemplo: febre há 2 dias, dor de cabeça constante, coriza e cansaço..." 
+                        placeholder="Ex: febre há 2 dias, dor de cabeça constante, coriza e cansaço..." 
                         rows="5"
                     ></textarea>
                     <div class="input-footer">
@@ -93,85 +107,19 @@
             <!-- Results Section -->
             <section id="resultsSection" class="results-section hidden">
                 <div class="section-header">
-                    <i class="fas fa-chart-bar"></i>
-                    <h2>Resultados da Triagem</h2>
+                    <div class="section-header-content">
+                        <i class="fas fa-chart-bar"></i>
+                        <h2>Resultados da Triagem</h2>
+                    </div>
+                    <button id="newAnalysisBtn" class="secondary-btn">
+                        <i class="fas fa-plus"></i> Nova Análise
+                    </button>
                 </div>
-
-                <!-- Urgency Card -->
-                <div id="urgencyLevel" class="result-card urgency-card">
-                    <div class="card-header">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h3>Nível de Urgência</h3>
-                    </div>
-                    <div class="card-content">
-                        <!-- Content will be filled by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Condition Card -->
-                <div id="conditionResult" class="result-card condition-card">
-                    <div class="card-header">
-                        <i class="fas fa-stethoscope"></i>
-                        <h3>Condições Identificadas</h3>
-                    </div>
-                    <div class="card-content">
-                        <!-- Content will be filled by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Recommendations Card -->
-                <div id="recommendationsCard" class="result-card recommendations-card">
-                    <div class="card-header">
-                        <i class="fas fa-list-check"></i>
-                        <h3>Recomendações</h3>
-                    </div>
-                    <div class="card-content">
-                        <ul id="recommendationsList">
-                            <!-- Recommendations will be filled by JavaScript -->
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Warning Card -->
-                <div class="warning-card">
-                    <div class="warning-icon">
-                        <i class="fas fa-triangle-exclamation"></i>
-                    </div>
-                    <div class="warning-content">
-                        <h4>⚠️ Aviso Importante</h4>
-                        <p>
-                            Este é um sistema de triagem preliminar e <strong>NÃO SUBSTITUI</strong> 
-                            a avaliação de um profissional de saúde qualificado. 
-                            Os resultados são baseados em algoritmos e devem ser interpretados 
-                            como orientação inicial apenas.
-                        </p>
-                        <div class="warning-actions">
-                            <button class="secondary-btn" onclick="findDoctors()">
-                                <i class="fas fa-map-marker-alt"></i>
-                                Encontrar Médicos Próximos
-                            </button>
-                            <button class="secondary-btn" onclick="callEmergency()">
-                                <i class="fas fa-phone"></i>
-                                Emergência: 192
-                            </button>
-                        </div>
-                    </div>
+                <div class="result-grid">
+                    <!-- Cards de resultado serão inseridos aqui pelo JS -->
                 </div>
             </section>
         </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <p>&copy; 2024 HealthGuardian AI. Desenvolvido com <i class="fas fa-heart"></i> para sua saúde.</p>
-                <div class="tech-badges">
-                    <span class="badge">HTML5</span>
-                    <span class="badge">CSS3</span>
-                    <span class="badge">JavaScript</span>
-                    <span class="badge">AI Medical</span>
-                </div>
-            </div>
-        </footer>
     </div>
 
     <!-- Emergency Modal -->
@@ -179,23 +127,23 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3><i class="fas fa-ambulance"></i> Atendimento de Emergência</h3>
-                <button class="close-modal" onclick="closeModal()">&times;</button>
+                <button class="close-modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="emergency-contacts">
-                    <div class="contact-card">
+                    <div class="contact-card" data-action="tel:192">
                         <i class="fas fa-ambulance"></i>
                         <h4>SAMU</h4>
                         <p>192</p>
                         <small>Serviço de Atendimento Móvel de Urgência</small>
                     </div>
-                    <div class="contact-card">
+                    <div class="contact-card" data-action="tel:193">
                         <i class="fas fa-fire"></i>
                         <h4>Bombeiros</h4>
                         <p>193</p>
                         <small>Emergências gerais</small>
                     </div>
-                    <div class="contact-card">
+                    <div class="contact-card" data-action="tel:190">
                         <i class="fas fa-shield-alt"></i>
                         <h4>Polícia</h4>
                         <p>190</p>
