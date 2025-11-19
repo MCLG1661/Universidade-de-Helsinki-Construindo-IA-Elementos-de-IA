@@ -200,14 +200,12 @@ const urgencyConfig = {
 // Elementos DOM
 const symptomsInput = document.getElementById('symptomsInput');
 const analyzeButton = document.getElementById('analyzeButton');
+const symptomsSection = document.getElementById('symptomsSection');
 const resultsSection = document.getElementById('resultsSection');
-const urgencyLevel = document.getElementById('urgencyLevel');
-const conditionResult = document.getElementById('conditionResult');
-const recommendationsCard = document.getElementById('recommendationsCard');
-const recommendationsList = document.getElementById('recommendationsList');
 const loadingScreen = document.getElementById('loadingScreen');
 const emergencyModal = document.getElementById('emergencyModal');
 const charCount = document.querySelector('.char-count');
+const historyList = document.getElementById('historyList');
 
 // Histórico de análises
 let analysisHistory = [];
@@ -217,6 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     setupEventListeners();
     setupQuickSymptoms();
+    loadHistory();
+    setupTheme();
 });
 
 // Inicializar aplicação
@@ -234,6 +234,18 @@ function initializeApp() {
 function setupEventListeners() {
     analyzeButton.addEventListener('click', analyzeSymptoms);
     
+    // Mover os 'onclick' do HTML para cá, centralizando os eventos
+    document.querySelector('.close-modal').addEventListener('click', closeModal);
+    document.querySelectorAll('.contact-card[data-action]').forEach(card => {
+        card.addEventListener('click', () => window.location.href = card.dataset.action);
+    });
+
+    const newAnalysisBtn = document.getElementById('newAnalysisBtn');
+    if(newAnalysisBtn) newAnalysisBtn.addEventListener('click', showSymptomsSection);
+
+    const themeSwitcher = document.getElementById('theme-switcher');
+    if(themeSwitcher) themeSwitcher.addEventListener('click', toggleTheme);
+
     symptomsInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter' && e.ctrlKey) {
             analyzeSymptoms();
@@ -266,10 +278,10 @@ function updateCharCount() {
     
     if (count > 400) {
         charCount.style.color = '#ef4444';
-    } else if (count > 300) {
+    } else if (count > 250) {
         charCount.style.color = '#f59e0b';
     } else {
-        charCount.style.color = '#6b7280';
+        charCount.style.color = 'var(--text-secondary)';
     }
 }
 
@@ -379,6 +391,7 @@ function processAnalysis(symptomsText) {
     
     // Exibir resultados
     displayResults(bestMatch, secondaryMatches);
+    displayHistory(); // Atualiza o histórico na sidebar
 }
 
 // Encontrar correspondências de condições
@@ -402,6 +415,7 @@ function findConditionMatches(inputSymptoms) {
 // Exibir resultados quando não há correspondências
 function showNoMatchesResults() {
     resultsSection.classList.remove('hidden');
+    symptomsSection.classList.add('hidden');
     resultsSection.classList.add('fade-in');
     
     urgencyLevel.innerHTML = `
@@ -442,48 +456,53 @@ function showNoMatchesResults() {
 
 // Exibir resultados
 function displayResults(bestMatch, secondaryMatches) {
-    // Mostrar seção de resultados
+    // Alternar visibilidade das seções
+    symptomsSection.classList.add('hidden');
     resultsSection.classList.remove('hidden');
     resultsSection.classList.add('fade-in');
-    recommendationsCard.classList.remove('hidden');
     
     const condition = bestMatch.condition;
     const urgency = urgencyConfig[condition.urgency];
     const confidence = Math.min(95, Math.round(bestMatch.similarity * 100));
     
+    const resultGrid = resultsSection.querySelector('.result-grid');
+    resultGrid.innerHTML = ''; // Limpa resultados anteriores
+
     // Configurar card de urgência
+    const urgencyLevel = document.createElement('div');
+    urgencyLevel.className = 'result-card';
     urgencyLevel.innerHTML = `
         <div class="card-header">
-            <i class="fas fa-exclamation-triangle"></i>
+            <i class="fas fa-exclamation-triangle" style="color: ${urgency.color};"></i>
             <h3>Nível de Urgência</h3>
         </div>
         <div class="card-content">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-                <div style="font-size: 3rem;">${urgency.icon}</div>
-                <div>
-                    <h4 style="color: ${urgency.color}; margin: 0; font-size: 1.5rem;">${urgency.level}</h4>
-                    <p style="margin: 0.25rem 0 0 0; color: #6b7280;">${urgency.description}</p>
+            <div class="urgency-content">
+                <div class="urgency-icon">${urgency.icon}</div>
+                <div class="urgency-details">
+                    <h4 style="color: ${urgency.color};">${urgency.level}</h4>
+                    <p>${urgency.description}</p>
                 </div>
             </div>
         </div>
     `;
     
     // Configurar card de condição
+    const conditionResult = document.createElement('div');
+    conditionResult.className = 'result-card';
     let conditionHTML = `
         <div class="card-header">
             <i class="fas fa-stethoscope"></i>
             <h3>Condições Identificadas</h3>
         </div>
         <div class="card-content">
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                <div style="font-size: 2.5rem;">${condition.icon}</div>
-                <div>
-                    <h4 style="margin: 0; color: #1f2937;">${condition.name.toUpperCase()}</h4>
-                    <p style="margin: 0.25rem 0 0 0; color: #6b7280;">${condition.description}</p>
-                    <div style="margin-top: 0.5rem;">
-                        <span style="background: #10b981; color: white; padding: 0.25rem 0.75rem; border-radius: 12px; font-size: 0.75rem;">
-                            ${confidence}% de confiança
-                        </span>
+            <div class="condition-content">
+                <div class="condition-icon">${condition.icon}</div>
+                <div class="condition-details">
+                    <h4>${condition.name.toUpperCase()}</h4>
+                    <p>${condition.description}</p>
+                    <div>
+                        <span class="confidence-badge">${confidence}% de confiança</span>
                     </div>
                 </div>
             </div>
@@ -491,14 +510,14 @@ function displayResults(bestMatch, secondaryMatches) {
     
     // Adicionar condições secundárias se existirem
     if (secondaryMatches.length > 0) {
-        conditionHTML += `<div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #e5e7eb;">`;
-        conditionHTML += `<h5 style="margin-bottom: 1rem; color: #6b7280;">Outras possibilidades:</h5>`;
-        conditionHTML += `<div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">`;
+        conditionHTML += `<div class="secondary-conditions">`;
+        conditionHTML += `<h5>Outras possibilidades:</h5>`;
+        conditionHTML += `<div class="secondary-tags">`;
         
         secondaryMatches.forEach(match => {
             const secConfidence = Math.min(90, Math.round(match.similarity * 100));
             conditionHTML += `
-                <span style="background: #f3f4f6; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.875rem; border: 1px solid #e5e7eb;">
+                <span class="secondary-tag">
                     ${match.condition.icon} ${match.condition.name} (${secConfidence}%)
                 </span>
             `;
@@ -511,23 +530,65 @@ function displayResults(bestMatch, secondaryMatches) {
     conditionResult.innerHTML = conditionHTML;
     
     // Configurar recomendações
+    const recommendationsCard = document.createElement('div');
+    recommendationsCard.id = 'recommendationsCard';
+    recommendationsCard.className = 'result-card';
+    recommendationsCard.innerHTML = `
+        <div class="card-header">
+            <i class="fas fa-list-check"></i>
+            <h3>Recomendações</h3>
+        </div>
+        <div class="card-content"><ul id="recommendationsList"></ul></div>
+    `;
+    const recommendationsList = recommendationsCard.querySelector('#recommendationsList');
     recommendationsList.innerHTML = '';
     condition.recommendations.forEach(rec => {
         const li = document.createElement('li');
-        li.innerHTML = `<i class="fas fa-check-circle" style="color: #10b981; margin-right: 0.5rem;"></i>${rec}`;
-        li.style.marginBottom = '0.5rem';
-        li.style.padding = '0.5rem';
-        li.style.background = '#f0fdf4';
-        li.style.borderRadius = '8px';
-        li.style.borderLeft = '3px solid #10b981';
+        li.className = 'recommendation-item';
+        li.innerHTML = `<i class="fas fa-check-circle"></i>${rec}`;
         recommendationsList.appendChild(li);
     });
     
+    // Adicionar o card de aviso dinamicamente ao grid
+    const warningCard = document.createElement('div');
+    warningCard.className = 'result-card warning-card';
+    warningCard.innerHTML = `
+        <div class="warning-card-content">
+            <div class="warning-icon">
+                <i class="fas fa-triangle-exclamation"></i>
+            </div>
+            <div class="warning-content">
+                <h4>⚠️ Aviso Importante</h4>
+                <p>
+                    Este é um sistema de triagem preliminar e <strong>NÃO SUBSTITUI</strong> 
+                    a avaliação de um profissional de saúde qualificado. 
+                    Os resultados são baseados em algoritmos e devem ser interpretados 
+                    como orientação inicial apenas.
+                </p>
+            </div>
+        </div>
+    `;
+
+    // Adiciona todos os cards ao grid
+    resultGrid.append(urgencyLevel, conditionResult, recommendationsCard, warningCard);
+
+    // Adiciona os event listeners aos botões do warning-card DEPOIS de criá-los
+    warningCard.querySelector('.warning-actions .secondary-btn:nth-of-type(1)').addEventListener('click', findDoctors);
+    warningCard.querySelector('.warning-actions .secondary-btn:nth-of-type(2)').addEventListener('click', callEmergency);
+
     // Mostrar notificação de sucesso
     showNotification('✅ Análise concluída com sucesso!', 'success');
     
     // Rolar para resultados
     resultsSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Função para voltar para a tela de sintomas
+function showSymptomsSection() {
+    resultsSection.classList.add('hidden');
+    symptomsSection.classList.remove('hidden');
+    symptomsSection.classList.add('fade-in');
+    symptomsInput.value = ''; // Limpa o campo de texto
 }
 
 // Salvar no histórico
@@ -546,6 +607,7 @@ function saveToHistory(symptoms, match) {
     }
     
     localStorage.setItem('healthGuardianHistory', JSON.stringify(analysisHistory));
+    displayHistory();
 }
 
 // Mostrar notificação
@@ -610,6 +672,55 @@ function loadHistory() {
     const saved = localStorage.getItem('healthGuardianHistory');
     if (saved) {
         analysisHistory = JSON.parse(saved);
+    }
+    displayHistory();
+}
+
+// Exibir histórico na sidebar
+function displayHistory() {
+    historyList.innerHTML = ''; // Limpa a lista
+
+    if (analysisHistory.length === 0) {
+        historyList.innerHTML = '<li class="history-item-none">Nenhuma análise recente.</li>';
+        return;
+    }
+
+    analysisHistory.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'history-item';
+        const urgencyIcon = urgencyConfig[item.urgency]?.icon || '⚪️';
+        const date = new Date(item.timestamp);
+        const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}`;
+
+        li.innerHTML = `
+            <span>${urgencyIcon} ${item.condition}</span>
+            <span class="history-item-date">${formattedDate}</span>
+        `;
+        historyList.appendChild(li);
+    });
+}
+
+// Lógica de Tema (Claro/Escuro)
+function setupTheme() {
+    const savedTheme = localStorage.getItem('healthGuardianTheme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('healthGuardianTheme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+function updateThemeIcon(theme) {
+    const themeSwitcher = document.getElementById('theme-switcher');
+    if (theme === 'dark') {
+        themeSwitcher.innerHTML = '<i class="fas fa-sun"></i>';
+    } else {
+        themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
     }
 }
 
