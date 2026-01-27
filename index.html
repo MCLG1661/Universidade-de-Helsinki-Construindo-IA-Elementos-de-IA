@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- Tela de Carregamento -->
     <div id="loadingScreen" class="loading-screen">
         <div class="loading-content">
             <div class="pulse">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="container">
-        <!-- Sidebar -->
+        <!-- Barra Lateral -->
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
@@ -30,10 +30,21 @@
                 </div>
                 <p class="subtitle">Sistema Inteligente de Triagem Médica</p>
             </div>
+
+            <div class="sidebar-profile">
+                <div class="profile-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <h3 id="sidebarPatientName">Visitante</h3>
+                    <button id="btnOpenRegister" class="link-btn">Cadastrar</button>
+                </div>
+            </div>
+
             <div class="sidebar-stats">
                 <div class="stat">
                     <i class="fas fa-users"></i>
-                    <span>+2.5k</span>
+                    <span>+2,5 mil</span>
                     <small>Pacientes Atendidos</small>
                 </div>
                 <div class="stat">
@@ -48,31 +59,45 @@
                 </div>
             </div>
 
-            <!-- History Section -->
+            <!-- Seção de Histórico -->
             <div class="sidebar-history">
                 <h4><i class="fas fa-history"></i> Histórico Recente</h4>
                 <ul id="historyList">
-                    <!-- Histórico será preenchido pelo JS -->
+                    <!-- O histórico será preenchido pelo JS -->
                 </ul>
             </div>
 
             <footer class="sidebar-footer">
-                <button id="theme-switcher" class="theme-btn" title="Mudar tema"><i class="fas fa-moon"></i></button>
-                <span>&copy; 2024 HealthGuardian AI.</span>
+                <button id="theme-switcher" class="theme-btn" title="Alterar tema"><i class="fas fa-moon"></i></button>
+                <span>&copy; 2026 HealthGuardian AI.</span>
             </footer>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Conteúdo Principal -->
         <main class="main-content">
-            <!-- Symptoms Section -->
+            <!-- Seção de Sintomas -->
             <section id="symptomsSection" class="symptoms-section">
                 <div class="section-header">
                     <i class="fas fa-clipboard-list"></i>
-                    <h2>Descreva Seus Sintomas</h2>
+                    <h2>Nova Triagem</h2>
                 </div>
                 
                 <div class="input-container">
-                    <label for="symptomsInput" class="sr-only">Descreva detalhadamente seus sintomas</label>
+                    <h3>Identificação do Paciente</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="patientName">Nome Completo</label>
+                            <input type="text" id="patientName" placeholder="Nome do paciente">
+                        </div>
+                        <div class="form-group">
+                            <label for="patientAge">Idade</label>
+                            <input type="number" id="patientAge" placeholder="Anos" min="0" max="120">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-container">
+                    <label for="symptomsInput" class="sr-only">Descreva seus sintomas em detalhes</label>
                     <textarea 
                         id="symptomsInput" 
                         placeholder="Ex: febre há 2 dias, dor de cabeça constante, coriza e cansaço..." 
@@ -84,7 +109,7 @@
                     </div>
                 </div>
 
-                <!-- Quick Symptoms -->
+                <!-- Sintomas Rápidos -->
                 <div class="quick-symptoms">
                     <h3>Sintomas Comuns:</h3>
                     <div class="symptoms-tags">
@@ -104,7 +129,7 @@
                 </button>
             </section>
 
-            <!-- Results Section -->
+            <!-- Seção de Resultados -->
             <section id="resultsSection" class="results-section hidden">
                 <div class="section-header">
                     <div class="section-header-content">
@@ -116,13 +141,13 @@
                     </button>
                 </div>
                 <div class="result-grid">
-                    <!-- Cards de resultado serão inseridos aqui pelo JS -->
+                    <!-- Os cards de resultado serão inseridos aqui pelo JS -->
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- Emergency Modal -->
+    <!-- Modal de Emergência -->
     <div id="emergencyModal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
@@ -139,9 +164,9 @@
                     </div>
                     <div class="contact-card" data-action="tel:193">
                         <i class="fas fa-fire"></i>
-                        <h4>Bombeiros</h4>
+                        <h4>Corpo de Bombeiros</h4>
                         <p>193</p>
-                        <small>Emergências gerais</small>
+                        <small>Emergências em geral</small>
                     </div>
                     <div class="contact-card" data-action="tel:190">
                         <i class="fas fa-shield-alt"></i>
@@ -151,10 +176,43 @@
                     </div>
                 </div>
                 <p class="emergency-text">
-                    <strong>Procure atendimento médico imediatamente se estiver com:</strong><br>
-                    Dor no peito, dificuldade para respirar, sangramento intenso, 
+                    <strong>Procure atendimento médico imediatamente se tiver:</strong><br>
+                    Dor no peito, dificuldade para respirar, sangramento intenso,
                     perda de consciência ou qualquer sintoma grave.
                 </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div id="registrationModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-plus"></i> Cadastro do Paciente</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <label for="regName">Nome Completo</label>
+                        <input type="text" id="regName" required placeholder="Seu nome">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regAge">Idade</label>
+                            <input type="number" id="regAge" required placeholder="Anos" min="0" max="120">
+                        </div>
+                        <div class="form-group">
+                            <label for="regGender">Gênero</label>
+                            <select id="regGender" style="padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-body); color: var(--text-main);">
+                                <option value="masculino">Masculino</option>
+                                <option value="feminino">Feminino</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="analyze-btn" style="margin-top: 1rem;">Salvar Cadastro</button>
+                </form>
             </div>
         </div>
     </div>
