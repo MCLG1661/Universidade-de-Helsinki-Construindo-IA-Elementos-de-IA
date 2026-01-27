@@ -1,11 +1,11 @@
-// Base de dados médica expandida e melhorada
+// Banco de dados médico expandido e aprimorado
 const medicalDatabase = {
     conditions: [
         {
-            name: "gripe comum",
-            symptoms: ["febre", "dor cabeça", "coriza", "dor corpo", "calafrios", "espirros", "tosse leve"],
-            urgency: "low",
-            description: "Infecção viral respiratória comum",
+            name: "resfriado comum",
+            symptoms: ["febre", "dor de cabeça", "coriza", "dor no corpo", "calafrios", "espirros", "tosse leve"],
+            urgency: "baixa",
+            description: "Infecção respiratória viral comum",
             recommendations: [
                 "Repouso e hidratação adequada",
                 "Medicação para febre se necessário",
@@ -16,10 +16,10 @@ const medicalDatabase = {
             icon: "🤧"
         },
         {
-            name: "influenza",
-            symptoms: ["febre alta", "calafrios", "dor corpo", "fadiga", "tosse", "dor garganta", "dor cabeça"],
-            urgency: "medium",
-            description: "Infecção viral mais severa que a gripe comum",
+            name: "influenza (gripe)",
+            symptoms: ["febre alta", "calafrios", "dor no corpo", "fadiga", "tosse", "dor de garganta", "dor de cabeça"],
+            urgency: "média",
+            description: "Infecção viral mais severa que o resfriado comum",
             recommendations: [
                 "Repouso absoluto",
                 "Hidratação intensiva",
@@ -31,40 +31,40 @@ const medicalDatabase = {
         },
         {
             name: "emergência cardíaca",
-            symptoms: ["dor peito", "falta ar", "suor frio", "náusea", "dor braço", "tontura", "palpitações"],
-            urgency: "high",
+            symptoms: ["dor no peito", "falta de ar", "suor frio", "náusea", "dor no braço", "tontura", "palpitações"],
+            urgency: "alta",
             description: "Condição cardíaca potencialmente grave",
             recommendations: [
-                "PROCURAR ATENDIMENTO IMEDIATO",
-                "Chamar SAMU 192",
-                "Não dirigir até o hospital",
-                "Manter repouso absoluto",
-                "Informar histórico médico ao atendente"
+                "BUSQUE ATENDIMENTO MÉDICO IMEDIATO",
+                "Ligue SAMU 192",
+                "Não dirija até o hospital",
+                "Mantenha repouso absoluto",
+                "Informe histórico médico ao atendente"
             ],
             icon: "❤️‍🩹"
         },
         {
             name: "gastroenterite",
-            symptoms: ["dor abdominal", "náusea", "vômito", "diarreia", "febre", "cólica", "perda apetite"],
-            urgency: "medium",
+            symptoms: ["dor abdominal", "náusea", "vômito", "diarreia", "febre", "cólicas", "perda de apetite"],
+            urgency: "média",
             description: "Inflamação do sistema digestivo",
             recommendations: [
                 "Hidratação com soro caseiro",
                 "Dieta leve (banana, arroz, maçã, torrada)",
                 "Repouso digestivo",
-                "Evitar lácteos e gordurosos",
+                "Evitar laticínios e alimentos gordurosos",
                 "Consulta médica se sintomas persistirem"
             ],
             icon: "🤢"
         },
         {
-            name: "covid-19 suspeita",
-            symptoms: ["febre", "tosse seca", "falta ar", "perda paladar", "fadiga", "dor corpo", "dor cabeça"],
-            urgency: "high",
+            name: "suspeita de covid-19",
+            symptoms: ["febre", "tosse seca", "falta de ar", "perda de paladar", "fadiga", "dor no corpo", "dor de cabeça"],
+            urgency: "alta",
             description: "Suspeita de infecção por COVID-19",
             recommendations: [
                 "Isolamento imediato",
-                "Teste COVID-19 recomendado",
+                "Teste para COVID-19 recomendado",
                 "Monitorar saturação de oxigênio",
                 "Consulta médica urgente",
                 "Informar contatos recentes"
@@ -73,8 +73,8 @@ const medicalDatabase = {
         },
         {
             name: "enxaqueca",
-            symptoms: ["dor cabeça", "enjoo", "sensibilidade luz", "tontura", "visão turva", "náusea"],
-            urgency: "low",
+            symptoms: ["dor de cabeça", "náusea", "sensibilidade à luz", "tontura", "visão turva", "náusea"],
+            urgency: "baixa",
             description: "Dor de cabeça intensa e recorrente",
             recommendations: [
                 "Repouso em ambiente escuro e silencioso",
@@ -86,28 +86,28 @@ const medicalDatabase = {
             icon: "😫"
         },
         {
-            name: "dengue suspeita",
-            symptoms: ["febre alta", "manchas pele", "dor corpo", "dor olhos", "náusea", "fadiga", "dor cabeça"],
-            urgency: "high",
+            name: "suspeita de dengue",
+            symptoms: ["febre alta", "manchas na pele", "dor no corpo", "dor atrás dos olhos", "náusea", "fadiga", "dor de cabeça"],
+            urgency: "alta",
             description: "Suspeita de infecção por dengue",
             recommendations: [
                 "Repouso absoluto",
                 "Hidratação intensiva",
                 "NÃO tomar anti-inflamatórios",
-                "Procurar atendimento urgente",
-                "Monitorar sinais de alarme"
+                "Procure atendimento urgente",
+                "Monitore sinais de alarme"
             ],
             icon: "🩸"
         },
         {
             name: "amigdalite",
-            symptoms: ["dor garganta", "febre", "dificuldade engolir", "tosse", "mal estar", "inchaço gânglios"],
-            urgency: "medium",
+            symptoms: ["dor de garganta", "febre", "dificuldade para engolir", "tosse", "mal-estar", "ínguas inchadas"],
+            urgency: "média",
             description: "Inflamação das amígdalas",
             recommendations: [
                 "Gargarejo com água morna e sal",
                 "Hidratação com líquidos mornos",
-                "Alimentos pastosos",
+                "Alimentos macios",
                 "Analgésico para dor",
                 "Consulta médica para avaliação"
             ],
@@ -115,41 +115,41 @@ const medicalDatabase = {
         },
         {
             name: "crise hipertensiva",
-            symptoms: ["tontura", "visão turva", "náusea", "dor cabeça", "falta ar", "dor peito", "confusão"],
-            urgency: "high",
-            description: "Elevação grave da pressão arterial",
+            symptoms: ["tontura", "visão turva", "náusea", "dor de cabeça", "falta de ar", "dor no peito", "confusão mental"],
+            urgency: "alta",
+            description: "Elevação severa da pressão arterial",
             recommendations: [
-                "PROCURAR ATENDIMENTO IMEDIATO",
-                "Manter repouso sentado",
-                "Medir pressão arterial se possível",
-                "Não tomar medicação por conta própria",
-                "Chamar emergência se sintomas graves"
+                "BUSQUE ATENDIMENTO MÉDICO IMEDIATO",
+                "Mantenha repouso sentado",
+                "Meça pressão arterial se possível",
+                "Não tome medicação por conta própria",
+                "Ligue para emergência se sintomas graves"
             ],
             icon: "🫀"
         },
         {
             name: "otite média",
-            symptoms: ["dor ouvido", "febre", "coceira ouvido", "diminuição audição", "secreção", "irritabilidade"],
-            urgency: "medium",
-            description: "Infecção no ouvido médio",
+            symptoms: ["dor de ouvido", "febre", "coceira no ouvido", "perda auditiva", "secreção", "irritabilidade"],
+            urgency: "média",
+            description: "Infecção do ouvido médio",
             recommendations: [
                 "Compressa morna no ouvido",
                 "Analgésico para dor",
-                "Não introduzir objetos no ouvido",
-                "Manter ouvido seco",
+                "Não introduza objetos no ouvido",
+                "Mantenha ouvido seco",
                 "Consulta com otorrinolaringologista"
             ],
             icon: "👂"
         },
         {
             name: "ansiedade aguda",
-            symptoms: ["falta ar", "palpitações", "suor frio", "tremores", "medo", "tontura", "formigamento"],
-            urgency: "medium",
+            symptoms: ["falta de ar", "palpitações", "suor frio", "tremores", "medo", "tontura", "formigamento"],
+            urgency: "média",
             description: "Crise de ansiedade ou ataque de pânico",
             recommendations: [
                 "Respiração lenta e profunda",
                 "Ambiente calmo e seguro",
-                "Técnicas de grounding",
+                "Técnicas de aterramento",
                 "Acompanhamento psicológico",
                 "Consulta médica para avaliação"
             ],
@@ -157,15 +157,15 @@ const medicalDatabase = {
         },
         {
             name: "alergia respiratória",
-            symptoms: ["espirros", "coriza", "coceira nariz", "olhos vermelhos", "tosse", "coceira garganta"],
-            urgency: "low",
+            symptoms: ["espirros", "coriza", "coceira no nariz", "olhos vermelhos", "tosse", "coceira na garganta"],
+            urgency: "baixa",
             description: "Reação alérgica respiratória",
             recommendations: [
-                "Evitar alérgenos conhecidos",
+                "Evite alérgenos conhecidos",
                 "Ambiente ventilado e limpo",
-                "Antialérgico se prescrito",
+                "Anti-histamínico se prescrito",
                 "Lavagem nasal com soro",
-                "Consulta alergista se recorrente"
+                "Consulta com alergista se recorrente"
             ],
             icon: "🌸"
         }
@@ -174,24 +174,24 @@ const medicalDatabase = {
 
 // Configurações de urgência expandidas
 const urgencyConfig = {
-    low: {
+    baixa: {
         emoji: "🟢",
-        level: "BAIXA URGÊNCIA",
+        level: "URGÊNCIA BAIXA",
         description: "Pode aguardar consulta em 48-72 horas",
         color: "#22c55e",
         icon: "🟢"
     },
-    medium: {
+    média: {
         emoji: "🟡",
         level: "URGÊNCIA MÉDIA",
-        description: "Recomendada consulta em 24-48 horas",
+        description: "Consulta recomendada em 24-48 horas",
         color: "#f59e0b",
         icon: "🟡"
     },
-    high: {
+    alta: {
         emoji: "🔴",
-        level: "ALTA URGÊNCIA",
-        description: "Procure atendimento médico IMEDIATO",
+        level: "URGÊNCIA ALTA",
+        description: "Busque atendimento médico IMEDIATO",
         color: "#ef4444",
         icon: "🔴"
     }
@@ -204,6 +204,8 @@ const symptomsSection = document.getElementById('symptomsSection');
 const resultsSection = document.getElementById('resultsSection');
 const loadingScreen = document.getElementById('loadingScreen');
 const emergencyModal = document.getElementById('emergencyModal');
+const registrationModal = document.getElementById('registrationModal');
+const btnOpenRegister = document.getElementById('btnOpenRegister');
 const charCount = document.querySelector('.char-count');
 const historyList = document.getElementById('historyList');
 
@@ -217,11 +219,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setupQuickSymptoms();
     loadHistory();
     setupTheme();
+    registerServiceWorker();
 });
 
 // Inicializar aplicação
 function initializeApp() {
     // Simular carregamento
+    console.log("Versão 3.0 carregada com sucesso!");
     setTimeout(() => {
         loadingScreen.classList.add('hidden');
     }, 2000);
@@ -235,7 +239,10 @@ function setupEventListeners() {
     analyzeButton.addEventListener('click', analyzeSymptoms);
     
     // Mover os 'onclick' do HTML para cá, centralizando os eventos
-    document.querySelector('.close-modal').addEventListener('click', closeModal);
+    document.querySelectorAll('.close-modal').forEach(btn => {
+        btn.addEventListener('click', closeAllModals);
+    });
+
     document.querySelectorAll('.contact-card[data-action]').forEach(card => {
         card.addEventListener('click', () => window.location.href = card.dataset.action);
     });
@@ -254,10 +261,47 @@ function setupEventListeners() {
 
     // Fechar modal ao clicar fora
     emergencyModal.addEventListener('click', function(e) {
-        if (e.target === emergencyModal) {
-            closeModal();
-        }
+        if (e.target === emergencyModal) closeAllModals();
     });
+    
+    registrationModal.addEventListener('click', function(e) {
+        if (e.target === registrationModal) closeAllModals();
+    });
+
+    // Eventos de Cadastro
+    if(btnOpenRegister) {
+        btnOpenRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Botão de cadastro clicado');
+            const modal = document.getElementById('registrationModal');
+            if(modal) modal.classList.remove('hidden');
+            else alert('Erro: Modal de cadastro não encontrado. Tente recarregar a página (Ctrl+F5).');
+        });
+    }
+    
+    const registrationForm = document.getElementById('registrationForm');
+    if(registrationForm) {
+        registrationForm.addEventListener('submit', handleRegistration);
+    }
+}
+
+function handleRegistration(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('regName').value;
+    const age = document.getElementById('regAge').value;
+    
+    // Atualizar UI
+    document.getElementById('sidebarPatientName').textContent = name;
+    document.getElementById('patientName').value = name;
+    document.getElementById('patientAge').value = age;
+    
+    // Fechar modal e notificar
+    closeAllModals();
+    showNotification('✅ Cadastro realizado com sucesso!', 'success');
+    
+    // Focar no campo de sintomas
+    symptomsInput.focus();
 }
 
 // Configurar sintomas rápidos
@@ -285,7 +329,7 @@ function updateCharCount() {
     }
 }
 
-// Adicionar sintoma ao input
+// Adicionar sintoma ao campo de entrada
 function addSymptomToInput(symptom) {
     const currentText = symptomsInput.value.trim();
     if (currentText) {
@@ -321,7 +365,7 @@ function calculateSimilarity(inputSymptoms, conditionSymptoms) {
             // Verificar correspondência exata ou parcial
             if (conditionWord.includes(word) || word.includes(conditionWord)) {
                 found = true;
-                // Dar mais peso para correspondências exatas
+                // Dar mais peso a correspondências exatas
                 if (conditionWord === word) {
                     weightedMatches += 2;
                 } else {
@@ -342,6 +386,13 @@ function calculateSimilarity(inputSymptoms, conditionSymptoms) {
 // Função principal de análise
 function analyzeSymptoms() {
     const symptomsText = symptomsInput.value.trim();
+    const patientName = document.getElementById('patientName').value.trim();
+    const patientAge = document.getElementById('patientAge').value.trim();
+    
+    if (!patientName || !patientAge) {
+        showNotification('⚠️ Por favor, identifique o paciente (Nome e Idade).', 'error');
+        return;
+    }
     
     if (!symptomsText) {
         showNotification('❌ Por favor, descreva seus sintomas para análise.', 'error');
@@ -353,21 +404,21 @@ function analyzeSymptoms() {
         return;
     }
     
-    // Mostrar loading
+    // Mostrar carregamento
     analyzeButton.classList.add('loading');
     const btnLoading = analyzeButton.querySelector('.btn-loading');
     btnLoading.classList.remove('hidden');
     
     // Simular processamento (em app real seria instantâneo)
     setTimeout(() => {
-        processAnalysis(symptomsText);
+        processAnalysis(symptomsText, patientName, patientAge);
         analyzeButton.classList.remove('loading');
         btnLoading.classList.add('hidden');
     }, 1500);
 }
 
 // Processar análise
-function processAnalysis(symptomsText) {
+function processAnalysis(symptomsText, patientName, patientAge) {
     // Pré-processar entrada
     const processedInput = preprocessText(symptomsText);
     
@@ -382,16 +433,16 @@ function processAnalysis(symptomsText) {
     // Ordenar por similaridade
     matches.sort((a, b) => b.similarity - a.similarity);
     
-    // Pegar melhor match
+    // Obter melhor correspondência
     const bestMatch = matches[0];
     const secondaryMatches = matches.slice(1, 3); // Top 3 secundárias
     
     // Salvar no histórico
-    saveToHistory(symptomsText, bestMatch);
+    saveToHistory(symptomsText, bestMatch, patientName, patientAge);
     
     // Exibir resultados
     displayResults(bestMatch, secondaryMatches);
-    displayHistory(); // Atualiza o histórico na sidebar
+    displayHistory(); // Atualizar histórico na barra lateral
 }
 
 // Encontrar correspondências de condições
@@ -401,7 +452,7 @@ function findConditionMatches(inputSymptoms) {
     medicalDatabase.conditions.forEach(condition => {
         const similarity = calculateSimilarity(inputSymptoms, condition.symptoms);
         
-        if (similarity > 0.1) { // Threshold mínimo de similaridade
+        if (similarity > 0.1) { // Limite mínimo de similaridade
             matches.push({
                 condition: condition,
                 similarity: similarity
@@ -418,37 +469,37 @@ function showNoMatchesResults() {
     symptomsSection.classList.add('hidden');
     resultsSection.classList.add('fade-in');
     
-    urgencyLevel.innerHTML = `
-        <div class="card-header">
-            <i class="fas fa-question-circle"></i>
-            <h3>Nível de Urgência</h3>
+    const resultGrid = resultsSection.querySelector('.result-grid');
+    resultGrid.innerHTML = `
+        <div class="result-card">
+            <div class="card-header">
+                <i class="fas fa-question-circle"></i>
+                <h3>Nível de Urgência</h3>
+            </div>
+            <div class="card-content">
+                <div style="text-align: center; padding: 2rem;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: #6b7280; margin-bottom: 1rem;"></i>
+                    <h4 style="color: #6b7280; margin-bottom: 0.5rem;">Análise Inconclusiva</h4>
+                    <p style="color: #6b7280;">Não foi possível identificar uma condição específica com os sintomas descritos.</p>
+                </div>
+            </div>
         </div>
-        <div class="card-content">
-            <div style="text-align: center; padding: 2rem;">
-                <i class="fas fa-search" style="font-size: 3rem; color: #6b7280; margin-bottom: 1rem;"></i>
-                <h4 style="color: #6b7280; margin-bottom: 0.5rem;">Análise Inconclusiva</h4>
-                <p style="color: #6b7280;">Não foi possível identificar uma condição específica com os sintomas descritos.</p>
+        <div class="result-card">
+            <div class="card-header">
+                <i class="fas fa-stethoscope"></i>
+                <h3>Recomendação Geral</h3>
+            </div>
+            <div class="card-content">
+                <p>Recomendamos que você:</p>
+                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                    <li>Descreva os sintomas com mais detalhes</li>
+                    <li>Mencione duração e intensidade</li>
+                    <li>Informe medicamentos em uso</li>
+                    <li>Consulte um médico para avaliação precisa</li>
+                </ul>
             </div>
         </div>
     `;
-    
-    conditionResult.innerHTML = `
-        <div class="card-header">
-            <i class="fas fa-stethoscope"></i>
-            <h3>Recomendação Geral</h3>
-        </div>
-        <div class="card-content">
-            <p>Recomendamos que você:</p>
-            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                <li>Descreva os sintomas com mais detalhes</li>
-                <li>Mencione a duração e intensidade</li>
-                <li>Informe medicamentos em uso</li>
-                <li>Consulte um médico para avaliação precisa</li>
-            </ul>
-        </div>
-    `;
-    
-    recommendationsCard.classList.add('hidden');
     
     // Rolar para resultados
     resultsSection.scrollIntoView({ behavior: 'smooth' });
@@ -466,7 +517,7 @@ function displayResults(bestMatch, secondaryMatches) {
     const confidence = Math.min(95, Math.round(bestMatch.similarity * 100));
     
     const resultGrid = resultsSection.querySelector('.result-grid');
-    resultGrid.innerHTML = ''; // Limpa resultados anteriores
+    resultGrid.innerHTML = ''; // Limpar resultados anteriores
 
     // Configurar card de urgência
     const urgencyLevel = document.createElement('div');
@@ -549,7 +600,7 @@ function displayResults(bestMatch, secondaryMatches) {
         recommendationsList.appendChild(li);
     });
     
-    // Adicionar o card de aviso dinamicamente ao grid
+    // Adicionar dinamicamente card de aviso à grade
     const warningCard = document.createElement('div');
     warningCard.className = 'result-card warning-card';
     warningCard.innerHTML = `
@@ -563,18 +614,14 @@ function displayResults(bestMatch, secondaryMatches) {
                     Este é um sistema de triagem preliminar e <strong>NÃO SUBSTITUI</strong> 
                     a avaliação de um profissional de saúde qualificado. 
                     Os resultados são baseados em algoritmos e devem ser interpretados 
-                    como orientação inicial apenas.
+                    apenas como orientação inicial.
                 </p>
             </div>
         </div>
     `;
 
-    // Adiciona todos os cards ao grid
+    // Adicionar todos os cards à grade
     resultGrid.append(urgencyLevel, conditionResult, recommendationsCard, warningCard);
-
-    // Adiciona os event listeners aos botões do warning-card DEPOIS de criá-los
-    warningCard.querySelector('.warning-actions .secondary-btn:nth-of-type(1)').addEventListener('click', findDoctors);
-    warningCard.querySelector('.warning-actions .secondary-btn:nth-of-type(2)').addEventListener('click', callEmergency);
 
     // Mostrar notificação de sucesso
     showNotification('✅ Análise concluída com sucesso!', 'success');
@@ -583,25 +630,29 @@ function displayResults(bestMatch, secondaryMatches) {
     resultsSection.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Função para voltar para a tela de sintomas
+// Função para retornar à tela de sintomas
 function showSymptomsSection() {
     resultsSection.classList.add('hidden');
     symptomsSection.classList.remove('hidden');
     symptomsSection.classList.add('fade-in');
-    symptomsInput.value = ''; // Limpa o campo de texto
+    symptomsInput.value = ''; // Limpar campo de texto
+    document.getElementById('patientName').value = '';
+    document.getElementById('patientAge').value = '';
 }
 
 // Salvar no histórico
-function saveToHistory(symptoms, match) {
+function saveToHistory(symptoms, match, name, age) {
     const analysis = {
         timestamp: new Date().toISOString(),
         symptoms: symptoms,
+        patientName: name,
+        patientAge: age,
         condition: match.condition.name,
         urgency: match.condition.urgency,
         confidence: Math.round(match.similarity * 100)
     };
     
-    analysisHistory.unshift(analysis); // Adicionar no início
+    analysisHistory.unshift(analysis); // Adicionar ao início
     if (analysisHistory.length > 10) {
         analysisHistory.pop(); // Manter apenas os 10 mais recentes
     }
@@ -663,8 +714,9 @@ function findDoctors() {
     showNotification('🔍 Buscando médicos próximos... (Funcionalidade em desenvolvimento)', 'info');
 }
 
-function closeModal() {
+function closeAllModals() {
     emergencyModal.classList.add('hidden');
+    registrationModal.classList.add('hidden');
 }
 
 // Carregar histórico do localStorage
@@ -676,9 +728,9 @@ function loadHistory() {
     displayHistory();
 }
 
-// Exibir histórico na sidebar
+// Exibir histórico na barra lateral
 function displayHistory() {
-    historyList.innerHTML = ''; // Limpa a lista
+    historyList.innerHTML = ''; // Limpar lista
 
     if (analysisHistory.length === 0) {
         historyList.innerHTML = '<li class="history-item-none">Nenhuma análise recente.</li>';
@@ -693,14 +745,17 @@ function displayHistory() {
         const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}`;
 
         li.innerHTML = `
-            <span>${urgencyIcon} ${item.condition}</span>
+            <div class="history-info">
+                <span class="history-patient">${item.patientName || 'Paciente'} (${item.patientAge || '?'} anos)</span>
+                <span>${urgencyIcon} ${item.condition}</span>
+            </div>
             <span class="history-item-date">${formattedDate}</span>
         `;
         historyList.appendChild(li);
     });
 }
 
-// Lógica de Tema (Claro/Escuro)
+// Tema (Claro/Escuro)
 function setupTheme() {
     const savedTheme = localStorage.getItem('healthGuardianTheme') || 'light';
     document.documentElement.setAttribute('data-theme', savedTheme);
@@ -727,9 +782,10 @@ function updateThemeIcon(theme) {
 // Inicializar histórico
 loadHistory();
 
-// Service Worker simulado (para PWA)
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js').catch(console.error);
+function registerServiceWorker() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch(console.error);
+    }
 }
 
 console.log("🏥 HealthGuardian AI Premium inicializado!");
