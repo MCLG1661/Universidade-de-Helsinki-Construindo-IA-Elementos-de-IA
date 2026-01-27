@@ -76,7 +76,7 @@ body {
     display: flex;
 }
 
-/* Loading Screen */
+/* Tela de Carregamento */
 .loading-screen {
     position: fixed;
     top: 0;
@@ -120,7 +120,7 @@ body {
     height: 100vh;
 }
 
-/* Sidebar */
+/* Barra Lateral */
 .sidebar {
     background: var(--bg-sidebar);
     color: var(--text-on-primary);
@@ -162,6 +162,50 @@ body {
     font-size: 0.9rem;
     color: var(--gray-300);
     font-weight: 300;
+}
+
+.sidebar-profile {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--secondary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.profile-info h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+    color: var(--text-on-primary);
+}
+
+.link-btn {
+    background: none;
+    border: none;
+    color: var(--secondary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.link-btn:hover {
+    color: white;
 }
 
 .sidebar-stats {
@@ -254,7 +298,7 @@ html[data-theme='dark'] .sidebar-history {
     gap: 1rem;
 }
 
-/* Main Content */
+/* Conteúdo Principal */
 .main-content {
     background-color: var(--bg-main);
     padding: 3rem 4rem;
@@ -262,7 +306,7 @@ html[data-theme='dark'] .sidebar-history {
     position: relative;
 }
 
-/* Efeito Aurora UI no fundo */
+/* Efeito de fundo Aurora UI */
 .main-content::before,
 .main-content::after {
     content: '';
@@ -314,10 +358,55 @@ html[data-theme='dark'] .sidebar-history {
     gap: 1rem;
 }
 
-/* Input Section */
+/* Seção de Entrada */
 .input-container {
     margin-bottom: 2rem;
     position: relative; /* Para ficar acima do fundo aurora */
+}
+
+.input-container h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-group input {
+    padding: 0.8rem;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+html[data-theme='dark'] .form-group input {
+    border-color: var(--gray-600);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: 0 0 0 2px var(--primary);
 }
 
 #symptomsInput {
@@ -359,7 +448,7 @@ html[data-theme='dark'] #symptomsInput {
     margin-right: 0.25rem;
 }
 
-/* Quick Symptoms */
+/* Sintomas Rápidos */
 .quick-symptoms {
     margin-bottom: 2rem;
     position: relative; /* Para ficar acima do fundo aurora */
@@ -393,7 +482,7 @@ html[data-theme='dark'] #symptomsInput {
     transform: translateY(-2px);
 }
 
-/* Buttons */
+/* Botões */
 .analyze-btn {
     background: linear-gradient(135deg, var(--secondary) 0%, #059669 100%);
     color: var(--text-on-primary);
@@ -454,7 +543,7 @@ html[data-theme='dark'] .secondary-btn:hover {
     cursor: pointer;
 }
 
-/* Results Section */
+/* Seção de Resultados */
 .card-header {
     display: flex;
     align-items: center;
@@ -518,7 +607,7 @@ html[data-theme='dark'] .secondary-btn:hover {
 .recommendation-item { margin-bottom: 0.5rem; padding: 0.5rem; background: #f0fdf4; border-radius: 8px; border-left: 3px solid var(--secondary); }
 .recommendation-item i { color: var(--success); margin-right: 0.5rem; }
 
-/* Warning Card */
+/* Card de Aviso */
 .result-card.warning-card .warning-card-content {
     background: linear-gradient(135deg, #fef3c7, #fef3c7);
     border: 1px solid #f59e0b;
@@ -634,7 +723,7 @@ html[data-theme='dark'] .secondary-btn:hover {
     border-left: 4px solid var(--danger);
 }
 
-/* Footer */
+/* Rodapé */
 .footer {
     background: var(--input-bg);
     padding: 2rem;
@@ -663,7 +752,7 @@ html[data-theme='dark'] .secondary-btn:hover {
     color: var(--text-secondary);
 }
 
-/* Utility Classes */
+/* Classes Utilitárias */
 .hidden {
     display: none !important;
 }
@@ -683,7 +772,7 @@ html[data-theme='dark'] .secondary-btn:hover {
     }
 }
 
-/* Classe para acessibilidade: esconde visualmente mas mantém para leitores de tela */
+/* Classe de Acessibilidade: esconde visualmente mas mantém para leitores de tela */
 .sr-only {
     position: absolute;
     width: 1px;
