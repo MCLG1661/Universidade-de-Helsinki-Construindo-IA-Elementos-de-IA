@@ -49,6 +49,15 @@ Os usuários interagem com o sistema através de uma interface web onde descreve
 
 ---
 
+## 🚀 Como executar
+```bash
+git clone https://github.com/MCLG1661/Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA.git
+cd Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA
+pip install -r requirements.txt
+jupyter notebook
+```
+---
+
 ## 📊 Fontes de Dados e Métodos de IA
 
 **Fontes de Dados:**
