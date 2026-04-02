@@ -1,0 +1,32 @@
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints*
+__pycache__/
+*.pyc
+
+# Ambiente Python
+venv/
+env/
+ENV/
+.venv
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Dados (caso tenha arquivos grandes, evita subir)
+*.csv
+*.xlsx
+*.h5
+*.pkl
+*.parquet
+
+# Logs e saídas temporárias
+*.log
+*.tmp
