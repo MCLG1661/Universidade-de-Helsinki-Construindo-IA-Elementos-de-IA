@@ -9,6 +9,8 @@
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)
 
+Este repositório serve como **portfólio de aprendizado** e referência para implementações de conceitos fundamentais de IA.
+
 ---
 
 ## 📚 Cursos
