@@ -124,9 +124,10 @@ Este projeto é desenvolvido **apenas para fins educacionais**. O sistema não �
 
 ---
 
-## 📬 Contato
+## 👤 Autor
 
 Projeto desenvolvido por Marcus Guedes
+![MCLG1661](https://img.shields.io/badge/GitHub-MCLG1661-black)
 
 - Email: mclguedes@gmail.com  
 - LinkedIn: https://www.linkedin.com/in/marcusguedes
