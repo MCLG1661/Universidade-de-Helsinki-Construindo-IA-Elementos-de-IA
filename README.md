@@ -112,6 +112,6 @@ Este projeto é desenvolvido **apenas para fins educacionais**. O sistema não �
 
 Projeto desenvolvido por Marcus Guedes
 
-📧 Email: mclguedes@gmail.com  
-📱 LinkedIn: https://www.linkedin.com/in/marcusguedes
-GitHub : https://github.com/MCLG1661
+- Email: mclguedes@gmail.com  
+- LinkedIn: https://www.linkedin.com/in/marcusguedes
+- GitHub : https://github.com/MCLG1661
