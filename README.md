@@ -163,8 +163,7 @@ Este projeto é desenvolvido **apenas para fins educacionais**. O sistema não �
 
 ## 👤 Autor
 
-Projeto desenvolvido por Marcus Guedes
+Marcus Guedes
 
-- Email: mclguedes@gmail.com  
 - LinkedIn: https://www.linkedin.com/in/marcusguedes
 - GitHub : https://github.com/MCLG1661
