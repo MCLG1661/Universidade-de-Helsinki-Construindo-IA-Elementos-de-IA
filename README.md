@@ -7,10 +7,12 @@
 ![JSON](https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)
 
 ## 🎯 Resumo
 
-O HealthGuardian AI é um sistema inteligente de triagem médica que utiliza aprendizado de máquina para analisar sintomas de pacientes e fornecer avaliações médicas preliminares. O sistema processa descrições em linguagem natural dos sintomas, classifica possíveis condições, determina níveis de urgência e oferece recomendações iniciais. Desenvolvido com Python e Streamlit, demonstra aplicações práticas de NLP e algoritmos de classificação em tecnologia da saúde.
+O HealthGuardian AI é a minha solução para os cursos introdutórios de Inteligência Artificial da Universidade de Helsinki.
+É um sistema inteligente de triagem médica que utiliza aprendizado de máquina para analisar sintomas de pacientes e fornecer avaliações médicas preliminares. O sistema processa descrições em linguagem natural dos sintomas, classifica possíveis condições, determina níveis de urgência e oferece recomendações iniciais. Desenvolvido com Python e Streamlit, demonstra aplicações práticas de NLP e algoritmos de classificação em tecnologia da saúde.
 
 ## 🏥 Contexto e Definição do Problema
 
@@ -66,11 +68,14 @@ Limitações incluem tamanho do conjunto de dados, restrições de idioma e a ne
 
 ## 📁 Estrutura do Projeto
 
+```
 healthguardian-ai/
 ├── index.html
 ├── styles.css
 ├── script.js
 └── vercel.json
+
+```
 
 ## ⚠️ Aviso 
 
