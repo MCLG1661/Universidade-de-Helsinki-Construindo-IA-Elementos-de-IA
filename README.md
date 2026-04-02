@@ -42,6 +42,13 @@ Os usuários interagem com o sistema através de uma interface web onde descreve
 
 ---
 
+## 🛠️ Tecnologias
+- Python 3.9+
+- NumPy, Pandas, Matplotlib
+- scikit-learn, PyTorch
+
+---
+
 ## 📊 Fontes de Dados e Métodos de IA
 
 **Fontes de Dados:**
