@@ -135,12 +135,22 @@ Limitações incluem tamanho do conjunto de dados, restrições de idioma e a ne
 ## 📁 Estrutura do Projeto
 
 ```
-healthguardian-ai/
-├── index.html
-├── styles.css
-├── script.js
-└── vercel.json
-
+📦 Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA/
+│
+├── 📂 Elementos de IA/
+│   ├── 📂 Parte 1 - Fundamentos/
+│   ├── 📂 Parte 2 - Busca/
+│   └── ...
+│
+├── 📂 Construindo IA/
+│   ├── 📂 Parte 1 - Regressão/
+│   ├── 📂 Parte 2 - Classificação/
+│   └── ...
+│
+├── 📄 requirements.txt
+├── 📄 .gitignore
+├── 📄 LICENSE
+└── 📄 README.md
 ```
 
 ---
