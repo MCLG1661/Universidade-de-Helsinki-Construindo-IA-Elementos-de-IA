@@ -42,10 +42,19 @@ Os usuários interagem com o sistema através de uma interface web onde descreve
 
 ---
 
-## 🛠️ Tecnologias
-- Python 3.9+
-- NumPy, Pandas, Matplotlib
-- scikit-learn, PyTorch
+## 🛠️ Tecnologias Utilizadas
+
+```
+| Área          | Ferramentas                              |
+|---------------|------------------------------------------|
+| Linguagem     | Python 3.9+                              |
+| Matemática    | NumPy, SciPy                             |
+| Dados         | Pandas                                   |
+| Visualização  | Matplotlib                               |
+| Machine Learning | Scikit-learn                          |
+| Deep Learning | PyTorch (quando aplicável)               |
+| Ambiente      | Jupyter Notebook                         |
+```
 
 ---
 
@@ -127,7 +136,6 @@ Este projeto é desenvolvido **apenas para fins educacionais**. O sistema não �
 ## 👤 Autor
 
 Projeto desenvolvido por Marcus Guedes
-https://img.shields.io/badge/GitHub-MCLG1661-black
 
 - Email: mclguedes@gmail.com  
 - LinkedIn: https://www.linkedin.com/in/marcusguedes
