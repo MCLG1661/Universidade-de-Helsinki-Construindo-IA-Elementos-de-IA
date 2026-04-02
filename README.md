@@ -42,6 +42,22 @@ Os usuários interagem com o sistema através de uma interface web onde descreve
 
 ---
 
+## 📚 O que está incluso
+
+### 🧩 Elementos de IA
+- Busca em grafos (Dijkstra, A*)
+- Lógica proposicional
+- Probabilidade e inferência bayesiana
+- Aprendizado por reforço (conceitos)
+
+### ⚙️ Construindo IA
+- Regressão linear e logística
+- Árvores de decisão
+- Redes neurais com PyTorch
+- Pré-processamento e avaliação de modelos
+
+---
+
 ## 🛠️ Tecnologias Utilizadas
 
 ```
