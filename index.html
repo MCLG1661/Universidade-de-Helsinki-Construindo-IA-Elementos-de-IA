@@ -2,16 +2,20 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
-        content="HealthGuardian AI — laboratório educacional de classificação lexical e NLP inspirado nos cursos Elements of AI e Building AI da University of Helsinki."
+        content="HealthGuardian AI — laboratório interativo de NLP, classificação lexical e explicabilidade desenvolvido como projeto educacional."
     >
 
-    <meta name="theme-color" content="#0f172a">
+    <meta name="theme-color" content="#09090b">
 
-    <title>HealthGuardian AI — Educational NLP Classification Lab</title>
+    <title>HealthGuardian AI — NLP Classification Lab</title>
 
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
@@ -20,6 +24,7 @@
         rel="preconnect"
         href="https://fonts.googleapis.com"
     >
+
     <link
         rel="preconnect"
         href="https://fonts.gstatic.com"
@@ -27,7 +32,7 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
@@ -39,542 +44,1011 @@
 
 <body>
 
-    <div class="app-shell">
+    <header class="topbar">
 
-        <aside class="sidebar">
+        <a href="#lab" class="brand">
 
-            <div class="brand-block">
-                <div class="brand-icon">
-                    <i class="fas fa-shield-halved"></i>
-                </div>
+            <span class="brand-symbol">
+                HG
+            </span>
 
-                <div>
-                    <span class="brand-name" data-project-name>
-                        HealthGuardian AI
-                    </span>
+            <div>
+                <strong data-project-name>
+                    HealthGuardian AI
+                </strong>
 
-                    <span class="brand-subtitle" data-project-subtitle>
-                        Educational NLP Classification Lab
-                    </span>
-                </div>
-            </div>
-
-            <div class="sidebar-badge">
-                <i class="fas fa-flask"></i>
-                Projeto educacional
-            </div>
-
-            <nav class="sidebar-nav" aria-label="Navegação principal">
-
-                <a href="#overview" class="nav-link active">
-                    <i class="fas fa-house"></i>
-                    <span>Visão Geral</span>
-                </a>
-
-                <a href="#laboratory" class="nav-link">
-                    <i class="fas fa-microscope"></i>
-                    <span>Laboratório</span>
-                </a>
-
-                <a href="#methodology" class="nav-link">
-                    <i class="fas fa-diagram-project"></i>
-                    <span>Metodologia</span>
-                </a>
-
-                <a href="#concepts" class="nav-link">
-                    <i class="fas fa-brain"></i>
-                    <span>Conceitos</span>
-                </a>
-
-                <a href="#responsible-ai" class="nav-link">
-                    <i class="fas fa-scale-balanced"></i>
-                    <span>Responsible AI</span>
-                </a>
-
-            </nav>
-
-            <div class="sidebar-context">
-                <span class="sidebar-context-label">
-                    Contexto acadêmico
+                <span>
+                    NLP Classification Lab
                 </span>
-
-                <p data-project-context>
-                    Inspired by concepts studied in Elements of AI and Building AI — University of Helsinki
-                </p>
             </div>
 
-            <footer class="sidebar-footer">
-                <span>Portfolio MVP</span>
-                <span>v1.0.0</span>
-            </footer>
+        </a>
 
-        </aside>
+        <nav class="topnav" aria-label="Navegação principal">
 
-        <main class="main-content">
+            <a href="#lab">
+                Lab
+            </a>
 
-            <section id="overview" class="section hero-section">
+            <a href="#explainability">
+                Explainability
+            </a>
 
-                <div class="hero-copy">
+            <a href="#methodology">
+                Methodology
+            </a>
 
-                    <span class="eyebrow">
-                        AI • NLP • Explainability
+            <a href="#responsible-ai">
+                Responsible AI
+            </a>
+
+        </nav>
+
+        <div class="topbar-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                Educational Prototype
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================================================
+             HERO + LAB
+        ========================================================== -->
+
+        <section id="lab" class="lab-hero">
+
+            <div class="lab-intro">
+
+                <div class="hero-meta">
+
+                    <span>
+                        NLP
                     </span>
 
-                    <h1>
-                        Entendendo como máquinas podem
-                        <span>classificar linguagem</span>
-                    </h1>
-
-                    <p class="hero-description">
-                        O HealthGuardian AI é um laboratório educacional que demonstra
-                        como textos podem ser normalizados, tokenizados, comparados e
-                        classificados por meio de regras determinísticas e similaridade lexical.
-                    </p>
-
-                    <div class="hero-actions">
-                        <a href="#laboratory" class="primary-button">
-                            <i class="fas fa-play"></i>
-                            Testar laboratório
-                        </a>
-
-                        <a href="#methodology" class="secondary-button">
-                            Ver metodologia
-                        </a>
-                    </div>
-
-                </div>
-
-                <div class="hero-card">
-
-                    <span class="hero-card-label">
-                        Pipeline demonstrativo
+                    <span>
+                        CLASSIFICATION
                     </span>
 
-                    <div class="mini-pipeline">
-
-                        <div class="mini-pipeline-item">
-                            <i class="fas fa-keyboard"></i>
-                            <span>Texto</span>
-                        </div>
-
-                        <i class="fas fa-arrow-right pipeline-arrow"></i>
-
-                        <div class="mini-pipeline-item">
-                            <i class="fas fa-code"></i>
-                            <span>Tokens</span>
-                        </div>
-
-                        <i class="fas fa-arrow-right pipeline-arrow"></i>
-
-                        <div class="mini-pipeline-item">
-                            <i class="fas fa-filter"></i>
-                            <span>Matching</span>
-                        </div>
-
-                        <i class="fas fa-arrow-right pipeline-arrow"></i>
-
-                        <div class="mini-pipeline-item">
-                            <i class="fas fa-layer-group"></i>
-                            <span>Classe</span>
-                        </div>
-
-                    </div>
-
-                    <div class="engine-card">
-                        <span>Motor atual</span>
-                        <strong data-project-engine>
-                            Rule-based lexical classification
-                        </strong>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section class="section disclaimer-section">
-
-                <div class="disclaimer-card">
-
-                    <div class="disclaimer-icon">
-                        <i class="fas fa-circle-info"></i>
-                    </div>
-
-                    <div>
-                        <h2>Projeto educacional e não clínico</h2>
-
-                        <p>
-                            Esta aplicação demonstra conceitos de processamento de texto.
-                            Os resultados indicam apenas similaridade lexical entre o texto
-                            informado e categorias previamente definidas.
-                        </p>
-
-                        <strong>
-                            Não realiza diagnóstico, triagem clínica, avaliação médica,
-                            cálculo de risco ou recomendação de tratamento.
-                        </strong>
-                    </div>
-
-                </div>
-
-            </section>
-
-            <section id="laboratory" class="section">
-
-                <div class="section-heading">
-
-                    <span class="section-kicker">
-                        Experimento interativo
+                    <span>
+                        EXPLAINABILITY
                     </span>
 
-                    <h2>Laboratório de Classificação</h2>
+                </div>
 
-                    <p>
-                        Digite uma frase ou utilize um dos exemplos.
-                        O sistema mostrará cada etapa da classificação.
-                    </p>
+                <h1>
+                    Explore how
+                    <span>text becomes data.</span>
+                </h1>
+
+                <p>
+                    Um laboratório interativo para observar como uma entrada
+                    textual pode ser normalizada, tokenizada, comparada e
+                    classificada por um sistema determinístico.
+                </p>
+
+                <div class="academic-reference">
+
+                    <span class="academic-code">
+                        EDU_CONTEXT
+                    </span>
+
+                    <span data-project-context>
+                        Inspired by concepts studied in Elements of AI and
+                        Building AI — University of Helsinki
+                    </span>
 
                 </div>
 
-                <div class="laboratory-grid">
+            </div>
 
-                    <div class="input-panel">
 
-                        <div class="panel-header">
+            <div class="lab-workspace">
 
-                            <div>
-                                <span class="panel-label">
-                                    Entrada textual
-                                </span>
+                <!-- INPUT -->
 
-                                <h3>Informe uma frase</h3>
-                            </div>
+                <section class="workspace-input">
 
-                            <span id="characterCount" class="character-count">
-                                0/500
+                    <div class="workspace-heading">
+
+                        <div>
+                            <span class="terminal-label">
+                                INPUT_01
+                            </span>
+
+                            <h2>
+                                Text Input
+                            </h2>
+                        </div>
+
+                        <span
+                            id="characterCount"
+                            class="character-count"
+                        >
+                            0/500
+                        </span>
+
+                    </div>
+
+
+                    <textarea
+                        id="textInput"
+                        maxlength="500"
+                        rows="9"
+                        spellcheck="true"
+                        aria-label="Texto para classificação"
+                        placeholder="Digite uma frase para observar como o sistema processa a linguagem..."
+                    ></textarea>
+
+
+                    <div class="input-command">
+
+                        <span>
+                            CTRL + ENTER
+                        </span>
+
+                        <span>
+                            EXECUTE
+                        </span>
+
+                    </div>
+
+
+                    <div class="lab-actions">
+
+                        <button
+                            id="analyzeButton"
+                            class="execute-button"
+                            type="button"
+                        >
+                            <span>
+                                RUN ANALYSIS
+                            </span>
+
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+
+                        <button
+                            id="clearButton"
+                            class="reset-button"
+                            type="button"
+                        >
+                            RESET
+                        </button>
+
+                    </div>
+
+
+                    <div class="examples-block">
+
+                        <div class="examples-header">
+
+                            <span class="terminal-label">
+                                SAMPLE_INPUTS
+                            </span>
+
+                            <span>
+                                Clique para carregar
                             </span>
 
                         </div>
 
-                        <textarea
-                            id="textInput"
-                            maxlength="500"
-                            rows="7"
-                            placeholder="Exemplo: Estou muito cansado e com pouca energia hoje."
-                            aria-label="Texto para classificação"
-                        ></textarea>
+                        <div
+                            id="exampleInputs"
+                            class="example-inputs"
+                        ></div>
 
-                        <div class="input-helper">
-                            <i class="fas fa-keyboard"></i>
-                            Ctrl + Enter também executa a análise
+                    </div>
+
+                </section>
+
+
+                <!-- PROCESSING MONITOR -->
+
+                <aside class="processing-monitor">
+
+                    <div class="monitor-header">
+
+                        <div>
+
+                            <span class="terminal-label">
+                                PROCESS_MONITOR
+                            </span>
+
+                            <h2>
+                                Pipeline
+                            </h2>
+
                         </div>
 
-                        <div class="input-actions">
+                        <span class="monitor-live">
+                            LIVE
+                        </span>
 
-                            <button
-                                id="analyzeButton"
-                                class="primary-button button-control"
-                                type="button"
-                            >
-                                <i class="fas fa-magnifying-glass-chart"></i>
-                                Analisar texto
-                            </button>
+                    </div>
 
-                            <button
-                                id="clearButton"
-                                class="secondary-button button-control"
-                                type="button"
-                            >
-                                <i class="fas fa-rotate-left"></i>
-                                Limpar
-                            </button>
+
+                    <div class="monitor-engine">
+
+                        <span>
+                            ENGINE
+                        </span>
+
+                        <strong data-project-engine>
+                            Rule-based lexical classification
+                        </strong>
+
+                    </div>
+
+
+                    <div class="monitor-flow">
+
+                        <div class="monitor-step">
+
+                            <span class="step-code">
+                                01
+                            </span>
+
+                            <div>
+                                <strong>
+                                    RECEIVE
+                                </strong>
+
+                                <span>
+                                    Captura da entrada
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-line"></div>
+
+
+                        <div class="monitor-step">
+
+                            <span class="step-code">
+                                02
+                            </span>
+
+                            <div>
+                                <strong>
+                                    NORMALIZE
+                                </strong>
+
+                                <span>
+                                    Padronização textual
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-line"></div>
+
+
+                        <div class="monitor-step">
+
+                            <span class="step-code">
+                                03
+                            </span>
+
+                            <div>
+                                <strong>
+                                    TOKENIZE
+                                </strong>
+
+                                <span>
+                                    Separação de termos
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-line"></div>
+
+
+                        <div class="monitor-step">
+
+                            <span class="step-code">
+                                04
+                            </span>
+
+                            <div>
+                                <strong>
+                                    MATCH
+                                </strong>
+
+                                <span>
+                                    Comparação lexical
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-line"></div>
+
+
+                        <div class="monitor-step">
+
+                            <span class="step-code">
+                                05
+                            </span>
+
+                            <div>
+                                <strong>
+                                    SCORE
+                                </strong>
+
+                                <span>
+                                    Pontuação por categoria
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="flow-line"></div>
+
+
+                        <div class="monitor-step">
+
+                            <span class="step-code">
+                                06
+                            </span>
+
+                            <div>
+                                <strong>
+                                    CLASSIFY
+                                </strong>
+
+                                <span>
+                                    Ranking final
+                                </span>
+                            </div>
 
                         </div>
 
                     </div>
 
-                    <div class="examples-panel">
+                </aside>
 
-                        <span class="panel-label">
-                            Exemplos rápidos
+            </div>
+
+        </section>
+
+
+        <!-- =========================================================
+             ANALYSIS
+        ========================================================== -->
+
+        <section
+            id="analysisSection"
+            class="analysis-console hidden"
+        >
+
+            <div class="console-heading">
+
+                <div>
+
+                    <span class="section-index">
+                        01
+                    </span>
+
+                    <span class="terminal-label">
+                        TEXT_TRANSFORMATION
+                    </span>
+
+                </div>
+
+                <h2>
+                    Processing console
+                </h2>
+
+            </div>
+
+
+            <div class="console-grid">
+
+                <article class="console-panel">
+
+                    <div class="console-panel-header">
+
+                        <span>
+                            ORIGINAL
                         </span>
 
-                        <h3>Teste o motor</h3>
-
-                        <p>
-                            Selecione uma frase para carregá-la automaticamente.
-                        </p>
-
-                        <div id="exampleInputs" class="example-inputs"></div>
+                        <span>
+                            RAW_TEXT
+                        </span>
 
                     </div>
 
-                </div>
+                    <p id="originalText"></p>
 
-            </section>
+                </article>
 
-            <section
-                id="analysisSection"
-                class="section analysis-section hidden"
-            >
 
-                <div class="section-heading">
+                <article class="console-panel">
 
-                    <span class="section-kicker">
-                        Processamento
+                    <div class="console-panel-header">
+
+                        <span>
+                            NORMALIZED
+                        </span>
+
+                        <span>
+                            CLEAN_TEXT
+                        </span>
+
+                    </div>
+
+                    <p id="normalizedText"></p>
+
+                </article>
+
+            </div>
+
+
+            <article class="token-console">
+
+                <div class="console-panel-header">
+
+                    <span>
+                        TOKEN STREAM
                     </span>
 
-                    <h2>Como o texto foi preparado</h2>
-
-                    <p>
-                        Antes da classificação, a entrada passa por etapas simples
-                        de preparação e transformação.
-                    </p>
-
-                </div>
-
-                <div class="analysis-grid">
-
-                    <article class="analysis-card">
-
-                        <span class="analysis-label">
-                            01 — Entrada original
-                        </span>
-
-                        <p id="originalText"></p>
-
-                    </article>
-
-                    <article class="analysis-card">
-
-                        <span class="analysis-label">
-                            02 — Texto normalizado
-                        </span>
-
-                        <p id="normalizedText"></p>
-
-                    </article>
-
-                    <article class="analysis-card analysis-card-wide">
-
-                        <span class="analysis-label">
-                            03 — Tokens utilizados
-                        </span>
-
-                        <div id="tokensOutput" class="tokens-output"></div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-            <section
-                id="resultsSection"
-                class="section results-section hidden"
-            >
-
-                <div class="section-heading">
-
-                    <span class="section-kicker">
-                        Resultado
+                    <span>
+                        TOKENIZED_OUTPUT
                     </span>
 
-                    <h2>Classificação lexical</h2>
+                </div>
 
-                    <p>
-                        As categorias abaixo são ranqueadas conforme as
-                        correspondências encontradas no vocabulário experimental.
-                    </p>
+                <div
+                    id="tokensOutput"
+                    class="tokens-output"
+                ></div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =========================================================
+             RESULTS
+        ========================================================== -->
+
+        <section
+            id="resultsSection"
+            class="classification-section hidden"
+        >
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-index">
+                        02
+                    </span>
+
+                    <span class="terminal-label">
+                        CLASSIFICATION_OUTPUT
+                    </span>
 
                 </div>
 
-                <div id="resultSummary" class="result-summary"></div>
+                <h2>
+                    Lexical similarity map
+                </h2>
 
-                <div id="resultsGrid" class="results-grid"></div>
+                <p>
+                    O ranking representa apenas a relação entre os termos
+                    identificados e os vocabulários configurados no experimento.
+                </p>
 
-                <div id="emptyResult" class="empty-result hidden">
+            </div>
 
-                    <i class="fas fa-circle-question"></i>
 
-                    <h3>Nenhuma categoria relevante encontrada</h3>
+            <div
+                id="resultSummary"
+                class="result-summary"
+            ></div>
+
+
+            <div
+                id="resultsGrid"
+                class="results-grid"
+            ></div>
+
+
+            <div
+                id="emptyResult"
+                class="empty-result hidden"
+            >
+
+                <div class="empty-code">
+                    000
+                </div>
+
+                <div>
+
+                    <h3>
+                        NO RELEVANT MATCH
+                    </h3>
 
                     <p>
-                        O texto informado não apresentou correspondências suficientes
-                        com os vocabulários configurados no experimento.
+                        Não foram encontradas correspondências suficientes
+                        para classificar o texto dentro do dataset experimental.
                     </p>
 
                     <span>
-                        Isso não significa ausência de qualquer condição ou situação.
-                        Significa apenas ausência de similaridade lexical neste dataset.
+                        A ausência de correspondência não possui significado clínico.
                     </span>
 
                 </div>
 
-            </section>
+            </div>
 
-            <section id="methodology" class="section methodology-section">
+        </section>
 
-                <div class="section-heading">
 
-                    <span class="section-kicker">
-                        Metodologia
+        <!-- =========================================================
+             EXPLAINABILITY
+        ========================================================== -->
+
+        <section
+            id="explainability"
+            class="explainability-section"
+        >
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-index">
+                        03
                     </span>
 
-                    <h2>Pipeline de Processamento</h2>
-
-                    <p>
-                        O projeto foi estruturado para tornar o processo de
-                        classificação visível e compreensível.
-                    </p>
+                    <span class="terminal-label">
+                        EXPLAINABILITY
+                    </span>
 
                 </div>
 
-                <div id="pipelineSteps" class="pipeline-steps"></div>
+                <h2>
+                    See why the system decides.
+                </h2>
 
-                <div class="architecture-card">
+                <p>
+                    Em vez de apresentar apenas uma classificação,
+                    o laboratório procura deixar visível o caminho
+                    utilizado para chegar ao resultado.
+                </p>
 
-                    <span class="architecture-label">
-                        Arquitetura atual
+            </div>
+
+
+            <div class="explainability-diagram">
+
+                <div class="diagram-source">
+
+                    <span class="diagram-label">
+                        INPUT
                     </span>
 
-                    <div class="architecture-flow">
-
-                        <span>data.json</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span>JavaScript</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Normalização</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Matching</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Ranking</span>
-                        <i class="fas fa-arrow-right"></i>
-                        <span>Interface</span>
-
-                    </div>
-
-                    <p>
-                        A versão atual funciona integralmente no navegador e não
-                        utiliza backend, banco de dados ou modelo de Machine Learning treinado.
-                    </p>
-
-                </div>
-
-            </section>
-
-            <section id="concepts" class="section">
-
-                <div class="section-heading">
-
-                    <span class="section-kicker">
-                        Base conceitual
-                    </span>
-
-                    <h2>Conceitos explorados</h2>
-
-                    <p>
-                        O laboratório conecta fundamentos estudados em Inteligência Artificial
-                        com uma implementação simples e observável.
-                    </p>
-
-                </div>
-
-                <div id="conceptsGrid" class="concepts-grid"></div>
-
-            </section>
-
-            <section id="responsible-ai" class="section responsible-section">
-
-                <div class="section-heading">
-
-                    <span class="section-kicker">
-                        Responsible AI
-                    </span>
-
-                    <h2>Inteligência responsável por design</h2>
-
-                    <p>
-                        Em aplicações envolvendo temas sensíveis, tão importante quanto
-                        construir a tecnologia é deixar claro o que ela pode e não pode fazer.
-                    </p>
-
-                </div>
-
-                <div id="responsibleAIGrid" class="responsible-grid"></div>
-
-                <div class="responsibility-callout">
-
-                    <div>
-                        <i class="fas fa-shield-heart"></i>
-                    </div>
-
-                    <div>
-                        <h3>Limitação de escopo é parte da solução</h3>
-
-                        <p>
-                            O HealthGuardian AI evita transformar correspondência lexical
-                            em afirmações clínicas. Transparência, explicabilidade,
-                            privacidade e comunicação adequada das limitações fazem parte
-                            da arquitetura do produto.
-                        </p>
+                    <div class="diagram-code">
+                        "tosse coriza cansaço"
                     </div>
 
                 </div>
 
-            </section>
 
-            <section class="section academic-section">
+                <div class="diagram-connections">
 
-                <div class="academic-card">
+                    <div class="connection-row">
 
-                    <div class="academic-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-
-                    <div>
-
-                        <span class="section-kicker">
-                            Contexto acadêmico
+                        <span class="connection-token">
+                            tosse
                         </span>
 
-                        <h2>University of Helsinki</h2>
+                        <span class="connection-arrow">
+                            ─────────►
+                        </span>
 
-                        <p>
-                            Projeto desenvolvido como aplicação prática e evolução de
-                            conceitos estudados nos cursos
-                            <strong>Elements of AI</strong> e
-                            <strong>Building AI</strong>.
-                        </p>
+                        <span class="connection-category">
+                            respiratory
+                        </span>
 
-                        <p>
-                            O objetivo é demonstrar compreensão de problemas,
-                            representação de dados, classificação, interpretação de
-                            resultados e limitações de sistemas de Inteligência Artificial.
-                        </p>
+                    </div>
+
+
+                    <div class="connection-row">
+
+                        <span class="connection-token">
+                            coriza
+                        </span>
+
+                        <span class="connection-arrow">
+                            ─────────►
+                        </span>
+
+                        <span class="connection-category">
+                            respiratory
+                        </span>
+
+                    </div>
+
+
+                    <div class="connection-row">
+
+                        <span class="connection-token">
+                            cansaço
+                        </span>
+
+                        <span class="connection-arrow">
+                            ─────────►
+                        </span>
+
+                        <span class="connection-category">
+                            energy
+                        </span>
 
                     </div>
 
                 </div>
 
-            </section>
 
-            <footer class="main-footer">
+                <div class="diagram-output">
 
-                <div>
-                    <strong>HealthGuardian AI</strong>
-                    <span>Educational NLP Classification Lab</span>
+                    <span class="diagram-label">
+                        OUTPUT
+                    </span>
+
+                    <div class="output-bars">
+
+                        <div class="output-line">
+
+                            <span>
+                                respiratory
+                            </span>
+
+                            <div class="demo-bar">
+                                <span style="width: 76%"></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="output-line">
+
+                            <span>
+                                energy
+                            </span>
+
+                            <div class="demo-bar">
+                                <span style="width: 34%"></span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
 
+            </div>
+
+        </section>
+
+
+        <!-- =========================================================
+             METHODOLOGY
+        ========================================================== -->
+
+        <section
+            id="methodology"
+            class="methodology-section"
+        >
+
+            <div class="section-title-row">
+
                 <div>
-                    <span>Marcus Corrêa Lopes Guedes</span>
-                    <span>Portfolio Project • 2026</span>
+
+                    <span class="section-index">
+                        04
+                    </span>
+
+                    <span class="terminal-label">
+                        UNDER_THE_HOOD
+                    </span>
+
                 </div>
 
-            </footer>
+                <h2>
+                    How the engine works
+                </h2>
 
-        </main>
+                <p>
+                    A aplicação atual usa uma arquitetura simples,
+                    determinística e inteiramente executada no navegador.
+                </p>
 
-    </div>
+            </div>
+
+
+            <div class="architecture-terminal">
+
+                <div class="terminal-top">
+
+                    <div class="terminal-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <span>
+                        architecture.txt
+                    </span>
+
+                </div>
+
+                <pre>
+data.json
+    │
+    ▼
+loadAppData()
+    │
+    ▼
+normalizeText()
+    │
+    ▼
+tokenize()
+    │
+    ▼
+classifyText()
+    │
+    ├── exact match
+    │
+    ├── partial match
+    │
+    └── scoring
+    │
+    ▼
+ranking
+    │
+    ▼
+explainable UI
+                </pre>
+
+            </div>
+
+
+            <div
+                id="pipelineSteps"
+                class="pipeline-steps"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================================================
+             CONCEPTS
+        ========================================================== -->
+
+        <section class="concepts-section">
+
+            <div class="section-title-row">
+
+                <div>
+
+                    <span class="section-index">
+                        05
+                    </span>
+
+                    <span class="terminal-label">
+                        AI_CONCEPTS
+                    </span>
+
+                </div>
+
+                <h2>
+                    Concepts behind the experiment
+                </h2>
+
+            </div>
+
+
+            <div
+                id="conceptsGrid"
+                class="concepts-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================================================
+             RESPONSIBLE AI
+        ========================================================== -->
+
+        <section
+            id="responsible-ai"
+            class="responsible-section"
+        >
+
+            <div class="responsible-heading">
+
+                <span class="terminal-label">
+                    RESPONSIBLE_AI_PROTOCOL
+                </span>
+
+                <h2>
+                    Knowing what a system
+                    <span>cannot do</span>
+                    is part of building it.
+                </h2>
+
+            </div>
+
+
+            <div class="scope-comparison">
+
+                <div class="scope-column scope-positive">
+
+                    <span class="scope-label">
+                        SYSTEM DOES
+                    </span>
+
+                    <p>
+                        Processa texto.
+                    </p>
+
+                    <p>
+                        Identifica correspondências lexicais.
+                    </p>
+
+                    <p>
+                        Calcula pontuação determinística.
+                    </p>
+
+                    <p>
+                        Explica os termos associados ao resultado.
+                    </p>
+
+                </div>
+
+
+                <div class="scope-divider">
+                    /
+                </div>
+
+
+                <div class="scope-column scope-negative">
+
+                    <span class="scope-label">
+                        SYSTEM DOES NOT
+                    </span>
+
+                    <p>
+                        Diagnostica doenças.
+                    </p>
+
+                    <p>
+                        Avalia risco clínico.
+                    </p>
+
+                    <p>
+                        Realiza triagem médica.
+                    </p>
+
+                    <p>
+                        Recomenda tratamentos.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="responsibleAIGrid"
+                class="responsible-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================================================
+             ACADEMIC CONTEXT
+        ========================================================== -->
+
+        <section class="academic-section">
+
+            <div class="academic-label">
+
+                <span>
+                    ACADEMIC CONTEXT
+                </span>
+
+                <span>
+                    2026
+                </span>
+
+            </div>
+
+
+            <div class="academic-content">
+
+                <h2>
+                    From learning AI
+                    <br>
+                    to building with AI concepts.
+                </h2>
+
+                <div>
+
+                    <p>
+                        O HealthGuardian AI foi desenvolvido como
+                        aplicação prática e evolução dos conceitos
+                        estudados em
+                        <strong>Elements of AI</strong>
+                        e
+                        <strong>Building AI</strong>,
+                        da University of Helsinki.
+                    </p>
+
+                    <p>
+                        O projeto demonstra fundamentos de representação
+                        de informação, classificação, processamento textual,
+                        interpretação de resultados, explicabilidade
+                        e limitação responsável de escopo.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+
+        <div>
+
+            <span class="footer-mark">
+                HG_AI
+            </span>
+
+            <span>
+                Educational NLP Classification Lab
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Marcus Corrêa Lopes Guedes
+            </span>
+
+            <span>
+                Portfolio Project
+            </span>
+
+        </div>
+
+    </footer>
+
 
     <script src="script.js"></script>
 
