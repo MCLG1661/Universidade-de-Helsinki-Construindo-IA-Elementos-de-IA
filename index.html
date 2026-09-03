@@ -3,220 +3,580 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthGuardian AI - Sistema Inteligente de Triagem Médica</title>
+
+    <meta
+        name="description"
+        content="HealthGuardian AI — laboratório educacional de classificação lexical e NLP inspirado nos cursos Elements of AI e Building AI da University of Helsinki."
+    >
+
+    <meta name="theme-color" content="#0f172a">
+
+    <title>HealthGuardian AI — Educational NLP Classification Lab</title>
+
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 </head>
+
 <body>
-    <!-- Tela de Carregamento -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="pulse">
-                <i class="fas fa-heartbeat"></i>
-            </div>
-            <h2>HealthGuardian AI</h2>
-            <p>Inicializando sistema de triagem...</p>
-        </div>
-    </div>
 
-    <div class="container">
-        <!-- Barra Lateral -->
+    <div class="app-shell">
+
         <aside class="sidebar">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <i class="fas fa-shield-heart"></i>
-                    <h1>HealthGuardian <span>AI</span></h1>
-                </div>
-                <p class="subtitle">Sistema Inteligente de Triagem Médica</p>
-            </div>
 
-            <div class="sidebar-profile">
-                <div class="profile-avatar">
-                    <i class="fas fa-user"></i>
+            <div class="brand-block">
+                <div class="brand-icon">
+                    <i class="fas fa-shield-halved"></i>
                 </div>
-                <div class="profile-info">
-                    <h3 id="sidebarPatientName">Visitante</h3>
-                    <button id="btnOpenRegister" class="link-btn">Cadastrar</button>
-                </div>
-            </div>
 
-            <div class="sidebar-stats">
-                <div class="stat">
-                    <i class="fas fa-users"></i>
-                    <span>+2,5 mil</span>
-                    <small>Pacientes Atendidos</small>
-                </div>
-                <div class="stat">
-                    <i class="fas fa-check-circle"></i>
-                    <span>98%</span>
-                    <small>Precisão Média</small>
-                </div>
-                <div class="stat">
-                    <i class="fas fa-clock"></i>
-                    <span>24/7</span>
-                    <small>Disponibilidade</small>
+                <div>
+                    <span class="brand-name" data-project-name>
+                        HealthGuardian AI
+                    </span>
+
+                    <span class="brand-subtitle" data-project-subtitle>
+                        Educational NLP Classification Lab
+                    </span>
                 </div>
             </div>
 
-            <!-- Seção de Histórico -->
-            <div class="sidebar-history">
-                <h4><i class="fas fa-history"></i> Histórico Recente</h4>
-                <ul id="historyList">
-                    <!-- O histórico será preenchido pelo JS -->
-                </ul>
+            <div class="sidebar-badge">
+                <i class="fas fa-flask"></i>
+                Projeto educacional
+            </div>
+
+            <nav class="sidebar-nav" aria-label="Navegação principal">
+
+                <a href="#overview" class="nav-link active">
+                    <i class="fas fa-house"></i>
+                    <span>Visão Geral</span>
+                </a>
+
+                <a href="#laboratory" class="nav-link">
+                    <i class="fas fa-microscope"></i>
+                    <span>Laboratório</span>
+                </a>
+
+                <a href="#methodology" class="nav-link">
+                    <i class="fas fa-diagram-project"></i>
+                    <span>Metodologia</span>
+                </a>
+
+                <a href="#concepts" class="nav-link">
+                    <i class="fas fa-brain"></i>
+                    <span>Conceitos</span>
+                </a>
+
+                <a href="#responsible-ai" class="nav-link">
+                    <i class="fas fa-scale-balanced"></i>
+                    <span>Responsible AI</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-context">
+                <span class="sidebar-context-label">
+                    Contexto acadêmico
+                </span>
+
+                <p data-project-context>
+                    Inspired by concepts studied in Elements of AI and Building AI — University of Helsinki
+                </p>
             </div>
 
             <footer class="sidebar-footer">
-                <button id="theme-switcher" class="theme-btn" title="Alterar tema"><i class="fas fa-moon"></i></button>
-                <span>&copy; 2026 HealthGuardian AI.</span>
+                <span>Portfolio MVP</span>
+                <span>v1.0.0</span>
             </footer>
+
         </aside>
 
-        <!-- Conteúdo Principal -->
         <main class="main-content">
-            <!-- Seção de Sintomas -->
-            <section id="symptomsSection" class="symptoms-section">
-                <div class="section-header">
-                    <i class="fas fa-clipboard-list"></i>
-                    <h2>Nova Triagem</h2>
+
+            <section id="overview" class="section hero-section">
+
+                <div class="hero-copy">
+
+                    <span class="eyebrow">
+                        AI • NLP • Explainability
+                    </span>
+
+                    <h1>
+                        Entendendo como máquinas podem
+                        <span>classificar linguagem</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        O HealthGuardian AI é um laboratório educacional que demonstra
+                        como textos podem ser normalizados, tokenizados, comparados e
+                        classificados por meio de regras determinísticas e similaridade lexical.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#laboratory" class="primary-button">
+                            <i class="fas fa-play"></i>
+                            Testar laboratório
+                        </a>
+
+                        <a href="#methodology" class="secondary-button">
+                            Ver metodologia
+                        </a>
+                    </div>
+
                 </div>
-                
-                <div class="input-container">
-                    <h3>Identificação do Paciente</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="patientName">Nome Completo</label>
-                            <input type="text" id="patientName" placeholder="Nome do paciente">
+
+                <div class="hero-card">
+
+                    <span class="hero-card-label">
+                        Pipeline demonstrativo
+                    </span>
+
+                    <div class="mini-pipeline">
+
+                        <div class="mini-pipeline-item">
+                            <i class="fas fa-keyboard"></i>
+                            <span>Texto</span>
                         </div>
-                        <div class="form-group">
-                            <label for="patientAge">Idade</label>
-                            <input type="number" id="patientAge" placeholder="Anos" min="0" max="120">
+
+                        <i class="fas fa-arrow-right pipeline-arrow"></i>
+
+                        <div class="mini-pipeline-item">
+                            <i class="fas fa-code"></i>
+                            <span>Tokens</span>
                         </div>
+
+                        <i class="fas fa-arrow-right pipeline-arrow"></i>
+
+                        <div class="mini-pipeline-item">
+                            <i class="fas fa-filter"></i>
+                            <span>Matching</span>
+                        </div>
+
+                        <i class="fas fa-arrow-right pipeline-arrow"></i>
+
+                        <div class="mini-pipeline-item">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Classe</span>
+                        </div>
+
                     </div>
+
+                    <div class="engine-card">
+                        <span>Motor atual</span>
+                        <strong data-project-engine>
+                            Rule-based lexical classification
+                        </strong>
+                    </div>
+
                 </div>
 
-                <div class="input-container">
-                    <label for="symptomsInput" class="sr-only">Descreva seus sintomas em detalhes</label>
-                    <textarea 
-                        id="symptomsInput" 
-                        placeholder="Ex: febre há 2 dias, dor de cabeça constante, coriza e cansaço..." 
-                        rows="5"
-                    ></textarea>
-                    <div class="input-footer">
-                        <span class="char-count">0/500 caracteres</span>
-                        <span class="tips"><i class="fas fa-lightbulb"></i> Seja específico sobre duração e intensidade</span>
-                    </div>
-                </div>
-
-                <!-- Sintomas Rápidos -->
-                <div class="quick-symptoms">
-                    <h3>Sintomas Comuns:</h3>
-                    <div class="symptoms-tags">
-                        <span class="symptom-tag" data-symptom="febre">Febre</span>
-                        <span class="symptom-tag" data-symptom="dor de cabeça">Dor de Cabeça</span>
-                        <span class="symptom-tag" data-symptom="tosse">Tosse</span>
-                        <span class="symptom-tag" data-symptom="náusea">Náusea</span>
-                        <span class="symptom-tag" data-symptom="tontura">Tontura</span>
-                        <span class="symptom-tag" data-symptom="falta de ar">Falta de Ar</span>
-                    </div>
-                </div>
-
-                <button id="analyzeButton" class="analyze-btn">
-                    <i class="fas fa-search-medical"></i>
-                    Analisar Sintomas
-                    <span class="btn-loading hidden"><i class="fas fa-spinner fa-spin"></i></span>
-                </button>
             </section>
 
-            <!-- Seção de Resultados -->
-            <section id="resultsSection" class="results-section hidden">
-                <div class="section-header">
-                    <div class="section-header-content">
-                        <i class="fas fa-chart-bar"></i>
-                        <h2>Resultados da Triagem</h2>
+            <section class="section disclaimer-section">
+
+                <div class="disclaimer-card">
+
+                    <div class="disclaimer-icon">
+                        <i class="fas fa-circle-info"></i>
                     </div>
-                    <button id="newAnalysisBtn" class="secondary-btn">
-                        <i class="fas fa-plus"></i> Nova Análise
-                    </button>
+
+                    <div>
+                        <h2>Projeto educacional e não clínico</h2>
+
+                        <p>
+                            Esta aplicação demonstra conceitos de processamento de texto.
+                            Os resultados indicam apenas similaridade lexical entre o texto
+                            informado e categorias previamente definidas.
+                        </p>
+
+                        <strong>
+                            Não realiza diagnóstico, triagem clínica, avaliação médica,
+                            cálculo de risco ou recomendação de tratamento.
+                        </strong>
+                    </div>
+
                 </div>
-                <div class="result-grid">
-                    <!-- Os cards de resultado serão inseridos aqui pelo JS -->
-                </div>
+
             </section>
+
+            <section id="laboratory" class="section">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Experimento interativo
+                    </span>
+
+                    <h2>Laboratório de Classificação</h2>
+
+                    <p>
+                        Digite uma frase ou utilize um dos exemplos.
+                        O sistema mostrará cada etapa da classificação.
+                    </p>
+
+                </div>
+
+                <div class="laboratory-grid">
+
+                    <div class="input-panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="panel-label">
+                                    Entrada textual
+                                </span>
+
+                                <h3>Informe uma frase</h3>
+                            </div>
+
+                            <span id="characterCount" class="character-count">
+                                0/500
+                            </span>
+
+                        </div>
+
+                        <textarea
+                            id="textInput"
+                            maxlength="500"
+                            rows="7"
+                            placeholder="Exemplo: Estou muito cansado e com pouca energia hoje."
+                            aria-label="Texto para classificação"
+                        ></textarea>
+
+                        <div class="input-helper">
+                            <i class="fas fa-keyboard"></i>
+                            Ctrl + Enter também executa a análise
+                        </div>
+
+                        <div class="input-actions">
+
+                            <button
+                                id="analyzeButton"
+                                class="primary-button button-control"
+                                type="button"
+                            >
+                                <i class="fas fa-magnifying-glass-chart"></i>
+                                Analisar texto
+                            </button>
+
+                            <button
+                                id="clearButton"
+                                class="secondary-button button-control"
+                                type="button"
+                            >
+                                <i class="fas fa-rotate-left"></i>
+                                Limpar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="examples-panel">
+
+                        <span class="panel-label">
+                            Exemplos rápidos
+                        </span>
+
+                        <h3>Teste o motor</h3>
+
+                        <p>
+                            Selecione uma frase para carregá-la automaticamente.
+                        </p>
+
+                        <div id="exampleInputs" class="example-inputs"></div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section
+                id="analysisSection"
+                class="section analysis-section hidden"
+            >
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Processamento
+                    </span>
+
+                    <h2>Como o texto foi preparado</h2>
+
+                    <p>
+                        Antes da classificação, a entrada passa por etapas simples
+                        de preparação e transformação.
+                    </p>
+
+                </div>
+
+                <div class="analysis-grid">
+
+                    <article class="analysis-card">
+
+                        <span class="analysis-label">
+                            01 — Entrada original
+                        </span>
+
+                        <p id="originalText"></p>
+
+                    </article>
+
+                    <article class="analysis-card">
+
+                        <span class="analysis-label">
+                            02 — Texto normalizado
+                        </span>
+
+                        <p id="normalizedText"></p>
+
+                    </article>
+
+                    <article class="analysis-card analysis-card-wide">
+
+                        <span class="analysis-label">
+                            03 — Tokens utilizados
+                        </span>
+
+                        <div id="tokensOutput" class="tokens-output"></div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+            <section
+                id="resultsSection"
+                class="section results-section hidden"
+            >
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Resultado
+                    </span>
+
+                    <h2>Classificação lexical</h2>
+
+                    <p>
+                        As categorias abaixo são ranqueadas conforme as
+                        correspondências encontradas no vocabulário experimental.
+                    </p>
+
+                </div>
+
+                <div id="resultSummary" class="result-summary"></div>
+
+                <div id="resultsGrid" class="results-grid"></div>
+
+                <div id="emptyResult" class="empty-result hidden">
+
+                    <i class="fas fa-circle-question"></i>
+
+                    <h3>Nenhuma categoria relevante encontrada</h3>
+
+                    <p>
+                        O texto informado não apresentou correspondências suficientes
+                        com os vocabulários configurados no experimento.
+                    </p>
+
+                    <span>
+                        Isso não significa ausência de qualquer condição ou situação.
+                        Significa apenas ausência de similaridade lexical neste dataset.
+                    </span>
+
+                </div>
+
+            </section>
+
+            <section id="methodology" class="section methodology-section">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Metodologia
+                    </span>
+
+                    <h2>Pipeline de Processamento</h2>
+
+                    <p>
+                        O projeto foi estruturado para tornar o processo de
+                        classificação visível e compreensível.
+                    </p>
+
+                </div>
+
+                <div id="pipelineSteps" class="pipeline-steps"></div>
+
+                <div class="architecture-card">
+
+                    <span class="architecture-label">
+                        Arquitetura atual
+                    </span>
+
+                    <div class="architecture-flow">
+
+                        <span>data.json</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>JavaScript</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Normalização</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Matching</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Ranking</span>
+                        <i class="fas fa-arrow-right"></i>
+                        <span>Interface</span>
+
+                    </div>
+
+                    <p>
+                        A versão atual funciona integralmente no navegador e não
+                        utiliza backend, banco de dados ou modelo de Machine Learning treinado.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <section id="concepts" class="section">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Base conceitual
+                    </span>
+
+                    <h2>Conceitos explorados</h2>
+
+                    <p>
+                        O laboratório conecta fundamentos estudados em Inteligência Artificial
+                        com uma implementação simples e observável.
+                    </p>
+
+                </div>
+
+                <div id="conceptsGrid" class="concepts-grid"></div>
+
+            </section>
+
+            <section id="responsible-ai" class="section responsible-section">
+
+                <div class="section-heading">
+
+                    <span class="section-kicker">
+                        Responsible AI
+                    </span>
+
+                    <h2>Inteligência responsável por design</h2>
+
+                    <p>
+                        Em aplicações envolvendo temas sensíveis, tão importante quanto
+                        construir a tecnologia é deixar claro o que ela pode e não pode fazer.
+                    </p>
+
+                </div>
+
+                <div id="responsibleAIGrid" class="responsible-grid"></div>
+
+                <div class="responsibility-callout">
+
+                    <div>
+                        <i class="fas fa-shield-heart"></i>
+                    </div>
+
+                    <div>
+                        <h3>Limitação de escopo é parte da solução</h3>
+
+                        <p>
+                            O HealthGuardian AI evita transformar correspondência lexical
+                            em afirmações clínicas. Transparência, explicabilidade,
+                            privacidade e comunicação adequada das limitações fazem parte
+                            da arquitetura do produto.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="section academic-section">
+
+                <div class="academic-card">
+
+                    <div class="academic-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Contexto acadêmico
+                        </span>
+
+                        <h2>University of Helsinki</h2>
+
+                        <p>
+                            Projeto desenvolvido como aplicação prática e evolução de
+                            conceitos estudados nos cursos
+                            <strong>Elements of AI</strong> e
+                            <strong>Building AI</strong>.
+                        </p>
+
+                        <p>
+                            O objetivo é demonstrar compreensão de problemas,
+                            representação de dados, classificação, interpretação de
+                            resultados e limitações de sistemas de Inteligência Artificial.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <footer class="main-footer">
+
+                <div>
+                    <strong>HealthGuardian AI</strong>
+                    <span>Educational NLP Classification Lab</span>
+                </div>
+
+                <div>
+                    <span>Marcus Corrêa Lopes Guedes</span>
+                    <span>Portfolio Project • 2026</span>
+                </div>
+
+            </footer>
+
         </main>
-    </div>
 
-    <!-- Modal de Emergência -->
-    <div id="emergencyModal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-ambulance"></i> Atendimento de Emergência</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="emergency-contacts">
-                    <div class="contact-card" data-action="tel:192">
-                        <i class="fas fa-ambulance"></i>
-                        <h4>SAMU</h4>
-                        <p>192</p>
-                        <small>Serviço de Atendimento Móvel de Urgência</small>
-                    </div>
-                    <div class="contact-card" data-action="tel:193">
-                        <i class="fas fa-fire"></i>
-                        <h4>Corpo de Bombeiros</h4>
-                        <p>193</p>
-                        <small>Emergências em geral</small>
-                    </div>
-                    <div class="contact-card" data-action="tel:190">
-                        <i class="fas fa-shield-alt"></i>
-                        <h4>Polícia</h4>
-                        <p>190</p>
-                        <small>Polícia Militar</small>
-                    </div>
-                </div>
-                <p class="emergency-text">
-                    <strong>Procure atendimento médico imediatamente se tiver:</strong><br>
-                    Dor no peito, dificuldade para respirar, sangramento intenso,
-                    perda de consciência ou qualquer sintoma grave.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Cadastro -->
-    <div id="registrationModal" class="modal hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-user-plus"></i> Cadastro do Paciente</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form id="registrationForm">
-                    <div class="form-group">
-                        <label for="regName">Nome Completo</label>
-                        <input type="text" id="regName" required placeholder="Seu nome">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="regAge">Idade</label>
-                            <input type="number" id="regAge" required placeholder="Anos" min="0" max="120">
-                        </div>
-                        <div class="form-group">
-                            <label for="regGender">Gênero</label>
-                            <select id="regGender" style="padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-body); color: var(--text-main);">
-                                <option value="masculino">Masculino</option>
-                                <option value="feminino">Feminino</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="analyze-btn" style="margin-top: 1rem;">Salvar Cadastro</button>
-                </form>
-            </div>
-        </div>
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
