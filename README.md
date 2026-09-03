@@ -1,232 +1,526 @@
-# Health Guardian AI
+# 🧠 HealthGuardian AI — NLP Classification Lab
 
-![HealthGuardian AI](https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80)
+> Laboratório educacional interativo para explorar **Natural Language Processing (NLP)**, classificação lexical, regras determinísticas e explicabilidade.
 
-*Projeto Educacional de Machine Learning e NLP — University of Helsinki*
+[![Status](https://img.shields.io/badge/status-MVP-success)]()
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)]()
+[![NLP](https://img.shields.io/badge/NLP-Lexical%20Classification-6d7cff)]()
+[![Responsible AI](https://img.shields.io/badge/Responsible%20AI-Educational-b9f227)]()
+[![Deploy](https://img.shields.io/badge/deploy-Vercel-black)]()
 
-![Python](https://img.shields.io/badge/Python-3.9+-3776AB?logo=python&logoColor=white)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-Machine%20Learning-F7931E?logo=scikitlearn&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-Data%20Analysis-150458?logo=pandas&logoColor=white)
-![NumPy](https://img.shields.io/badge/NumPy-Numerical%20Computing-013243?logo=numpy&logoColor=white)
-![NLP](https://img.shields.io/badge/NLP-TF--IDF-4B8BBE)
-![Random Forest](https://img.shields.io/badge/ML-Random%20Forest-2E8B57)
-![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)
-![University of Helsinki](https://img.shields.io/badge/University%20of%20Helsinki-Elements%20of%20AI-003580)
-![Status](https://img.shields.io/badge/Status-Educacional-blue)
+## 🔗 Demo
 
-Desenvolvido a partir dos conhecimentos adquiridos nos cursos **Elements of AI** e **Building AI**, da **University of Helsinki**.
-O projeto foi criado para aplicar conceitos fundamentais de Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural em um cenário experimental relacionado à classificação de textos.
-A solução explora técnicas como **TF-IDF, classificação com Random Forest e processamento de linguagem natural**, utilizando dados de caráter educacional e experimental.
+**Aplicação publicada:**
 
-⚠️ **Este projeto possui finalidade exclusivamente educacional e não constitui uma ferramenta médica. Não realiza diagnóstico, triagem clínica ou recomendação de tratamento.**
+https://universidade-de-helsinki-construind.vercel.app/
 
 ---
 
-## 🎓 Contexto Acadêmico
+## 📌 Sobre o projeto
 
-O projeto foi desenvolvido como aplicação prática dos conhecimentos adquiridos em duas formações da University of Helsinki :
+O **HealthGuardian AI** é um laboratório educacional desenvolvido para demonstrar, de forma visual e interativa, como uma entrada em linguagem natural pode ser transformada em dados e submetida a um processo simples de classificação.
 
-**Elements of AI**
-
-Fundamentos conceituais relacionados a :
-
-- Inteligência Artificial
-- Busca e resolução de problemas
-- Lógica
-- Probabilidade
-- Inferência
-- Fundamentos de Machine Learning
-
-**Building AI**
-
-Aplicação prática de conceitos relacionados a :
-
-- Regressão
-- Classificação
-- Preparação de dados
-- Avaliação de modelos
-- Machine Learning
-- Fundamentos de redes neurais
-
----
-
-## 🎯 Objetivo do Projeto
-
-Aplicar conhecimentos introdutórios de Inteligência Artificial e Machine Learning na construção de um protótipo experimental capaz de processar informações textuais e realizar classificações a partir de padrões presentes nos dados.
-O foco do projeto está no **aprendizado e aplicação das técnicas de IA**, e não em utilização clínica.
-
----
-
-## 🧠 Conceitos de IA Explorados
-
-O projeto permitiu trabalhar diferentes conceitos estudados durante a formação :
-
-**Machine Learning**
-
-- Classificação
-- Random Forest
-- Preparação de dados
-- Avaliação de modelos
-- Predição multiclasse
-
-**Natural Language Processing — NLP**
-
-- Processamento de texto
-- Transformação de dados textuais
-- Vetorização TF-IDF
-- Identificação de padrões linguísticos
-- Preparação de texto para algoritmos de classificação
-
-**Fundamentos Matemáticos e Computacionais**
-
-- Probabilidade
-- Inferência
-- Regressão
-- Lógica
-- Algoritmos de busca
-
----
-
-## 🔄 Pipeline Experimental
+A aplicação permite observar etapas como:
 
 ```text
-Dados Textuais
-      ↓
-Preparação dos Dados
-      ↓
-Processamento de Texto
-      ↓
-Vetorização TF-IDF
-      ↓
-Machine Learning
-      ↓
-Random Forest
-      ↓
-Classificação
-      ↓
-Resultado Experimental
+Texto
+  ↓
+Normalização
+  ↓
+Tokenização
+  ↓
+Correspondência lexical
+  ↓
+Pontuação
+  ↓
+Ranking
+  ↓
+Resultado explicável
+```
 
+O objetivo principal não é construir um sistema médico ou um modelo preditivo de produção.
+
+O projeto utiliza um domínio relacionado a descrições de sintomas como **contexto experimental para estudar processamento de linguagem**, classificação e explicabilidade.
+
+> **Importante:** a aplicação não realiza diagnóstico, triagem clínica, avaliação médica, cálculo de risco ou recomendação de tratamento.
+
+---
+
+## 🎓 Contexto educacional
+
+O projeto foi desenvolvido como aplicação prática e evolução de conceitos estudados nos cursos:
+
+- **Elements of AI**
+- **Building AI**
+
+da **University of Helsinki**.
+
+A implementação busca transformar conceitos teóricos relacionados à Inteligência Artificial em uma experiência funcional e observável.
+
+Entre os temas explorados estão:
+
+- representação de informação;
+- processamento de linguagem;
+- classificação;
+- definição de regras;
+- interpretação de resultados;
+- explicabilidade;
+- limitações de sistemas de IA;
+- Responsible AI.
+
+Este repositório é um **projeto pessoal de portfólio e aprendizagem**. Não representa produto, pesquisa, parceria ou iniciativa oficial da University of Helsinki.
+
+---
+
+## 🧪 Como funciona
+
+O usuário fornece uma frase, por exemplo:
+
+```text
+Estou com tosse, coriza e nariz congestionado.
+```
+
+O sistema executa uma sequência de transformações.
+
+### 1. Entrada
+
+A frase original é capturada pela aplicação.
+
+### 2. Normalização
+
+O texto é convertido para uma representação padronizada, reduzindo diferenças que dificultariam a comparação lexical.
+
+Exemplo:
+
+```text
+Estou com tosse, coriza e nariz congestionado.
+```
+
+torna-se:
+
+```text
+estou com tosse coriza e nariz congestionado
+```
+
+### 3. Tokenização
+
+O texto normalizado é separado em unidades menores:
+
+```text
+estou
+com
+tosse
+coriza
+nariz
+congestionado
+```
+
+### 4. Correspondência lexical
+
+Os tokens são comparados com vocabulários experimentais definidos no dataset.
+
+### 5. Scoring
+
+As correspondências encontradas geram pontuações determinísticas para diferentes categorias.
+
+### 6. Ranking
+
+As categorias são ordenadas de acordo com a similaridade lexical encontrada.
+
+### 7. Explainability
+
+A interface mostra os termos que contribuíram para o resultado, permitindo compreender **por que determinada categoria recebeu maior pontuação**.
+
+---
+
+## 🔍 Explainability
+
+Uma das principais decisões de design do projeto foi evitar uma experiência do tipo:
+
+```text
+INPUT → BLACK BOX → RESULT
+```
+
+O objetivo é trabalhar com uma estrutura mais transparente:
+
+```text
+INPUT
+  ↓
+TOKENS
+  ↓
+MATCHES
+  ↓
+SCORES
+  ↓
+RANKING
+  ↓
+EXPLANATION
+```
+
+Isso permite visualizar a relação entre determinadas palavras e as categorias do experimento.
+
+Exemplo conceitual:
+
+```text
+"tosse"   ─────────► respiratory
+"coriza"  ─────────► respiratory
+"cansaço" ─────────► energy
+```
+
+Essa abordagem torna o comportamento do sistema mais auditável e didático.
+
+---
+
+## 🧠 O que existe — e o que não existe — de IA
+
+A versão atual utiliza um mecanismo de **classificação lexical baseado em regras**.
+
+Portanto, o projeto **não utiliza um modelo de Machine Learning treinado**.
+
+O motor atual pode ser representado como:
+
+```text
+data.json
+    │
+    ▼
+JavaScript
+    │
+    ▼
+Normalização
+    │
+    ▼
+Tokenização
+    │
+    ▼
+Lexical Matching
+    │
+    ▼
+Scoring
+    │
+    ▼
+Ranking
+    │
+    ▼
+Explainable UI
+```
+
+Essa decisão é deliberada.
+
+O MVP permite compreender primeiro a lógica fundamental de um problema de classificação antes de introduzir modelos estatísticos ou técnicas mais avançadas de NLP.
+
+---
+
+## ⚙️ Arquitetura
+
+A aplicação é executada integralmente no navegador.
+
+```text
+┌──────────────────────┐
+│       data.json      │
+│ Dataset experimental │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│      script.js       │
+│ Processing Engine    │
+└──────────┬───────────┘
+           │
+           ├── Normalize
+           ├── Tokenize
+           ├── Match
+           ├── Score
+           └── Rank
+           │
+           ▼
+┌──────────────────────┐
+│      index.html      │
+│ Interactive NLP Lab  │
+└──────────┬───────────┘
+           │
+           ▼
+┌──────────────────────┐
+│      style.css       │
+│ Experimental UI      │
+└──────────────────────┘
+```
+
+Não há necessidade, na versão atual, de:
+
+- servidor de aplicação;
+- banco de dados;
+- API externa;
+- autenticação;
+- armazenamento de textos;
+- modelo de Machine Learning hospedado.
+
+---
+
+## 🛠️ Tecnologias
+
+| Tecnologia | Utilização |
+|---|---|
+| HTML5 | Estrutura da aplicação |
+| CSS3 | Interface experimental e responsiva |
+| JavaScript | Motor de processamento e interação |
+| JSON | Dataset e configuração do experimento |
+| PWA | Manifest e service worker |
+| Vercel | Deploy da aplicação |
+| Git/GitHub | Versionamento e documentação |
+
+---
+
+## 🗂️ Estrutura do projeto
+
+```text
+.
+├── index.html
+├── style.css
+├── script.js
+├── data.json
+├── manifest.json
+├── sw.js
+├── robots.txt
+├── vercel.json
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-## 📊 Dados
+## 💡 Interface experimental
 
-O projeto utiliza dados de caráter educacional e experimental para demonstrar o funcionamento das técnicas estudadas.
+A identidade visual foi construída para representar um **AI/NLP Laboratory**, evitando a aparência tradicional de dashboard corporativo.
 
-A utilização desses dados tem como objetivo permitir a experimentação com :
+A experiência utiliza:
 
-- Processamento de linguagem natural
-- Transformação de texto
-- Classificação
-- Avaliação de modelos
+- processing console;
+- token stream;
+- lexical similarity map;
+- processing monitor;
+- architecture terminal;
+- explainability diagram;
+- visualização do pipeline;
+- separação explícita entre capacidade e limitação do sistema.
 
-**Os resultados não devem ser interpretados como informações clínicas.**
-
----
-
-## 🛠️ Tecnologias e Conceitos
-
-- Tecnologia / Conceito	Aplicação
-- Python	Desenvolvimento e experimentação
-- Pandas	Manipulação de dados
-- NumPy	Operações numéricas
-- Scikit-learn	Machine Learning
-- TF-IDF	Vetorização de texto
-- Random Forest	Algoritmo de classificação
-- NLP	Processamento de informações textuais
-- Matplotlib	Visualização de dados
-- Jupyter Notebook	Experimentação e desenvolvimento
+O objetivo é fazer com que a própria interface contribua para a compreensão do funcionamento do algoritmo.
 
 ---
 
-##💡 Competências Desenvolvidas
+## ⚖️ Responsible AI
 
-- Fundamentos de Inteligência Artificial
-- Machine Learning
-- Natural Language Processing
-- Classificação
-- TF-IDF
-- Random Forest
-- Preparação de dados
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Avaliação de modelos
-- Pensamento algorítmico
-- Experimentação com modelos de IA
+Como o dataset utiliza termos relacionados à saúde, limitar claramente o escopo da aplicação é requisito de projeto.
 
----
-
-## 📚 Aprendizados
-
-O desenvolvimento do projeto permitiu transformar conceitos estudados durante a formação em uma experiência prática.
-A jornada envolveu a compreensão de que um projeto de IA não se resume ao treinamento de um algoritmo :
+### O sistema faz
 
 ```text
-Problema
-   ↓
-Dados
-   ↓
-Preparação
-   ↓
-Representação
-   ↓
-Algoritmo
-   ↓
-Avaliação
-   ↓
-Interpretação
-
+✓ processa texto
+✓ normaliza linguagem
+✓ identifica correspondências lexicais
+✓ calcula scores determinísticos
+✓ ordena categorias
+✓ apresenta evidências do resultado
 ```
-Essa estrutura serviu como base para estudos e projetos posteriores em Data Science, Machine Learning e Inteligência Artificial.
+
+### O sistema não faz
+
+```text
+✗ diagnóstico médico
+✗ triagem clínica
+✗ avaliação de risco
+✗ recomendação terapêutica
+✗ prescrição
+✗ substituição de profissionais de saúde
+```
+
+Uma correspondência lexical indica somente que determinadas palavras estão relacionadas ao vocabulário configurado para uma categoria.
+
+Ela **não representa probabilidade de doença ou conclusão clínica**.
 
 ---
 
-## 🚀 Possíveis Evoluções
+## 🔐 Privacidade
 
-Como projeto educacional, possíveis evoluções técnicas incluem :
+A versão atual funciona no navegador e não possui backend ou banco de dados para persistência das entradas do laboratório.
 
-- Comparação entre diferentes algoritmos de classificação
-- Cross-validation
-- Otimização de hiperparâmetros
-- Pipeline automatizado de pré-processamento
-- Avaliação com novas métricas
-- Explicabilidade do modelo
-- Testes automatizados
-- Separação entre treinamento e inferência
-- Serialização do modelo
-- API para demonstração das classificações
+Os textos informados são utilizados para executar o experimento durante a interação com a aplicação.
 
-Qualquer evolução voltada a uso real no domínio da saúde exigiria validação especializada e requisitos adicionais de segurança, privacidade e conformidade.
+Essa arquitetura reduz deliberadamente a coleta de dados no MVP.
 
 ---
 
-##⚠️ Escopo e Limitações
+## ▶️ Executando localmente
 
-O HealthGuardian AI é um projeto acadêmico e experimental desenvolvido para aplicação de conceitos de Inteligência Artificial.
+Clone o repositório:
 
-- Não é um dispositivo ou sistema médico
-- Não realiza diagnóstico
-- Não substitui avaliação profissional
-- Não deve ser utilizado para decisões relacionadas à saúde
-- Não foi desenvolvido ou validado para utilização clínica
+```bash
+git clone https://github.com/MCLG1661/Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA.git
+```
 
-Seu objetivo é exclusivamente demonstrar conhecimentos relacionados a IA, Machine Learning, NLP e desenvolvimento com Python.
+Entre na pasta:
+
+```bash
+cd Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA
+```
+
+Como a aplicação carrega o `data.json` via `fetch()`, utilize um servidor HTTP local.
+
+Com Python:
+
+```bash
+python -m http.server 8000
+```
+
+Depois acesse:
+
+```text
+http://localhost:8000
+```
 
 ---
 
-## 👨‍💻 Autor
+## 📱 Progressive Web App
 
-Marcus Guedes
+O projeto possui estrutura básica de PWA:
 
-Marketing | Data Science | Inteligência Artificial | Gestão de Projetos
+```text
+manifest.json
+sw.js
+```
 
-GitHub: MCLG1661
+O service worker mantém em cache os principais arquivos estáticos da aplicação:
 
-LinkedIn: Marcus Guedes
+```text
+index.html
+style.css
+script.js
+data.json
+manifest.json
+```
+
+Isso também serve como exercício de arquitetura frontend e funcionamento offline de aplicações web.
 
 ---
 
-🎓 Projeto educacional desenvolvido a partir da formação em Inteligência Artificial da University of Helsinki.
+## 🚧 Limitações atuais
+
+O MVP possui limitações intencionais importantes.
+
+A classificação depende de um vocabulário previamente definido e não compreende linguagem da mesma forma que modelos modernos de NLP.
+
+Entre as limitações estão:
+
+- dependência de palavras previamente configuradas;
+- dificuldade com contexto complexo;
+- ausência de compreensão semântica profunda;
+- ausência de embeddings;
+- ausência de modelo treinado;
+- ausência de análise contextual avançada;
+- dataset experimental limitado.
+
+Essas limitações fazem parte do aprendizado proporcionado pelo projeto.
+
+---
+
+## 🗺️ Roadmap
+
+### v1.0 — Educational NLP Lab
+
+```text
+✓ processamento textual
+✓ normalização
+✓ tokenização
+✓ classificação lexical
+✓ scoring
+✓ ranking
+✓ explainability
+✓ Responsible AI
+✓ interface experimental
+✓ PWA
+✓ deploy
+```
+
+### v1.1 — NLP Improvements
+
+Possíveis evoluções:
+
+```text
+→ stopword filtering
+→ stemming ou lemmatization
+→ expansão do vocabulário
+→ testes automatizados
+→ métricas de cobertura lexical
+→ melhoria da acessibilidade
+→ visualização dinâmica das conexões token → categoria
+```
+
+### v2.0 — Machine Learning Experiment
+
+Uma evolução natural seria comparar o mecanismo baseado em regras com um modelo supervisionado.
+
+Possível pipeline:
+
+```text
+Dataset
+   ↓
+Text preprocessing
+   ↓
+TF-IDF
+   ↓
+Classifier
+   ↓
+Evaluation
+   ↓
+Explainability
+```
+
+Modelos simples, como **Logistic Regression** ou **Naive Bayes**, permitiriam comparar:
+
+```text
+Rule-based classification
+            VS
+Machine Learning classification
+```
+
+### v3.0 — Semantic NLP Experiment
+
+Uma etapa posterior poderia explorar:
+
+```text
+Embeddings
+Semantic Similarity
+Transformer Models
+Explainable NLP
+```
+
+Sempre preservando governança, transparência e limites adequados ao domínio utilizado.
+
+---
+
+## 🎯 Objetivo de portfólio
+
+O HealthGuardian AI foi estruturado para demonstrar competências relacionadas a:
+
+**Artificial Intelligence • NLP • Data Processing • Algorithmic Thinking • Explainability • Responsible AI • JavaScript • Product Thinking • Frontend Development • Data Governance**
+
+Mais do que apresentar uma interface, o projeto procura demonstrar a capacidade de transformar um conceito estudado em um **MVP funcional, documentado, explicável e tecnicamente evolutivo**.
+
+---
+
+## 👤 Autor
+
+**Marcus Corrêa Lopes Guedes**
+
+Marketing • Data • Artificial Intelligence • Project Management • Product Thinking
+
+GitHub:  
+https://github.com/MCLG1661
+
+---
+
+## 📄 Aviso
+
+Este projeto possui finalidade exclusivamente **educacional e demonstrativa**.
+
+Não deve ser utilizado para diagnóstico, triagem, decisão clínica ou qualquer outra finalidade relacionada à prestação de serviços de saúde.
