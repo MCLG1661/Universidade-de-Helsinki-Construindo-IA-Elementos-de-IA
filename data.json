@@ -1,1 +1,328 @@
+{
+  "project": {
+    "name": "HealthGuardian AI",
+    "subtitle": "Educational NLP Classification Lab",
+    "description": "Laboratório educacional para demonstrar como textos podem ser normalizados, comparados e classificados por meio de regras linguísticas e similaridade lexical.",
+    "version": "1.0.0",
+    "environment": "Portfolio MVP",
+    "context": "Inspired by concepts studied in Elements of AI and Building AI — University of Helsinki",
+    "engine": "Rule-based lexical classification"
+  },
 
+  "disclaimer": {
+    "title": "Projeto educacional e não clínico",
+    "text": "O HealthGuardian AI é um experimento de processamento de texto desenvolvido para fins educacionais e de portfólio.",
+    "limitations": [
+      "Não realiza diagnóstico médico.",
+      "Não realiza triagem clínica.",
+      "Não determina doenças.",
+      "Não calcula risco clínico.",
+      "Não recomenda tratamentos.",
+      "Não substitui profissionais de saúde.",
+      "Os resultados representam apenas similaridade textual entre termos."
+    ]
+  },
+
+  "pipeline": [
+    {
+      "step": 1,
+      "name": "Entrada",
+      "description": "O usuário fornece uma frase ou conjunto de palavras."
+    },
+    {
+      "step": 2,
+      "name": "Normalização",
+      "description": "O texto é convertido para um formato padronizado para facilitar a comparação."
+    },
+    {
+      "step": 3,
+      "name": "Tokenização",
+      "description": "O texto é separado em termos relevantes."
+    },
+    {
+      "step": 4,
+      "name": "Correspondência",
+      "description": "Os termos são comparados com vocabulários associados a categorias experimentais."
+    },
+    {
+      "step": 5,
+      "name": "Pontuação",
+      "description": "Cada categoria recebe uma pontuação baseada na quantidade e relevância das correspondências."
+    },
+    {
+      "step": 6,
+      "name": "Classificação",
+      "description": "A categoria com maior similaridade lexical é apresentada como resultado educacional."
+    }
+  ],
+
+  "categories": [
+    {
+      "id": "respiratory",
+      "label": "Vocabulário Respiratório",
+      "icon": "fa-lungs",
+      "description": "Categoria experimental associada a termos frequentemente utilizados em descrições relacionadas ao sistema respiratório.",
+      "keywords": [
+        "tosse",
+        "coriza",
+        "espirro",
+        "espirros",
+        "nariz",
+        "garganta",
+        "respiração",
+        "respirar",
+        "congestão",
+        "congestionado",
+        "secreção",
+        "falta de ar"
+      ],
+      "examples": [
+        "Estou com tosse e coriza.",
+        "Tenho espirros e nariz congestionado.",
+        "Estou sentindo desconforto para respirar."
+      ],
+      "educational_note": "A presença desses termos indica somente proximidade lexical com esta categoria."
+    },
+
+    {
+      "id": "digestive",
+      "label": "Vocabulário Digestivo",
+      "icon": "fa-stomach",
+      "description": "Categoria experimental relacionada a palavras utilizadas em descrições do sistema digestivo.",
+      "keywords": [
+        "náusea",
+        "nausea",
+        "vômito",
+        "vomito",
+        "diarreia",
+        "estômago",
+        "estomago",
+        "abdômen",
+        "abdomen",
+        "abdominal",
+        "cólica",
+        "colica",
+        "digestão",
+        "digestao",
+        "apetite"
+      ],
+      "examples": [
+        "Estou com náusea e desconforto abdominal.",
+        "Estou sentindo cólica e pouco apetite.",
+        "Tenho desconforto no estômago."
+      ],
+      "educational_note": "O resultado não representa identificação de uma condição médica."
+    },
+
+    {
+      "id": "headache",
+      "label": "Vocabulário de Dor de Cabeça",
+      "icon": "fa-head-side-virus",
+      "description": "Categoria experimental composta por termos relacionados a descrições de dor de cabeça e sensações associadas.",
+      "keywords": [
+        "cabeça",
+        "cabeca",
+        "dor de cabeça",
+        "dor de cabeca",
+        "enxaqueca",
+        "tontura",
+        "luz",
+        "visão",
+        "visao",
+        "pressão",
+        "pressao"
+      ],
+      "examples": [
+        "Estou com dor de cabeça.",
+        "Tenho dor de cabeça e sensibilidade à luz.",
+        "Estou sentindo tontura e desconforto na cabeça."
+      ],
+      "educational_note": "Termos semelhantes podem ocorrer em diferentes contextos e não permitem conclusão clínica."
+    },
+
+    {
+      "id": "energy",
+      "label": "Vocabulário de Energia e Disposição",
+      "icon": "fa-battery-half",
+      "description": "Categoria educacional relacionada a termos de energia, disposição e sensação de cansaço.",
+      "keywords": [
+        "cansaço",
+        "cansaco",
+        "cansado",
+        "cansada",
+        "fadiga",
+        "fraqueza",
+        "energia",
+        "sono",
+        "sonolência",
+        "sonolencia",
+        "exausto",
+        "exausta",
+        "indisposição",
+        "indisposicao"
+      ],
+      "examples": [
+        "Estou muito cansado hoje.",
+        "Estou com pouca energia e muito sono.",
+        "Tenho sentido fadiga durante o dia."
+      ],
+      "educational_note": "A classificação indica apenas ocorrência de termos associados à categoria."
+    },
+
+    {
+      "id": "stress",
+      "label": "Vocabulário de Estresse e Tensão",
+      "icon": "fa-brain",
+      "description": "Categoria experimental para palavras relacionadas a tensão, pressão e estado emocional autodeclarado.",
+      "keywords": [
+        "estresse",
+        "stress",
+        "ansioso",
+        "ansiosa",
+        "ansiedade",
+        "pressão",
+        "pressao",
+        "tensão",
+        "tensao",
+        "preocupado",
+        "preocupada",
+        "nervoso",
+        "nervosa",
+        "sobrecarga"
+      ],
+      "examples": [
+        "Estou me sentindo muito estressado.",
+        "Tenho sentido tensão e preocupação.",
+        "Estou sob muita pressão ultimamente."
+      ],
+      "educational_note": "Esta categoria não representa avaliação psicológica ou de saúde mental."
+    },
+
+    {
+      "id": "general-discomfort",
+      "label": "Vocabulário de Desconforto Geral",
+      "icon": "fa-person",
+      "description": "Categoria experimental destinada a descrições genéricas que não se concentram em um único conjunto de termos.",
+      "keywords": [
+        "dor",
+        "mal-estar",
+        "mal estar",
+        "desconforto",
+        "febre",
+        "calafrio",
+        "calafrios",
+        "corpo",
+        "incômodo",
+        "incomodo",
+        "indisposto",
+        "indisposta"
+      ],
+      "examples": [
+        "Estou com mal-estar e dor no corpo.",
+        "Estou sentindo um desconforto geral.",
+        "Tenho me sentido indisposto."
+      ],
+      "educational_note": "A categoria funciona apenas como agrupamento lexical genérico."
+    }
+  ],
+
+  "engine": {
+    "name": "Lexical Similarity Engine",
+    "type": "Deterministic Rule-Based System",
+    "description": "Motor educacional que compara palavras presentes no texto informado com vocabulários previamente definidos.",
+    "threshold": 0.05,
+    "max_results": 3,
+    "scoring": {
+      "exact_match": 2,
+      "partial_match": 1
+    },
+    "interpretation": {
+      "high": {
+        "min": 0.6,
+        "label": "Alta similaridade lexical"
+      },
+      "medium": {
+        "min": 0.3,
+        "label": "Similaridade lexical moderada"
+      },
+      "low": {
+        "min": 0,
+        "label": "Baixa similaridade lexical"
+      }
+    }
+  },
+
+  "example_inputs": [
+    {
+      "title": "Exemplo Respiratório",
+      "text": "Estou com tosse, coriza e nariz congestionado."
+    },
+    {
+      "title": "Exemplo Digestivo",
+      "text": "Estou com náusea e desconforto abdominal."
+    },
+    {
+      "title": "Exemplo Energia",
+      "text": "Estou muito cansado e com pouca energia hoje."
+    },
+    {
+      "title": "Exemplo Estresse",
+      "text": "Estou sob muita pressão e me sentindo estressado."
+    }
+  ],
+
+  "concepts": [
+    {
+      "name": "Natural Language Processing",
+      "short_name": "NLP",
+      "description": "Área da Inteligência Artificial dedicada ao processamento e análise computacional da linguagem."
+    },
+    {
+      "name": "Text Normalization",
+      "short_name": "Normalization",
+      "description": "Processo de padronização do texto antes de sua análise."
+    },
+    {
+      "name": "Tokenization",
+      "short_name": "Tokens",
+      "description": "Separação de um texto em unidades menores utilizadas durante a análise."
+    },
+    {
+      "name": "Feature Matching",
+      "short_name": "Matching",
+      "description": "Comparação entre termos presentes no texto e características previamente definidas."
+    },
+    {
+      "name": "Classification",
+      "short_name": "Classification",
+      "description": "Processo de associação de uma entrada a uma ou mais categorias."
+    },
+    {
+      "name": "Explainability",
+      "short_name": "XAI",
+      "description": "Capacidade de apresentar ao usuário os fatores que contribuíram para determinado resultado."
+    }
+  ],
+
+  "responsible_ai": {
+    "title": "Responsible AI by Design",
+    "principles": [
+      {
+        "name": "Transparência",
+        "description": "A interface deve deixar claro que a classificação utiliza regras e não um modelo clínico."
+      },
+      {
+        "name": "Explicabilidade",
+        "description": "Os termos responsáveis por cada correspondência devem ser apresentados ao usuário."
+      },
+      {
+        "name": "Limitação de escopo",
+        "description": "A aplicação não deve transformar similaridade textual em diagnóstico ou recomendação médica."
+      },
+      {
+        "name": "Privacidade",
+        "description": "A versão atual deve processar as entradas localmente, sem banco de dados."
+      }
+    ]
+  }
+}
