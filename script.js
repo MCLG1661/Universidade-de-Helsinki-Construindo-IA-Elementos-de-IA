@@ -1,791 +1,541 @@
-// Banco de dados médico expandido e aprimorado
-const medicalDatabase = {
-    conditions: [
-        {
-            name: "resfriado comum",
-            symptoms: ["febre", "dor de cabeça", "coriza", "dor no corpo", "calafrios", "espirros", "tosse leve"],
-            urgency: "baixa",
-            description: "Infecção respiratória viral comum",
-            recommendations: [
-                "Repouso e hidratação adequada",
-                "Medicação para febre se necessário",
-                "Alimentação leve e nutritiva",
-                "Monitorar temperatura corporal",
-                "Consultar médico se sintomas persistirem por mais de 3 dias"
-            ],
-            icon: "🤧"
-        },
-        {
-            name: "influenza (gripe)",
-            symptoms: ["febre alta", "calafrios", "dor no corpo", "fadiga", "tosse", "dor de garganta", "dor de cabeça"],
-            urgency: "média",
-            description: "Infecção viral mais severa que o resfriado comum",
-            recommendations: [
-                "Repouso absoluto",
-                "Hidratação intensiva",
-                "Medicação antiviral se prescrita",
-                "Isolamento para evitar contágio",
-                "Consulta médica em 24-48 horas"
-            ],
-            icon: "🤒"
-        },
-        {
-            name: "emergência cardíaca",
-            symptoms: ["dor no peito", "falta de ar", "suor frio", "náusea", "dor no braço", "tontura", "palpitações"],
-            urgency: "alta",
-            description: "Condição cardíaca potencialmente grave",
-            recommendations: [
-                "BUSQUE ATENDIMENTO MÉDICO IMEDIATO",
-                "Ligue SAMU 192",
-                "Não dirija até o hospital",
-                "Mantenha repouso absoluto",
-                "Informe histórico médico ao atendente"
-            ],
-            icon: "❤️‍🩹"
-        },
-        {
-            name: "gastroenterite",
-            symptoms: ["dor abdominal", "náusea", "vômito", "diarreia", "febre", "cólicas", "perda de apetite"],
-            urgency: "média",
-            description: "Inflamação do sistema digestivo",
-            recommendations: [
-                "Hidratação com soro caseiro",
-                "Dieta leve (banana, arroz, maçã, torrada)",
-                "Repouso digestivo",
-                "Evitar laticínios e alimentos gordurosos",
-                "Consulta médica se sintomas persistirem"
-            ],
-            icon: "🤢"
-        },
-        {
-            name: "suspeita de covid-19",
-            symptoms: ["febre", "tosse seca", "falta de ar", "perda de paladar", "fadiga", "dor no corpo", "dor de cabeça"],
-            urgency: "alta",
-            description: "Suspeita de infecção por COVID-19",
-            recommendations: [
-                "Isolamento imediato",
-                "Teste para COVID-19 recomendado",
-                "Monitorar saturação de oxigênio",
-                "Consulta médica urgente",
-                "Informar contatos recentes"
-            ],
-            icon: "🦠"
-        },
-        {
-            name: "enxaqueca",
-            symptoms: ["dor de cabeça", "náusea", "sensibilidade à luz", "tontura", "visão turva", "náusea"],
-            urgency: "baixa",
-            description: "Dor de cabeça intensa e recorrente",
-            recommendations: [
-                "Repouso em ambiente escuro e silencioso",
-                "Hidratação adequada",
-                "Analgésico se prescrito",
-                "Compressa fria na testa",
-                "Consulta neurológica se recorrente"
-            ],
-            icon: "😫"
-        },
-        {
-            name: "suspeita de dengue",
-            symptoms: ["febre alta", "manchas na pele", "dor no corpo", "dor atrás dos olhos", "náusea", "fadiga", "dor de cabeça"],
-            urgency: "alta",
-            description: "Suspeita de infecção por dengue",
-            recommendations: [
-                "Repouso absoluto",
-                "Hidratação intensiva",
-                "NÃO tomar anti-inflamatórios",
-                "Procure atendimento urgente",
-                "Monitore sinais de alarme"
-            ],
-            icon: "🩸"
-        },
-        {
-            name: "amigdalite",
-            symptoms: ["dor de garganta", "febre", "dificuldade para engolir", "tosse", "mal-estar", "ínguas inchadas"],
-            urgency: "média",
-            description: "Inflamação das amígdalas",
-            recommendations: [
-                "Gargarejo com água morna e sal",
-                "Hidratação com líquidos mornos",
-                "Alimentos macios",
-                "Analgésico para dor",
-                "Consulta médica para avaliação"
-            ],
-            icon: "🦷"
-        },
-        {
-            name: "crise hipertensiva",
-            symptoms: ["tontura", "visão turva", "náusea", "dor de cabeça", "falta de ar", "dor no peito", "confusão mental"],
-            urgency: "alta",
-            description: "Elevação severa da pressão arterial",
-            recommendations: [
-                "BUSQUE ATENDIMENTO MÉDICO IMEDIATO",
-                "Mantenha repouso sentado",
-                "Meça pressão arterial se possível",
-                "Não tome medicação por conta própria",
-                "Ligue para emergência se sintomas graves"
-            ],
-            icon: "🫀"
-        },
-        {
-            name: "otite média",
-            symptoms: ["dor de ouvido", "febre", "coceira no ouvido", "perda auditiva", "secreção", "irritabilidade"],
-            urgency: "média",
-            description: "Infecção do ouvido médio",
-            recommendations: [
-                "Compressa morna no ouvido",
-                "Analgésico para dor",
-                "Não introduza objetos no ouvido",
-                "Mantenha ouvido seco",
-                "Consulta com otorrinolaringologista"
-            ],
-            icon: "👂"
-        },
-        {
-            name: "ansiedade aguda",
-            symptoms: ["falta de ar", "palpitações", "suor frio", "tremores", "medo", "tontura", "formigamento"],
-            urgency: "média",
-            description: "Crise de ansiedade ou ataque de pânico",
-            recommendations: [
-                "Respiração lenta e profunda",
-                "Ambiente calmo e seguro",
-                "Técnicas de aterramento",
-                "Acompanhamento psicológico",
-                "Consulta médica para avaliação"
-            ],
-            icon: "😰"
-        },
-        {
-            name: "alergia respiratória",
-            symptoms: ["espirros", "coriza", "coceira no nariz", "olhos vermelhos", "tosse", "coceira na garganta"],
-            urgency: "baixa",
-            description: "Reação alérgica respiratória",
-            recommendations: [
-                "Evite alérgenos conhecidos",
-                "Ambiente ventilado e limpo",
-                "Anti-histamínico se prescrito",
-                "Lavagem nasal com soro",
-                "Consulta com alergista se recorrente"
-            ],
-            icon: "🌸"
-        }
-    ]
+let appData = null;
+
+const state = {
+    input: "",
+    matches: []
 };
 
-// Configurações de urgência expandidas
-const urgencyConfig = {
-    baixa: {
-        emoji: "🟢",
-        level: "URGÊNCIA BAIXA",
-        description: "Pode aguardar consulta em 48-72 horas",
-        color: "#22c55e",
-        icon: "🟢"
-    },
-    média: {
-        emoji: "🟡",
-        level: "URGÊNCIA MÉDIA",
-        description: "Consulta recomendada em 24-48 horas",
-        color: "#f59e0b",
-        icon: "🟡"
-    },
-    alta: {
-        emoji: "🔴",
-        level: "URGÊNCIA ALTA",
-        description: "Busque atendimento médico IMEDIATO",
-        color: "#ef4444",
-        icon: "🔴"
-    }
-};
-
-// Elementos DOM
-const symptomsInput = document.getElementById('symptomsInput');
-const analyzeButton = document.getElementById('analyzeButton');
-const symptomsSection = document.getElementById('symptomsSection');
-const resultsSection = document.getElementById('resultsSection');
-const loadingScreen = document.getElementById('loadingScreen');
-const emergencyModal = document.getElementById('emergencyModal');
-const registrationModal = document.getElementById('registrationModal');
-const btnOpenRegister = document.getElementById('btnOpenRegister');
-const charCount = document.querySelector('.char-count');
-const historyList = document.getElementById('historyList');
-
-// Histórico de análises
-let analysisHistory = [];
-
-// Inicialização
-document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-    setupEventListeners();
-    setupQuickSymptoms();
-    loadHistory();
-    setupTheme();
-    registerServiceWorker();
+document.addEventListener("DOMContentLoaded", async () => {
+    await initializeApp();
 });
 
-// Inicializar aplicação
-function initializeApp() {
-    // Simular carregamento
-    console.log("Versão 3.0 carregada com sucesso!");
-    setTimeout(() => {
-        loadingScreen.classList.add('hidden');
-    }, 2000);
-
-    // Configurar contador de caracteres
-    symptomsInput.addEventListener('input', updateCharCount);
+async function initializeApp() {
+    try {
+        appData = await loadAppData();
+        renderProjectIdentity();
+        renderExamples();
+        renderPipeline();
+        renderConcepts();
+        renderResponsibleAI();
+        setupEventListeners();
+        registerServiceWorker();
+    } catch (error) {
+        console.error("Erro ao inicializar o HealthGuardian AI:", error);
+        showApplicationError();
+    }
 }
 
-// Configurar event listeners
+async function loadAppData() {
+    const response = await fetch("data.json");
+
+    if (!response.ok) {
+        throw new Error(`Falha ao carregar data.json: ${response.status}`);
+    }
+
+    return response.json();
+}
+
+function renderProjectIdentity() {
+    const title = document.querySelector("[data-project-name]");
+    const subtitle = document.querySelector("[data-project-subtitle]");
+    const context = document.querySelector("[data-project-context]");
+    const engine = document.querySelector("[data-project-engine]");
+
+    if (title) {
+        title.textContent = appData.project.name;
+    }
+
+    if (subtitle) {
+        subtitle.textContent = appData.project.subtitle;
+    }
+
+    if (context) {
+        context.textContent = appData.project.context;
+    }
+
+    if (engine) {
+        engine.textContent = appData.project.engine;
+    }
+}
+
+function renderExamples() {
+    const container = document.getElementById("exampleInputs");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    appData.example_inputs.forEach((example) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "example-card";
+        button.innerHTML = `
+            <span class="example-label">${escapeHTML(example.title)}</span>
+            <span class="example-text">${escapeHTML(example.text)}</span>
+        `;
+
+        button.addEventListener("click", () => {
+            const input = document.getElementById("textInput");
+
+            if (!input) return;
+
+            input.value = example.text;
+            updateCharacterCount();
+            input.focus();
+        });
+
+        container.appendChild(button);
+    });
+}
+
+function renderPipeline() {
+    const container = document.getElementById("pipelineSteps");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    appData.pipeline.forEach((item) => {
+        const step = document.createElement("article");
+        step.className = "pipeline-step";
+
+        step.innerHTML = `
+            <div class="pipeline-number">${item.step}</div>
+            <div>
+                <h3>${escapeHTML(item.name)}</h3>
+                <p>${escapeHTML(item.description)}</p>
+            </div>
+        `;
+
+        container.appendChild(step);
+    });
+}
+
+function renderConcepts() {
+    const container = document.getElementById("conceptsGrid");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    appData.concepts.forEach((concept) => {
+        const card = document.createElement("article");
+        card.className = "concept-card";
+
+        card.innerHTML = `
+            <span class="concept-short">${escapeHTML(concept.short_name)}</span>
+            <h3>${escapeHTML(concept.name)}</h3>
+            <p>${escapeHTML(concept.description)}</p>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
+function renderResponsibleAI() {
+    const container = document.getElementById("responsibleAIGrid");
+
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    appData.responsible_ai.principles.forEach((principle) => {
+        const card = document.createElement("article");
+        card.className = "responsible-card";
+
+        card.innerHTML = `
+            <h3>${escapeHTML(principle.name)}</h3>
+            <p>${escapeHTML(principle.description)}</p>
+        `;
+
+        container.appendChild(card);
+    });
+}
+
 function setupEventListeners() {
-    analyzeButton.addEventListener('click', analyzeSymptoms);
-    
-    // Mover os 'onclick' do HTML para cá, centralizando os eventos
-    document.querySelectorAll('.close-modal').forEach(btn => {
-        btn.addEventListener('click', closeAllModals);
-    });
+    const analyzeButton = document.getElementById("analyzeButton");
+    const clearButton = document.getElementById("clearButton");
+    const textInput = document.getElementById("textInput");
 
-    document.querySelectorAll('.contact-card[data-action]').forEach(card => {
-        card.addEventListener('click', () => window.location.href = card.dataset.action);
-    });
+    if (analyzeButton) {
+        analyzeButton.addEventListener("click", analyzeText);
+    }
 
-    const newAnalysisBtn = document.getElementById('newAnalysisBtn');
-    if(newAnalysisBtn) newAnalysisBtn.addEventListener('click', showSymptomsSection);
+    if (clearButton) {
+        clearButton.addEventListener("click", clearAnalysis);
+    }
 
-    const themeSwitcher = document.getElementById('theme-switcher');
-    if(themeSwitcher) themeSwitcher.addEventListener('click', toggleTheme);
+    if (textInput) {
+        textInput.addEventListener("input", updateCharacterCount);
 
-    symptomsInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && e.ctrlKey) {
-            analyzeSymptoms();
-        }
-    });
-
-    // Fechar modal ao clicar fora
-    emergencyModal.addEventListener('click', function(e) {
-        if (e.target === emergencyModal) closeAllModals();
-    });
-    
-    registrationModal.addEventListener('click', function(e) {
-        if (e.target === registrationModal) closeAllModals();
-    });
-
-    // Eventos de Cadastro
-    if(btnOpenRegister) {
-        btnOpenRegister.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log('Botão de cadastro clicado');
-            const modal = document.getElementById('registrationModal');
-            if(modal) modal.classList.remove('hidden');
-            else alert('Erro: Modal de cadastro não encontrado. Tente recarregar a página (Ctrl+F5).');
+        textInput.addEventListener("keydown", (event) => {
+            if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+                analyzeText();
+            }
         });
     }
-    
-    const registrationForm = document.getElementById('registrationForm');
-    if(registrationForm) {
-        registrationForm.addEventListener('submit', handleRegistration);
+}
+
+function analyzeText() {
+    const input = document.getElementById("textInput");
+
+    if (!input) return;
+
+    const text = input.value.trim();
+
+    if (!text) {
+        showNotification("Digite uma frase para executar a classificação.", "warning");
+        return;
     }
+
+    if (text.length < 5) {
+        showNotification("Use uma frase um pouco mais descritiva.", "warning");
+        return;
+    }
+
+    state.input = text;
+
+    const normalizedText = normalizeText(text);
+    const tokens = tokenize(normalizedText);
+    const matches = classifyText(normalizedText, tokens);
+
+    state.matches = matches;
+
+    renderAnalysisProcess(text, normalizedText, tokens);
+    renderResults(matches);
 }
 
-function handleRegistration(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('regName').value;
-    const age = document.getElementById('regAge').value;
-    
-    // Atualizar UI
-    document.getElementById('sidebarPatientName').textContent = name;
-    document.getElementById('patientName').value = name;
-    document.getElementById('patientAge').value = age;
-    
-    // Fechar modal e notificar
-    closeAllModals();
-    showNotification('✅ Cadastro realizado com sucesso!', 'success');
-    
-    // Focar no campo de sintomas
-    symptomsInput.focus();
-}
+function classifyText(normalizedText, tokens) {
+    const results = appData.categories.map((category) => {
+        const matchedKeywords = [];
+        let score = 0;
 
-// Configurar sintomas rápidos
-function setupQuickSymptoms() {
-    const symptomTags = document.querySelectorAll('.symptom-tag');
-    symptomTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-            const symptom = this.getAttribute('data-symptom');
-            addSymptomToInput(symptom);
+        category.keywords.forEach((keyword) => {
+            const normalizedKeyword = normalizeText(keyword);
+
+            if (!normalizedKeyword) return;
+
+            if (normalizedText.includes(normalizedKeyword)) {
+                matchedKeywords.push(keyword);
+                score += appData.engine.scoring.exact_match;
+                return;
+            }
+
+            const keywordTokens = tokenize(normalizedKeyword);
+
+            const partialMatches = keywordTokens.filter((keywordToken) =>
+                tokens.some((token) =>
+                    token.includes(keywordToken) ||
+                    keywordToken.includes(token)
+                )
+            );
+
+            if (partialMatches.length > 0) {
+                matchedKeywords.push(keyword);
+                score += appData.engine.scoring.partial_match;
+            }
         });
+
+        const maximumPossibleScore =
+            category.keywords.length * appData.engine.scoring.exact_match;
+
+        const similarity =
+            maximumPossibleScore > 0
+                ? score / maximumPossibleScore
+                : 0;
+
+        return {
+            category,
+            score,
+            similarity,
+            matchedKeywords: [...new Set(matchedKeywords)]
+        };
     });
+
+    return results
+        .filter((result) => result.similarity >= appData.engine.threshold)
+        .sort((a, b) => {
+            if (b.similarity !== a.similarity) {
+                return b.similarity - a.similarity;
+            }
+
+            return b.score - a.score;
+        })
+        .slice(0, appData.engine.max_results);
 }
 
-// Atualizar contador de caracteres
-function updateCharCount() {
-    const count = symptomsInput.value.length;
-    charCount.textContent = `${count}/500 caracteres`;
-    
-    if (count > 400) {
-        charCount.style.color = '#ef4444';
-    } else if (count > 250) {
-        charCount.style.color = '#f59e0b';
-    } else {
-        charCount.style.color = 'var(--text-secondary)';
+function renderAnalysisProcess(originalText, normalizedText, tokens) {
+    const section = document.getElementById("analysisSection");
+    const original = document.getElementById("originalText");
+    const normalized = document.getElementById("normalizedText");
+    const tokensContainer = document.getElementById("tokensOutput");
+
+    if (!section || !original || !normalized || !tokensContainer) return;
+
+    original.textContent = originalText;
+    normalized.textContent = normalizedText;
+
+    tokensContainer.innerHTML = "";
+
+    tokens.forEach((token) => {
+        const tag = document.createElement("span");
+        tag.className = "token-tag";
+        tag.textContent = token;
+        tokensContainer.appendChild(tag);
+    });
+
+    section.classList.remove("hidden");
+}
+
+function renderResults(matches) {
+    const resultsSection = document.getElementById("resultsSection");
+    const resultsGrid = document.getElementById("resultsGrid");
+    const emptyState = document.getElementById("emptyResult");
+
+    if (!resultsSection || !resultsGrid || !emptyState) return;
+
+    resultsSection.classList.remove("hidden");
+    resultsGrid.innerHTML = "";
+
+    if (matches.length === 0) {
+        emptyState.classList.remove("hidden");
+        return;
     }
+
+    emptyState.classList.add("hidden");
+
+    matches.forEach((result, index) => {
+        const card = document.createElement("article");
+        card.className = index === 0
+            ? "result-card primary-result"
+            : "result-card";
+
+        const interpretation = getSimilarityInterpretation(result.similarity);
+        const percent = Math.round(result.similarity * 100);
+
+        const keywordsHTML = result.matchedKeywords.length
+            ? result.matchedKeywords
+                .map(
+                    (keyword) =>
+                        `<span class="match-tag">${escapeHTML(keyword)}</span>`
+                )
+                .join("")
+            : `<span class="muted-text">Nenhum termo explícito identificado.</span>`;
+
+        card.innerHTML = `
+            <div class="result-card-header">
+                <div class="result-rank">#${index + 1}</div>
+                <div>
+                    <span class="result-type">Categoria experimental</span>
+                    <h3>${escapeHTML(result.category.label)}</h3>
+                </div>
+            </div>
+
+            <p class="result-description">
+                ${escapeHTML(result.category.description)}
+            </p>
+
+            <div class="result-metric">
+                <div>
+                    <span class="metric-label">Similaridade lexical</span>
+                    <strong>${percent}%</strong>
+                </div>
+                <span class="similarity-label">
+                    ${escapeHTML(interpretation)}
+                </span>
+            </div>
+
+            <div class="progress-track" aria-hidden="true">
+                <div
+                    class="progress-bar"
+                    style="width: ${Math.min(percent, 100)}%"
+                ></div>
+            </div>
+
+            <div class="matched-keywords">
+                <span class="section-mini-label">Termos correspondentes</span>
+                <div class="match-tags">
+                    ${keywordsHTML}
+                </div>
+            </div>
+
+            <div class="explanation-box">
+                <span class="section-mini-label">Como o resultado foi obtido</span>
+                <p>
+                    A categoria recebeu <strong>${result.score} ponto(s)</strong>
+                    a partir das correspondências encontradas entre o texto informado
+                    e o vocabulário previamente definido.
+                </p>
+            </div>
+
+            <div class="educational-note">
+                <strong>Nota educacional:</strong>
+                ${escapeHTML(result.category.educational_note)}
+            </div>
+        `;
+
+        resultsGrid.appendChild(card);
+    });
+
+    renderResultSummary(matches[0]);
 }
 
-// Adicionar sintoma ao campo de entrada
-function addSymptomToInput(symptom) {
-    const currentText = symptomsInput.value.trim();
-    if (currentText) {
-        symptomsInput.value = currentText + ', ' + symptom;
-    } else {
-        symptomsInput.value = symptom;
+function renderResultSummary(bestResult) {
+    const summary = document.getElementById("resultSummary");
+
+    if (!summary) return;
+
+    const percent = Math.round(bestResult.similarity * 100);
+
+    summary.innerHTML = `
+        <div class="summary-icon">
+            <i class="fas fa-diagram-project"></i>
+        </div>
+
+        <div>
+            <span class="summary-label">Resultado principal</span>
+            <h3>${escapeHTML(bestResult.category.label)}</h3>
+            <p>
+                O texto apresentou ${percent}% de similaridade lexical com esta
+                categoria experimental. Esse percentual representa apenas a
+                relação entre os termos digitados e o vocabulário cadastrado.
+            </p>
+        </div>
+    `;
+}
+
+function getSimilarityInterpretation(similarity) {
+    const interpretation = appData.engine.interpretation;
+
+    if (similarity >= interpretation.high.min) {
+        return interpretation.high.label;
     }
-    symptomsInput.focus();
-    updateCharCount();
+
+    if (similarity >= interpretation.medium.min) {
+        return interpretation.medium.label;
+    }
+
+    return interpretation.low.label;
 }
 
-// Função para pré-processar texto
-function preprocessText(text) {
-    return text.toLowerCase()
-        .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, '')
-        .replace(/\s{2,}/g, ' ')
+function clearAnalysis() {
+    const input = document.getElementById("textInput");
+    const analysisSection = document.getElementById("analysisSection");
+    const resultsSection = document.getElementById("resultsSection");
+    const resultsGrid = document.getElementById("resultsGrid");
+    const resultSummary = document.getElementById("resultSummary");
+
+    state.input = "";
+    state.matches = [];
+
+    if (input) {
+        input.value = "";
+        input.focus();
+    }
+
+    if (analysisSection) {
+        analysisSection.classList.add("hidden");
+    }
+
+    if (resultsSection) {
+        resultsSection.classList.add("hidden");
+    }
+
+    if (resultsGrid) {
+        resultsGrid.innerHTML = "";
+    }
+
+    if (resultSummary) {
+        resultSummary.innerHTML = "";
+    }
+
+    updateCharacterCount();
+}
+
+function updateCharacterCount() {
+    const input = document.getElementById("textInput");
+    const counter = document.getElementById("characterCount");
+
+    if (!input || !counter) return;
+
+    counter.textContent = `${input.value.length}/500`;
+}
+
+function normalizeText(text) {
+    return String(text)
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^\p{L}\p{N}\s]/gu, " ")
+        .replace(/\s+/g, " ")
         .trim();
 }
 
-// Função para calcular similaridade entre sintomas
-function calculateSimilarity(inputSymptoms, conditionSymptoms) {
-    const inputWords = inputSymptoms.split(' ');
-    const conditionWords = conditionSymptoms;
-    
-    let matches = 0;
-    let weightedMatches = 0;
-    
-    inputWords.forEach(word => {
-        if (word.length < 3) return; // Ignorar palavras muito curtas
-        
-        let found = false;
-        conditionWords.forEach(conditionWord => {
-            // Verificar correspondência exata ou parcial
-            if (conditionWord.includes(word) || word.includes(conditionWord)) {
-                found = true;
-                // Dar mais peso a correspondências exatas
-                if (conditionWord === word) {
-                    weightedMatches += 2;
-                } else {
-                    weightedMatches += 1;
-                }
-            }
-        });
-        
-        if (found) matches++;
-    });
-    
-    const baseSimilarity = matches / Math.max(inputWords.length, conditionWords.length);
-    const weightedSimilarity = weightedMatches / (conditionWords.length * 2);
-    
-    return (baseSimilarity + weightedSimilarity) / 2;
+function tokenize(text) {
+    if (!text) return [];
+
+    return text
+        .split(" ")
+        .map((token) => token.trim())
+        .filter((token) => token.length >= 3);
 }
 
-// Função principal de análise
-function analyzeSymptoms() {
-    const symptomsText = symptomsInput.value.trim();
-    const patientName = document.getElementById('patientName').value.trim();
-    const patientAge = document.getElementById('patientAge').value.trim();
-    
-    if (!patientName || !patientAge) {
-        showNotification('⚠️ Por favor, identifique o paciente (Nome e Idade).', 'error');
-        return;
+function showNotification(message, type = "info") {
+    const existing = document.querySelector(".app-notification");
+
+    if (existing) {
+        existing.remove();
     }
-    
-    if (!symptomsText) {
-        showNotification('❌ Por favor, descreva seus sintomas para análise.', 'error');
-        return;
-    }
-    
-    if (symptomsText.length < 10) {
-        showNotification('❌ Por favor, seja mais específico sobre seus sintomas.', 'error');
-        return;
-    }
-    
-    // Mostrar carregamento
-    analyzeButton.classList.add('loading');
-    const btnLoading = analyzeButton.querySelector('.btn-loading');
-    btnLoading.classList.remove('hidden');
-    
-    // Simular processamento (em app real seria instantâneo)
+
+    const notification = document.createElement("div");
+    notification.className = `app-notification notification-${type}`;
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    requestAnimationFrame(() => {
+        notification.classList.add("visible");
+    });
+
     setTimeout(() => {
-        processAnalysis(symptomsText, patientName, patientAge);
-        analyzeButton.classList.remove('loading');
-        btnLoading.classList.add('hidden');
-    }, 1500);
+        notification.classList.remove("visible");
+
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3500);
 }
 
-// Processar análise
-function processAnalysis(symptomsText, patientName, patientAge) {
-    // Pré-processar entrada
-    const processedInput = preprocessText(symptomsText);
-    
-    // Encontrar condições similares
-    const matches = findConditionMatches(processedInput);
-    
-    if (matches.length === 0) {
-        showNoMatchesResults();
-        return;
-    }
-    
-    // Ordenar por similaridade
-    matches.sort((a, b) => b.similarity - a.similarity);
-    
-    // Obter melhor correspondência
-    const bestMatch = matches[0];
-    const secondaryMatches = matches.slice(1, 3); // Top 3 secundárias
-    
-    // Salvar no histórico
-    saveToHistory(symptomsText, bestMatch, patientName, patientAge);
-    
-    // Exibir resultados
-    displayResults(bestMatch, secondaryMatches);
-    displayHistory(); // Atualizar histórico na barra lateral
-}
-
-// Encontrar correspondências de condições
-function findConditionMatches(inputSymptoms) {
-    const matches = [];
-    
-    medicalDatabase.conditions.forEach(condition => {
-        const similarity = calculateSimilarity(inputSymptoms, condition.symptoms);
-        
-        if (similarity > 0.1) { // Limite mínimo de similaridade
-            matches.push({
-                condition: condition,
-                similarity: similarity
-            });
-        }
-    });
-    
-    return matches;
-}
-
-// Exibir resultados quando não há correspondências
-function showNoMatchesResults() {
-    resultsSection.classList.remove('hidden');
-    symptomsSection.classList.add('hidden');
-    resultsSection.classList.add('fade-in');
-    
-    const resultGrid = resultsSection.querySelector('.result-grid');
-    resultGrid.innerHTML = `
-        <div class="result-card">
-            <div class="card-header">
-                <i class="fas fa-question-circle"></i>
-                <h3>Nível de Urgência</h3>
-            </div>
-            <div class="card-content">
-                <div style="text-align: center; padding: 2rem;">
-                    <i class="fas fa-search" style="font-size: 3rem; color: #6b7280; margin-bottom: 1rem;"></i>
-                    <h4 style="color: #6b7280; margin-bottom: 0.5rem;">Análise Inconclusiva</h4>
-                    <p style="color: #6b7280;">Não foi possível identificar uma condição específica com os sintomas descritos.</p>
-                </div>
-            </div>
-        </div>
-        <div class="result-card">
-            <div class="card-header">
-                <i class="fas fa-stethoscope"></i>
-                <h3>Recomendação Geral</h3>
-            </div>
-            <div class="card-content">
-                <p>Recomendamos que você:</p>
-                <ul style="margin-top: 1rem; padding-left: 1.5rem;">
-                    <li>Descreva os sintomas com mais detalhes</li>
-                    <li>Mencione duração e intensidade</li>
-                    <li>Informe medicamentos em uso</li>
-                    <li>Consulte um médico para avaliação precisa</li>
-                </ul>
-            </div>
-        </div>
-    `;
-    
-    // Rolar para resultados
-    resultsSection.scrollIntoView({ behavior: 'smooth' });
-}
-
-// Exibir resultados
-function displayResults(bestMatch, secondaryMatches) {
-    // Alternar visibilidade das seções
-    symptomsSection.classList.add('hidden');
-    resultsSection.classList.remove('hidden');
-    resultsSection.classList.add('fade-in');
-    
-    const condition = bestMatch.condition;
-    const urgency = urgencyConfig[condition.urgency];
-    const confidence = Math.min(95, Math.round(bestMatch.similarity * 100));
-    
-    const resultGrid = resultsSection.querySelector('.result-grid');
-    resultGrid.innerHTML = ''; // Limpar resultados anteriores
-
-    // Configurar card de urgência
-    const urgencyLevel = document.createElement('div');
-    urgencyLevel.className = 'result-card';
-    urgencyLevel.innerHTML = `
-        <div class="card-header">
-            <i class="fas fa-exclamation-triangle" style="color: ${urgency.color};"></i>
-            <h3>Nível de Urgência</h3>
-        </div>
-        <div class="card-content">
-            <div class="urgency-content">
-                <div class="urgency-icon">${urgency.icon}</div>
-                <div class="urgency-details">
-                    <h4 style="color: ${urgency.color};">${urgency.level}</h4>
-                    <p>${urgency.description}</p>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    // Configurar card de condição
-    const conditionResult = document.createElement('div');
-    conditionResult.className = 'result-card';
-    let conditionHTML = `
-        <div class="card-header">
-            <i class="fas fa-stethoscope"></i>
-            <h3>Condições Identificadas</h3>
-        </div>
-        <div class="card-content">
-            <div class="condition-content">
-                <div class="condition-icon">${condition.icon}</div>
-                <div class="condition-details">
-                    <h4>${condition.name.toUpperCase()}</h4>
-                    <p>${condition.description}</p>
-                    <div>
-                        <span class="confidence-badge">${confidence}% de confiança</span>
-                    </div>
-                </div>
-            </div>
-    `;
-    
-    // Adicionar condições secundárias se existirem
-    if (secondaryMatches.length > 0) {
-        conditionHTML += `<div class="secondary-conditions">`;
-        conditionHTML += `<h5>Outras possibilidades:</h5>`;
-        conditionHTML += `<div class="secondary-tags">`;
-        
-        secondaryMatches.forEach(match => {
-            const secConfidence = Math.min(90, Math.round(match.similarity * 100));
-            conditionHTML += `
-                <span class="secondary-tag">
-                    ${match.condition.icon} ${match.condition.name} (${secConfidence}%)
-                </span>
-            `;
-        });
-        
-        conditionHTML += `</div></div>`;
-    }
-    
-    conditionHTML += `</div>`;
-    conditionResult.innerHTML = conditionHTML;
-    
-    // Configurar recomendações
-    const recommendationsCard = document.createElement('div');
-    recommendationsCard.id = 'recommendationsCard';
-    recommendationsCard.className = 'result-card';
-    recommendationsCard.innerHTML = `
-        <div class="card-header">
-            <i class="fas fa-list-check"></i>
-            <h3>Recomendações</h3>
-        </div>
-        <div class="card-content"><ul id="recommendationsList"></ul></div>
-    `;
-    const recommendationsList = recommendationsCard.querySelector('#recommendationsList');
-    recommendationsList.innerHTML = '';
-    condition.recommendations.forEach(rec => {
-        const li = document.createElement('li');
-        li.className = 'recommendation-item';
-        li.innerHTML = `<i class="fas fa-check-circle"></i>${rec}`;
-        recommendationsList.appendChild(li);
-    });
-    
-    // Adicionar dinamicamente card de aviso à grade
-    const warningCard = document.createElement('div');
-    warningCard.className = 'result-card warning-card';
-    warningCard.innerHTML = `
-        <div class="warning-card-content">
-            <div class="warning-icon">
+function showApplicationError() {
+    document.body.innerHTML = `
+        <main class="fatal-error">
+            <div class="fatal-error-card">
                 <i class="fas fa-triangle-exclamation"></i>
-            </div>
-            <div class="warning-content">
-                <h4>⚠️ Aviso Importante</h4>
+                <h1>Não foi possível carregar o laboratório</h1>
                 <p>
-                    Este é um sistema de triagem preliminar e <strong>NÃO SUBSTITUI</strong> 
-                    a avaliação de um profissional de saúde qualificado. 
-                    Os resultados são baseados em algoritmos e devem ser interpretados 
-                    apenas como orientação inicial.
+                    Verifique se o arquivo <strong>data.json</strong> está disponível
+                    e tente recarregar a página.
                 </p>
             </div>
-        </div>
+        </main>
     `;
-
-    // Adicionar todos os cards à grade
-    resultGrid.append(urgencyLevel, conditionResult, recommendationsCard, warningCard);
-
-    // Mostrar notificação de sucesso
-    showNotification('✅ Análise concluída com sucesso!', 'success');
-    
-    // Rolar para resultados
-    resultsSection.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Função para retornar à tela de sintomas
-function showSymptomsSection() {
-    resultsSection.classList.add('hidden');
-    symptomsSection.classList.remove('hidden');
-    symptomsSection.classList.add('fade-in');
-    symptomsInput.value = ''; // Limpar campo de texto
-    document.getElementById('patientName').value = '';
-    document.getElementById('patientAge').value = '';
+function escapeHTML(value) {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
-
-// Salvar no histórico
-function saveToHistory(symptoms, match, name, age) {
-    const analysis = {
-        timestamp: new Date().toISOString(),
-        symptoms: symptoms,
-        patientName: name,
-        patientAge: age,
-        condition: match.condition.name,
-        urgency: match.condition.urgency,
-        confidence: Math.round(match.similarity * 100)
-    };
-    
-    analysisHistory.unshift(analysis); // Adicionar ao início
-    if (analysisHistory.length > 10) {
-        analysisHistory.pop(); // Manter apenas os 10 mais recentes
-    }
-    
-    localStorage.setItem('healthGuardianHistory', JSON.stringify(analysisHistory));
-    displayHistory();
-}
-
-// Mostrar notificação
-function showNotification(message, type) {
-    // Criar elemento de notificação
-    const notification = document.createElement('div');
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 1rem 1.5rem;
-        border-radius: 12px;
-        color: white;
-        font-weight: 500;
-        z-index: 1000;
-        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-        transform: translateX(400px);
-        transition: transform 0.3s ease;
-        max-width: 300px;
-    `;
-    
-    if (type === 'error') {
-        notification.style.background = '#ef4444';
-    } else if (type === 'success') {
-        notification.style.background = '#10b981';
-    } else {
-        notification.style.background = '#6b7280';
-    }
-    
-    notification.textContent = message;
-    document.body.appendChild(notification);
-    
-    // Animar entrada
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Remover após 5 segundos
-    setTimeout(() => {
-        notification.style.transform = 'translateX(400px)';
-        setTimeout(() => {
-            document.body.removeChild(notification);
-        }, 300);
-    }, 5000);
-}
-
-// Funções de modal
-function callEmergency() {
-    emergencyModal.classList.remove('hidden');
-}
-
-function findDoctors() {
-    showNotification('🔍 Buscando médicos próximos... (Funcionalidade em desenvolvimento)', 'info');
-}
-
-function closeAllModals() {
-    emergencyModal.classList.add('hidden');
-    registrationModal.classList.add('hidden');
-}
-
-// Carregar histórico do localStorage
-function loadHistory() {
-    const saved = localStorage.getItem('healthGuardianHistory');
-    if (saved) {
-        analysisHistory = JSON.parse(saved);
-    }
-    displayHistory();
-}
-
-// Exibir histórico na barra lateral
-function displayHistory() {
-    historyList.innerHTML = ''; // Limpar lista
-
-    if (analysisHistory.length === 0) {
-        historyList.innerHTML = '<li class="history-item-none">Nenhuma análise recente.</li>';
-        return;
-    }
-
-    analysisHistory.forEach(item => {
-        const li = document.createElement('li');
-        li.className = 'history-item';
-        const urgencyIcon = urgencyConfig[item.urgency]?.icon || '⚪️';
-        const date = new Date(item.timestamp);
-        const formattedDate = `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth() + 1).toString().padStart(2, '0')}`;
-
-        li.innerHTML = `
-            <div class="history-info">
-                <span class="history-patient">${item.patientName || 'Paciente'} (${item.patientAge || '?'} anos)</span>
-                <span>${urgencyIcon} ${item.condition}</span>
-            </div>
-            <span class="history-item-date">${formattedDate}</span>
-        `;
-        historyList.appendChild(li);
-    });
-}
-
-// Tema (Claro/Escuro)
-function setupTheme() {
-    const savedTheme = localStorage.getItem('healthGuardianTheme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
-}
-
-function toggleTheme() {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('healthGuardianTheme', newTheme);
-    updateThemeIcon(newTheme);
-}
-
-function updateThemeIcon(theme) {
-    const themeSwitcher = document.getElementById('theme-switcher');
-    if (theme === 'dark') {
-        themeSwitcher.innerHTML = '<i class="fas fa-sun"></i>';
-    } else {
-        themeSwitcher.innerHTML = '<i class="fas fa-moon"></i>';
-    }
-}
-
-// Inicializar histórico
-loadHistory();
 
 function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').catch(console.error);
-    }
-}
+    if (!("serviceWorker" in navigator)) return;
 
-console.log("🏥 HealthGuardian AI Premium inicializado!");
+    navigator.serviceWorker
+        .register("./sw.js")
+        .catch((error) => {
+            console.warn("Service Worker não registrado:", error);
+        });
+}
