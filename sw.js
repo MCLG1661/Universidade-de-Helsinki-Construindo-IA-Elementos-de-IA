@@ -1,38 +1,76 @@
-const CACHE_NAME = 'healthguardian-v3';
-const ASSETS = [
-    './',
-    './index.html',
-    './style.css',
-    './script.js',
-    './manifest.json',
-    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
-    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+const CACHE_NAME = "healthguardian-nlp-lab-v1";
+
+const CORE_ASSETS = [
+    "/",
+    "/index.html",
+    "/style.css",
+    "/script.js",
+    "/data.json",
+    "/manifest.json"
 ];
 
-// Instalação
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => cache.addAll(ASSETS))
+        caches.open(CACHE_NAME).then((cache) => {
+            return cache.addAll(CORE_ASSETS);
+        })
     );
+
+    self.skipWaiting();
 });
 
-// Ativação e limpeza de caches antigos
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
     event.waitUntil(
-        caches.keys().then((keys) => {
+        caches.keys().then((cacheNames) => {
             return Promise.all(
-                keys.filter((key) => key !== CACHE_NAME)
-                    .map((key) => caches.delete(key))
+                cacheNames
+                    .filter((cacheName) => cacheName !== CACHE_NAME)
+                    .map((cacheName) => caches.delete(cacheName))
             );
         })
     );
+
+    self.clients.claim();
 });
 
-// Interceptação de requisições
-self.addEventListener('fetch', (event) => {
+self.addEventListener("fetch", (event) => {
+    const request = event.request;
+
+    if (request.method !== "GET") {
+        return;
+    }
+
+    const requestUrl = new URL(request.url);
+
+    if (requestUrl.origin === self.location.origin) {
+        event.respondWith(
+            caches.match(request).then((cachedResponse) => {
+                const networkResponse = fetch(request)
+                    .then((response) => {
+                        if (
+                            response &&
+                            response.status === 200 &&
+                            response.type === "basic"
+                        ) {
+                            const responseClone = response.clone();
+
+                            caches.open(CACHE_NAME).then((cache) => {
+                                cache.put(request, responseClone);
+                            });
+                        }
+
+                        return response;
+                    })
+                    .catch(() => cachedResponse);
+
+                return cachedResponse || networkResponse;
+            })
+        );
+
+        return;
+    }
+
     event.respondWith(
-        caches.match(event.request)
-            .then((response) => response || fetch(event.request))
+        fetch(request).catch(() => caches.match(request))
     );
 });
