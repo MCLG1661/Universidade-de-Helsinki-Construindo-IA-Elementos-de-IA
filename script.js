@@ -1,4 +1,4 @@
-import { normalizeText, tokenize, classifyText } from "./core/legacy-engine.mjs";
+import { normalizeText, tokenize, classifyText } from "./core/lexical-engine.mjs";
 
 let appData = null;
 
