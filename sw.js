@@ -1,10 +1,12 @@
-const CACHE_NAME = "healthguardian-nlp-lab-v1-evolution-5";
+const CACHE_NAME = "healthguardian-nlp-lab-v1-evolution-6";
 
 const CORE_ASSETS = [
     "/",
     "/index.html",
     "/style.css",
+    "/style.css?v=6",
     "/script.js",
+    "/script.js?v=6",
     "/core/legacy-engine.mjs",
     "/core/lexical-engine.mjs",
     "/core/context.mjs",
@@ -47,6 +49,10 @@ self.addEventListener("fetch", (event) => {
 
     const requestUrl = new URL(request.url);
 
+    if (requestUrl.origin === self.location.origin && request.mode === "navigate") {
+        event.respondWith(fetch(request).catch(async () => (await caches.open(CACHE_NAME)).match("/index.html")));
+        return;
+    }
     if (requestUrl.origin === self.location.origin) {
         event.respondWith(
             caches.match(request).then((cachedResponse) => {
