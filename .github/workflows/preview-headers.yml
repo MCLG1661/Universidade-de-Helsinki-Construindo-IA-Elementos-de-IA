@@ -1,5 +1,7 @@
 name: Preview security headers
 on:
+  push:
+    branches: [feature/healthguardian-evolution]
   workflow_dispatch:
     inputs:
       preview_url:
@@ -14,7 +16,7 @@ jobs:
     steps:
       - name: Verify deployed response
         env:
-          PREVIEW_URL: ${{ inputs.preview_url }}
+          PREVIEW_URL: ${{ inputs.preview_url || 'https://universidade-de-helsinki-cons-git-b464e3-marcus-guedes-projects.vercel.app' }}
         run: |
           python - <<'PY'
           import os, urllib.request, urllib.parse
