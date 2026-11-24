@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
 const data = JSON.parse(readFileSync(new URL('../data.json', import.meta.url), 'utf8'));
-const source = readFileSync(new URL('../script.js', import.meta.url), 'utf8');
+const source = readFileSync(new URL('./fixtures/legacy-script.js', import.meta.url), 'utf8');
 const context = vm.createContext({ document: { addEventListener() {} }, dataset: data });
 vm.runInContext(source + '\nappData = dataset;', context);
 function classify(input) {
