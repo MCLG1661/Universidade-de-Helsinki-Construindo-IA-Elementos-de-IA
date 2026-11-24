@@ -10,3 +10,5 @@ test('phrase does not cross sentence',()=>assert.deepEqual(analyzeEvidence('falt
 test('double negation is ambiguous',()=>assert.equal(analyzeEvidence('Não nega tosse',['tosse'])[0].status,'ambiguous'));
 test('phrase cannot cross comma',()=>assert.deepEqual(analyzeEvidence('falta, de ar',['falta de ar']),[]));
 test('contrast resets negation',()=>assert.equal(analyzeEvidence('Sem febre porém tenho tosse',['tosse'])[0].status,'unmarked'));
+
+for(const [input,status] of [['Não só tosse, mas também febre.','unmarked'],['Tosse anteriormente.','historical'],['Meu colega tem tosse.','third_party'],['Tosse não confirmada.','uncertain'],['Não tenho tosse.','negated']])test('regression '+input,()=>assert.equal(analyzeEvidence(input,['tosse'])[0].status,status));
