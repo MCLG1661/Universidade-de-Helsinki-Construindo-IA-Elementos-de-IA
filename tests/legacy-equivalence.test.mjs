@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 import {normalizeText, tokenize, classifyText} from '../core/legacy-engine.mjs';
 const data=JSON.parse(readFileSync(new URL('../data.json',import.meta.url),'utf8'));
-const source=readFileSync(new URL('../script.js',import.meta.url),'utf8');
+const source=readFileSync(new URL('./fixtures/legacy-script.js',import.meta.url),'utf8');
 const context=vm.createContext({document:{addEventListener(){}},dataset:data});
 vm.runInContext(source+'\nappData = dataset;',context);
 const cases=[...data.example_inputs.map(x=>x.text),...data.categories.flatMap(x=>x.examples), '', 'Não tenho tosse.', 'O computador funciona.', 'náusea', 'pressão', '123 !', 'tosse náusea cabeça fadiga ansiedade febre'];
