@@ -8,3 +8,15 @@ test('PWA cache includes browser module dependencies',()=>{
  for(const path of ['/script.js','/core/lexical-engine.mjs','/core/legacy-engine.mjs','/data.json'])assert.ok(sw.includes(JSON.stringify(path)),path);
 });
 test('browser uses precise engine',()=>assert.match(read('../script.js'),/from "\.\/core\/lexical-engine\.mjs"/));
+
+test('evidence report uses textContent and is cleared',()=>{
+ const js=read('../script.js');
+ assert.match(js,/output\.textContent = JSON\.stringify/);
+ assert.match(js,/evidence\.textContent = ""/);
+ assert.match(js,/renderEvidence\(text\);/);
+ assert.match(read('../index.html'),/id="evidenceOutput"/);
+});
+test('offline cache includes evidence dependencies',()=>{
+ const sw=read('../sw.js');
+ for(const path of ['/core/context.mjs','/core/validator.mjs'])assert.ok(sw.includes(JSON.stringify(path)),path);
+});
