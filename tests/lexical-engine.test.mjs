@@ -13,3 +13,30 @@ test('noncontiguous phrase does not match',()=>assert.equal(has('falta de tempo 
 test('accent and case normalization preserved',()=>assert.ok(has('NÁUSEA!','digestive','náusea')));
 test('empty input returns no results',()=>assert.deepEqual(run(''),[]));
 test('respiratory example retains first category',()=>assert.equal(run(data.example_inputs[0].text)[0].category.id,'respiratory'));
+
+test('accent aliases contribute only once',()=>{
+ const r=run('náusea').find(r=>r.category.id==='digestive');
+ assert.equal(r.score,data.engine.scoring.exact_match);
+ assert.deepEqual(r.matchedKeywords,['náusea']);
+ assert.equal(r.similarity,1/new Set(r.category.keywords.map(normalizeText).filter(Boolean)).size);
+});
+test('hyphen aliases contribute only once',()=>{
+ const r=run('mal-estar').find(r=>r.category.id==='general-discomfort');
+ assert.equal(r.score,data.engine.scoring.exact_match);
+ assert.deepEqual(r.matchedKeywords,['mal-estar']);
+});
+test('repeated mentions do not inflate score',()=>assert.deepEqual(run('náusea náusea'),run('náusea')));
+test('duplicate aliases do not change score or similarity',()=>{
+ const copy=structuredClone(data);
+ copy.categories.find(c=>c.id==='digestive').keywords.push('NÁUSEA','nausea','');
+ const n=normalizeText('náusea');
+ const r=classifyText(n,tokenize(n),copy).find(r=>r.category.id==='digestive');
+ const base=run('náusea').find(r=>r.category.id==='digestive');
+ assert.equal(r.score,base.score);
+ assert.equal(r.similarity,base.similarity);
+ assert.deepEqual(r.matchedKeywords,base.matchedKeywords);
+});
+test('shared terms remain eligible in distinct categories',()=>{
+ assert.ok(has('pressão','headache','pressão'));
+ assert.ok(has('pressão','stress','pressão'));
+});
