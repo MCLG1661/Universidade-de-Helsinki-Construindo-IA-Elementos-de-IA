@@ -7,11 +7,12 @@ export function analyzeEvidence(text, keywords) {
  for(const [n,k] of unique){const p=n.split(' ');for(let i=0;i<tokens.length;i++){
  if(!p.every((w,j)=>tokens[i+j]?.value===w))continue;
  const start=tokens[i].start,end=tokens[i+p.length-1].end;
- if(/[.!?;\n]/.test(text.slice(start,end)))continue;
+ if(/[.!?;\n,]/.test(text.slice(start,end)))continue;
  const prefix=text.slice(0,start).split(/[.!?;\n,]/).pop().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().split(/\b(?:mas|porem|contudo)\b/).pop();
  const window=prefix.trim().split(/\s+/).slice(-6).join(' ');
  const flags=[];
- if(/\b(?:nao|sem|nega|negou|ausencia de)\b/.test(window))flags.push('negated');
+ if(/\bnao\s+(?:nega|negou)\b/.test(window))flags.push('negated','uncertain');
+ else if(/\b(?:nao|sem|nega|negou|ausencia de)\b/.test(window))flags.push('negated');
  if(/\b(?:talvez|possivel|suspeita|pode|possivelmente)\b/.test(window))flags.push('uncertain');
  if(/\b(?:tive|teve|anteriormente|historico de|passado)\b/.test(window))flags.push('historical');
  if(/\b(?:meu irmao|minha irma|minha mae|meu pai|terceiro)\b/.test(window))flags.push('third_party');
