@@ -29,9 +29,16 @@ async function initializeApp() {
     try {
         appData = await loadAppData();
         refreshLanguage();
-        const selector=document.getElementById("languageSelect");
-        selector.value=language;
-        selector.addEventListener("change",()=>{language=chooseLanguage(selector.value,navigator.language);try{localStorage.setItem("hg-language",language);}catch{} refreshLanguage();});
+        const selectors=document.querySelectorAll('input[name="interfaceLanguage"]');
+        selectors.forEach(selector=>{
+            selector.checked=selector.value===language;
+            selector.addEventListener("change",()=>{
+                if(!selector.checked)return;
+                language=chooseLanguage(selector.value,navigator.language);
+                try{localStorage.setItem("hg-language",language);}catch{}
+                refreshLanguage();
+            });
+        });
         setupEventListeners();
         registerServiceWorker();
     } catch (error) {
