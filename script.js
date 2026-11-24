@@ -1,5 +1,7 @@
 import { normalizeText, tokenize, classifyText } from "./core/lexical-engine.mjs";
 
+import { buildReport } from "./core/validator.mjs";
+
 let appData = null;
 
 const state = {
@@ -205,6 +207,7 @@ function analyzeText() {
 
     renderAnalysisProcess(text, normalizedText, tokens);
     renderResults(matches);
+    renderEvidence(text);
 }
 
 function renderAnalysisProcess(originalText, normalizedText, tokens) {
@@ -242,6 +245,8 @@ function renderResults(matches) {
 
     if (matches.length === 0) {
         emptyState.classList.remove("hidden");
+        const summary = document.getElementById("resultSummary");
+        if (summary) summary.textContent = "";
         return;
     }
 
@@ -323,6 +328,15 @@ function renderResults(matches) {
     renderResultSummary(matches[0]);
 }
 
+function renderEvidence(text) {
+    const output = document.getElementById("evidenceOutput");
+    if (!output) return;
+    const keywords = [...new Map(appData.categories.flatMap(c => c.keywords).map(k => [normalizeText(k), k])).values()];
+    const report = buildReport(text, keywords);
+    report.claims = report.claims.filter(c => c.evidence.length);
+    output.textContent = JSON.stringify(report, null, 2);
+}
+
 function renderResultSummary(bestResult) {
     const summary = document.getElementById("resultSummary");
 
@@ -370,6 +384,8 @@ function clearAnalysis() {
 
     state.input = "";
     state.matches = [];
+    const evidence = document.getElementById("evidenceOutput");
+    if (evidence) evidence.textContent = "";
 
     if (input) {
         input.value = "";
