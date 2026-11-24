@@ -1,0 +1,82 @@
+[
+  {
+    "source": "Não apresenta febre.",
+    "claim": "febre",
+    "expected": "negated"
+  },
+  {
+    "source": "Ausência de náusea.",
+    "claim": "náusea",
+    "expected": "negated"
+  },
+  {
+    "source": "Sem tosse nem febre.",
+    "claim": "febre",
+    "expected": "negated"
+  },
+  {
+    "source": "Não tenho tosse e estou com febre.",
+    "claim": "febre",
+    "expected": "lexical_match"
+  },
+  {
+    "source": "Possivelmente apresenta fadiga.",
+    "claim": "fadiga",
+    "expected": "uncertain"
+  },
+  {
+    "source": "Fadiga em investigação.",
+    "claim": "fadiga",
+    "expected": "uncertain"
+  },
+  {
+    "source": "Ontem tive febre.",
+    "claim": "febre",
+    "expected": "historical"
+  },
+  {
+    "source": "Febre há dois anos.",
+    "claim": "febre",
+    "expected": "historical"
+  },
+  {
+    "source": "Minha filha apresenta tosse.",
+    "claim": "tosse",
+    "expected": "third_party"
+  },
+  {
+    "source": "Meu pai nega febre.",
+    "claim": "febre",
+    "expected": "ambiguous"
+  },
+  {
+    "source": "Não apenas náusea, mas também fadiga.",
+    "claim": "náusea",
+    "expected": "lexical_match"
+  },
+  {
+    "source": "Sem náusea. Talvez tenha náusea.",
+    "claim": "náusea",
+    "expected": "mixed"
+  },
+  {
+    "source": "A dor foi descartada.",
+    "claim": "dor",
+    "expected": "negated"
+  },
+  {
+    "source": "Sem febre. Contudo, tosse.",
+    "claim": "tosse",
+    "expected": "lexical_match"
+  },
+  {
+    "source": "O ventilador está ligado.",
+    "claim": "dor",
+    "expected": "not_found"
+  },
+  {
+    "source": "Não tenho falta de ar.",
+    "claim": "falta de ar",
+    "expected": "negated"
+  }
+]
