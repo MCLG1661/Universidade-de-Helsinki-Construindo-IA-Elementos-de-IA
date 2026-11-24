@@ -10,12 +10,14 @@ export function analyzeEvidence(text, keywords) {
  if(/[.!?;\n,]/.test(text.slice(start,end)))continue;
  const prefix=text.slice(0,start).split(/[.!?;\n,]/).pop().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().split(/\b(?:mas|porem|contudo)\b/).pop();
  const window=prefix.trim().split(/\s+/).slice(-6).join(' ');
+ const suffix=text.slice(end).split(/[.!?;\n,]/)[0].normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+ const negationWindow=window.replace(/\bnao\s+(?:so|apenas|somente)\b/g,'');
  const flags=[];
  if(/\bnao\s+(?:nega|negou)\b/.test(window))flags.push('negated','uncertain');
- else if(/\b(?:nao|sem|nega|negou|ausencia de)\b/.test(window))flags.push('negated');
- if(/\b(?:talvez|possivel|suspeita|pode|possivelmente)\b/.test(window))flags.push('uncertain');
- if(/\b(?:tive|teve|anteriormente|historico de|passado)\b/.test(window))flags.push('historical');
- if(/\b(?:meu irmao|minha irma|minha mae|meu pai|terceiro)\b/.test(window))flags.push('third_party');
+ else if(/\b(?:nao|sem|nega|negou|ausencia de)\b/.test(negationWindow))flags.push('negated');
+ if(/\b(?:talvez|possivel|suspeita|pode|possivelmente)\b/.test(window)||/^nao\s+confirmad[oa]s?\b/.test(suffix))flags.push('uncertain');
+ if(/\b(?:tive|teve|anteriormente|historico de|passado)\b/.test(window)||/^(?:anteriormente|no passado)\b/.test(suffix))flags.push('historical');
+ if(/\b(?:meu irmao|minha irma|minha mae|meu pai|meu colega|minha colega|terceiro)\b/.test(window))flags.push('third_party');
  out.push({keyword:k,normalized:n,start,end,quote:text.slice(start,end),status:flags.length>1?'ambiguous':flags[0]||'unmarked',flags});
  }}
  return out.sort((a,b)=>a.start-b.start||b.end-a.end);
