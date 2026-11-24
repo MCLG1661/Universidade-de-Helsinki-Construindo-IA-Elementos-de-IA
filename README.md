@@ -1,6 +1,6 @@
-# 🧠 HealthGuardian AI — NLP Classification Lab
+# 🧠 HealthGuardian AI — Healthcare AI & NLP Lab
 
-> Laboratório educacional interativo para explorar **Natural Language Processing (NLP)**, classificação lexical, regras determinísticas e explicabilidade.
+> Laboratório educacional de IA aplicada à saúde, com **Natural Language Processing (NLP)**, classificação lexical e identificação experimental de evidências textuais. Interface PT/EN; motor linguístico em português. Não destinado ao uso clínico.
 
 [![Status](https://img.shields.io/badge/status-MVP-success)]()
 [![Version](https://img.shields.io/badge/version-1.1.0--rc-blue)]()
