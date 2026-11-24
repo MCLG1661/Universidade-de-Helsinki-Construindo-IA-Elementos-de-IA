@@ -1,4 +1,4 @@
-const CACHE_NAME = "healthguardian-nlp-lab-v1-evolution-3";
+const CACHE_NAME = "healthguardian-nlp-lab-v1-evolution-4";
 
 const CORE_ASSETS = [
     "/",
@@ -28,7 +28,7 @@ self.addEventListener("activate", (event) => {
         caches.keys().then((cacheNames) => {
             return Promise.all(
                 cacheNames
-                    .filter((cacheName) => cacheName !== CACHE_NAME)
+                    .filter((cacheName) => cacheName.startsWith('healthguardian-nlp-lab-') && cacheName !== CACHE_NAME)
                     .map((cacheName) => caches.delete(cacheName))
             );
         })
