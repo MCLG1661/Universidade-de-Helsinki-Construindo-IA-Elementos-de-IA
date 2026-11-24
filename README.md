@@ -3,7 +3,7 @@
 > Laboratório educacional interativo para explorar **Natural Language Processing (NLP)**, classificação lexical, regras determinísticas e explicabilidade.
 
 [![Status](https://img.shields.io/badge/status-MVP-success)]()
-[![Version](https://img.shields.io/badge/version-1.0.0-blue)]()
+[![Version](https://img.shields.io/badge/version-1.1.0--rc-blue)]()
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)]()
 [![NLP](https://img.shields.io/badge/NLP-Lexical%20Classification-6d7cff)]()
 [![Responsible AI](https://img.shields.io/badge/Responsible%20AI-Educational-b9f227)]()
@@ -11,7 +11,7 @@
 
 ## 🔗 Demo
 
-**Aplicação publicada:**
+**Aplicação publicada (versão original; esta branch contém a candidata v1.1):**
 
 https://universidade-de-helsinki-construind.vercel.app/
 
@@ -213,49 +213,30 @@ O MVP permite compreender primeiro a lógica fundamental de um problema de class
 
 ## ⚙️ Arquitetura
 
-A aplicação é executada integralmente no navegador.
+A aplicação executa o processamento textual no navegador, sem backend ou banco de dados.
 
-```text
-┌──────────────────────┐
-│       data.json      │
-│ Dataset experimental │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│      script.js       │
-│ Processing Engine    │
-└──────────┬───────────┘
-           │
-           ├── Normalize
-           ├── Tokenize
-           ├── Match
-           ├── Score
-           └── Rank
-           │
-           ▼
-┌──────────────────────┐
-│      index.html      │
-│ Interactive NLP Lab  │
-└──────────┬───────────┘
-           │
-           ▼
-┌──────────────────────┐
-│      style.css       │
-│ Experimental UI      │
-└──────────────────────┘
-```
+- `core/legacy-engine.mjs`: baseline preservado.
+- `core/lexical-engine.mjs`: correspondência de palavras e expressões completas, deduplicação normalizada.
+- `core/context.mjs`: heurísticas contextuais experimentais.
+- `core/validator.mjs`: relatório independente com evidências, offsets UTF-16 e indicadores objetivos.
+- `schemas/evidence-report-v0.2.0.json`: contrato estruturado.
+- `core/evaluation.mjs`: métricas de avaliação.
+- `script.js`: interface e apresentação dos resultados.
 
-Não há necessidade, na versão atual, de:
+O ranking lexical não incorpora as anotações contextuais; uma ocorrência negada pode aparecer no ranking. O score mede cobertura do vocabulário, não confiança clínica.
 
-- servidor de aplicação;
-- banco de dados;
-- API externa;
-- autenticação;
-- armazenamento de textos;
-- modelo de Machine Learning hospedado.
+## Qualidade e avaliação
 
----
+| Avaliação sintética | Resultado |
+|---|---|
+| Precision lexical (baseline → evolução) | 84,62% → 100% |
+| F1 lexical | 91,67% → 100% |
+| Contexto: desenvolvimento após ajustes | 15/15 |
+| Contexto: conjunto separado | 11/16 (68,75%) |
+
+Conjuntos pequenos, elaborados pelo mesmo desenvolvedor, sem validação externa. Os resultados não demonstram eficácia clínica.
+
+91 testes Node e smoke test Chromium (incluindo offline e entrada HTML) aprovados na candidata. Execute `node --test tests/*.test.mjs`. Consulte [evidências e critérios de release](docs/release-candidate-v1.1.md).
 
 ## 🛠️ Tecnologias
 
@@ -275,6 +256,11 @@ Não há necessidade, na versão atual, de:
 
 ```text
 .
+├── core/
+├── schemas/
+├── tests/
+├── docs/
+├── .github/workflows/
 ├── index.html
 ├── style.css
 ├── script.js
@@ -344,7 +330,7 @@ Ela **não representa probabilidade de doença ou conclusão clínica**.
 
 A versão atual funciona no navegador e não possui backend ou banco de dados para persistência das entradas do laboratório.
 
-Os textos informados são utilizados para executar o experimento durante a interação com a aplicação.
+Use exclusivamente textos sintéticos, sem dados pessoais ou de pacientes. A interface carrega fontes e ícones externos, que podem receber metadados de navegação. Os textos informados são utilizados para executar o experimento durante a interação com a aplicação.
 
 Essa arquitetura reduz deliberadamente a coleta de dados no MVP.
 
@@ -425,78 +411,12 @@ Essas limitações fazem parte do aprendizado proporcionado pelo projeto.
 
 ## 🗺️ Roadmap
 
-### v1.0 — Educational NLP Lab
-
-```text
-✓ processamento textual
-✓ normalização
-✓ tokenização
-✓ classificação lexical
-✓ scoring
-✓ ranking
-✓ explainability
-✓ Responsible AI
-✓ interface experimental
-✓ PWA
-✓ deploy
-```
-
-### v1.1 — NLP Improvements
-
-Possíveis evoluções:
-
-```text
-→ stopword filtering
-→ stemming ou lemmatization
-→ expansão do vocabulário
-→ testes automatizados
-→ métricas de cobertura lexical
-→ melhoria da acessibilidade
-→ visualização dinâmica das conexões token → categoria
-```
-
-### v2.0 — Machine Learning Experiment
-
-Uma evolução natural seria comparar o mecanismo baseado em regras com um modelo supervisionado.
-
-Possível pipeline:
-
-```text
-Dataset
-   ↓
-Text preprocessing
-   ↓
-TF-IDF
-   ↓
-Classifier
-   ↓
-Evaluation
-   ↓
-Explainability
-```
-
-Modelos simples, como **Logistic Regression** ou **Naive Bayes**, permitiriam comparar:
-
-```text
-Rule-based classification
-            VS
-Machine Learning classification
-```
-
-### v3.0 — Semantic NLP Experiment
-
-Uma etapa posterior poderia explorar:
-
-```text
-Embeddings
-Semantic Similarity
-Transformer Models
-Explainable NLP
-```
-
-Sempre preservando governança, transparência e limites adequados ao domínio utilizado.
-
----
+- v1.0 — laboratório educacional original.
+- v1.1 — fundação NLP, confiabilidade e testes (candidata).
+- v1.2 — evolução do validador independente e avaliação contextual.
+- v2.0 — API e interoperabilidade.
+- v2.5 — hipótese de prova de conceito MediFlow, sem integração existente.
+- v3.0 — experimentos híbridos com NLP estatístico e semântico.
 
 ## 🎯 Objetivo de portfólio
 
