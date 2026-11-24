@@ -1,4 +1,4 @@
-const CACHE_NAME = "healthguardian-nlp-lab-v1-evolution";
+const CACHE_NAME = "healthguardian-nlp-lab-v1-evolution-2";
 
 const CORE_ASSETS = [
     "/",
@@ -6,6 +6,7 @@ const CORE_ASSETS = [
     "/style.css",
     "/script.js",
     "/core/legacy-engine.mjs",
+    "/core/lexical-engine.mjs",
     "/data.json",
     "/manifest.json"
 ];
