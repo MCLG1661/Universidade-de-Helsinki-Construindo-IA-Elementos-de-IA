@@ -94,7 +94,8 @@
 
         </div>
 
-    </header>
+    <label style="color:inherit"> <span class="language-label">Idioma / Language</span> <select id="languageSelect" aria-label="Idioma / Language"><option value="pt">Português</option><option value="en">English</option></select></label>
+</header>
 
 
     <main>
@@ -178,7 +179,8 @@
                     </div>
 
 
-                    <textarea
+                    <p id="languageScope">Use apenas textos sintéticos em português. Interface bilíngue; motor NLP em português.</p>
+<textarea
                         id="textInput"
                         maxlength="500"
                         rows="9"
@@ -817,7 +819,7 @@ classifyText()
     │
     ├── exact match
     │
-    ├── partial match
+    ├── exact phrase matching
     │
     └── scoring
     │
