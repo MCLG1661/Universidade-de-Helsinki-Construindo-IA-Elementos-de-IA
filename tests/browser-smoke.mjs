@@ -21,6 +21,16 @@ try{
  await page.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
  await page.goto('http://127.0.0.1:'+server.address().port);
  await page.locator('#exampleInputs button').first().waitFor();
+ await page.locator('label[for="langPT"]').click();
+ assert.equal(await page.locator('html').getAttribute('lang'),'pt-BR');
+ await page.locator('label[for="langEN"]').click();
+ assert.equal(await page.locator('html').getAttribute('lang'),'en');
+ assert.equal(await page.locator('#langEN').isChecked(),true);
+ assert.equal(await page.locator('.language-slider').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(185, 242, 39)');
+ await page.reload();
+ await page.locator('#exampleInputs button').first().waitFor();
+ assert.equal(await page.locator('#langEN').isChecked(),true);
+ await page.locator('label[for="langPT"]').click();
  await page.locator('#textInput').fill('Tenho tosse. Sem febre.');
  await page.locator('#analyzeButton').click();
  const report=JSON.parse(await page.locator('#evidenceOutput').textContent());
