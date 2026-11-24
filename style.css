@@ -1452,3 +1452,7 @@ main > section {
 
 /* Keep translated hero compact without losing hierarchy. */
 html[lang="pt-BR"] .lab-intro h1 { font-size:clamp(2.8rem,5.4vw,5.8rem); letter-spacing:-.06em; }
+
+/* Healthcare hero and longer bilingual labels */
+.lab-intro h1, html[lang="pt-BR"] .lab-intro h1 {font-size:clamp(2.7rem,5vw,5.4rem);line-height:1.02;letter-spacing:-.055em;}
+.topbar-status {max-width:190px;line-height:1.35;}
