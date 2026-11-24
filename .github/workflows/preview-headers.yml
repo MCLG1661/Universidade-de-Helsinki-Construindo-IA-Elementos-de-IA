@@ -1,0 +1,37 @@
+name: Preview security headers
+on:
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: Vercel HTTPS preview URL
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  headers:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Verify deployed response
+        env:
+          PREVIEW_URL: ${{ inputs.preview_url }}
+        run: |
+          python - <<'PY'
+          import os, urllib.request, urllib.parse
+          url=os.environ['PREVIEW_URL']
+          p=urllib.parse.urlsplit(url)
+          assert p.scheme=='https' and p.hostname and p.hostname.endswith('.vercel.app') and not p.username and not p.password
+          with urllib.request.urlopen(url, timeout=30) as r:
+              assert r.status==200
+              assert urllib.parse.urlsplit(r.url).hostname==p.hostname
+              h=r.headers
+              assert h.get('X-Frame-Options','').upper()=='DENY'
+              assert h.get('X-Content-Type-Options','').lower()=='nosniff'
+              assert "script-src 'self'" in h.get('Content-Security-Policy','')
+              assert "connect-src 'self'" in h.get('Content-Security-Policy','')
+              assert "camera=()" in h.get('Permissions-Policy','')
+              assert "microphone=()" in h.get('Permissions-Policy','')
+              assert "geolocation=()" in h.get('Permissions-Policy','')
+              assert 'HealthGuardian' in r.read().decode('utf-8')
+              print('Preview response checks passed')
+          PY
