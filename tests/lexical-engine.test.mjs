@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {normalizeText,tokenize,classifyText} from '../core/lexical-engine.mjs';
+const data=JSON.parse(readFileSync(new URL('../data.json',import.meta.url),'utf8'));
+const run=input=>{const n=normalizeText(input);return classifyText(n,tokenize(n),data);};
+const has=(input,id,term)=>run(input).some(r=>r.category.id===id&&r.matchedKeywords.includes(term));
+test('computer does not match dor',()=>assert.equal(has('O computador funciona.','general-discomfort','dor'),false));
+test('exact dor matches',()=>assert.ok(has('dor','general-discomfort','dor')));
+test('contiguous phrase matches',()=>assert.ok(has('falta de ar','respiratory','falta de ar')));
+test('isolated phrase fragment does not match',()=>assert.equal(has('falta de tempo','respiratory','falta de ar'),false));
+test('noncontiguous phrase does not match',()=>assert.equal(has('falta de tempo para o ar','respiratory','falta de ar'),false));
+test('accent and case normalization preserved',()=>assert.ok(has('NÁUSEA!','digestive','náusea')));
+test('empty input returns no results',()=>assert.deepEqual(run(''),[]));
+test('respiratory example retains first category',()=>assert.equal(run(data.example_inputs[0].text)[0].category.id,'respiratory'));
