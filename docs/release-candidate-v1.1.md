@@ -23,3 +23,10 @@ Rule-based lexical coverage is not calibrated confidence. Context heuristics can
 
 ## Changes
 Exact lexical matching, normalized alias deduplication, contextual evidence annotations, independent report builder, JSON Schema, objective evidence quality indicators, automated evaluation, PWA cache isolation, CSP and permissions configuration.
+
+## Bilingual healthcare identity validation
+
+- Commit `f249f8f`: NLP workflow 45515524714 and Chromium workflow 45515511851 passed.
+- Verified PT/EN hero and document title, language persistence, sliding control, mobile viewport 390 × 844 without horizontal overflow, and offline analysis.
+- Preview headers workflow 45515511895 failed; external preview validation remains incomplete. Manual visual confirmation of the latest deployment and owner approval remain release gates.
+- Interface bilingual; NLP engine remains Portuguese-only and deterministic. Synthetic inputs only.
