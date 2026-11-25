@@ -16,7 +16,7 @@ Rule-based lexical coverage is not calibrated confidence. Context heuristics can
 - [x] Node CI and Chromium smoke
 - [x] Offline scenario and HTML-like input rendering
 - [x] Document known benchmark limitations
-- [ ] Review README and user-facing terminology
+- [x] Review README and user-facing terminology
 - [ ] Review deployment preview and actual response headers
 - [ ] Review pull request before merging
 - [ ] Publish release only after approval
@@ -30,3 +30,10 @@ Exact lexical matching, normalized alias deduplication, contextual evidence anno
 - Verified PT/EN hero and document title, language persistence, sliding control, mobile viewport 390 × 844 without horizontal overflow, and offline analysis.
 - Preview headers workflow 45515511895 failed; external preview validation remains incomplete. Manual visual confirmation of the latest deployment and owner approval remain release gates.
 - Interface bilingual; NLP engine remains Portuguese-only and deterministic. Synthetic inputs only.
+
+## Final candidate review
+
+- Owner-provided preview screenshots confirmed Portuguese and English healthcare identity and sliding language control before final desktop typography refinement.
+- Commit `aa67524`: NLP run 45604169771 and Chromium run 45604164018 passed. Security configuration regression test added; external protected preview check is now manual, with strict assertions retained.
+- PR #1 reported mergeable and clean at `aa67524`; production main unchanged.
+- Remaining gates: visual confirmation of final typography, deployed origin headers (previous manual evidence partial; external verification blocked by redirect), and explicit owner release approval. Do not interpret static security checks as deployed security verification.
