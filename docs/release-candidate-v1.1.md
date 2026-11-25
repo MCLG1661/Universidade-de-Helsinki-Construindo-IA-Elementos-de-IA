@@ -37,3 +37,7 @@ Exact lexical matching, normalized alias deduplication, contextual evidence anno
 - Commit `aa67524`: NLP run 45604169771 and Chromium run 45604164018 passed. Security configuration regression test added; external protected preview check is now manual, with strict assertions retained.
 - PR #1 reported mergeable and clean at `aa67524`; production main unchanged.
 - Remaining gates: visual confirmation of final typography, deployed origin headers (previous manual evidence partial; external verification blocked by redirect), and explicit owner release approval. Do not interpret static security checks as deployed security verification.
+
+## Owner release decision — 2026-11-25
+
+Owner screenshots confirmed final desktop typography and 768px layout. Browser response showed Permissions-Policy, Referrer-Policy, HSTS, nosniff, DENY and noindex on preview. CSP present but full original value not independently verified; local Kaspersky references observed. Owner explicitly approved publication as educational prototype with this residual limitation and production recheck. No clinical use.
