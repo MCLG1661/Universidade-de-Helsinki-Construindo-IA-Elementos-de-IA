@@ -3,7 +3,7 @@
 > Laboratório educacional de IA aplicada à saúde, com **Natural Language Processing (NLP)**, classificação lexical e identificação experimental de evidências textuais. Interface PT/EN; motor linguístico em português. Não destinado ao uso clínico.
 
 [![Status](https://img.shields.io/badge/status-MVP-success)]()
-[![Version](https://img.shields.io/badge/version-1.1.0--rc-blue)]()
+[![Version](https://img.shields.io/badge/version-1.1.0-blue)](https://github.com/MCLG1661/Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA/releases/tag/v1.1.0)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow)]()
 [![NLP](https://img.shields.io/badge/NLP-Lexical%20Classification-6d7cff)]()
 [![Responsible AI](https://img.shields.io/badge/Responsible%20AI-Educational-b9f227)]()
@@ -11,7 +11,7 @@
 
 ## 🔗 Demo
 
-**Aplicação publicada (versão original; esta branch contém a candidata v1.1):**
+**Aplicação online:**
 
 https://universidade-de-helsinki-construind.vercel.app/
 
@@ -236,7 +236,7 @@ O ranking lexical não incorpora as anotações contextuais; uma ocorrência neg
 
 Conjuntos pequenos, elaborados pelo mesmo desenvolvedor, sem validação externa. Os resultados não demonstram eficácia clínica.
 
-91 testes Node e smoke test Chromium (incluindo offline e entrada HTML) aprovados na candidata. Execute `node --test tests/*.test.mjs`. Consulte [evidências e critérios de release](docs/release-candidate-v1.1.md).
+O [release v1.1.0](https://github.com/MCLG1661/Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA/releases/tag/v1.1.0) registra 93/93 testes automatizados aprovados e testes Chromium aprovados. A candidata anterior registrava 91 testes Node e smoke test Chromium (incluindo offline e entrada HTML). Esses resultados são históricos, não uma nova execução. A verificação independente da política CSP completa no ambiente publicado permanece pendente. Execute `node --test tests/*.test.mjs`. Consulte [evidências e critérios de release](docs/release-candidate-v1.1.md).
 
 ## 🛠️ Tecnologias
 
@@ -412,7 +412,7 @@ Essas limitações fazem parte do aprendizado proporcionado pelo projeto.
 ## 🗺️ Roadmap
 
 - v1.0 — laboratório educacional original.
-- v1.1 — fundação NLP, confiabilidade e testes (candidata).
+- v1.1 — fundação NLP, confiabilidade e testes ([release publicado](https://github.com/MCLG1661/Universidade-de-Helsinki-Construindo-IA-Elementos-de-IA/releases/tag/v1.1.0)).
 - v1.2 — evolução do validador independente e avaliação contextual.
 - v2.0 — API e interoperabilidade.
 - v2.5 — hipótese de prova de conceito MediFlow, sem integração existente.
