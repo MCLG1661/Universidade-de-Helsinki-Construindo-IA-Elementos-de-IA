@@ -1456,3 +1456,11 @@ html[lang="pt-BR"] .lab-intro h1 { font-size:clamp(2.8rem,5.4vw,5.8rem); letter-
 /* Healthcare hero and longer bilingual labels */
 .lab-intro h1, html[lang="pt-BR"] .lab-intro h1 {font-size:clamp(2.7rem,5vw,5.4rem);line-height:1.02;letter-spacing:-.055em;}
 .topbar-status {max-width:190px;line-height:1.35;}
+
+/* Final desktop hero refinement; preserve mobile wrapping. */
+@media (min-width: 1100px) {
+ .lab-intro {max-width:100%;width:100%;padding-top:48px;padding-bottom:36px;}
+ .lab-intro h1, html[lang="pt-BR"] .lab-intro h1 {max-width:100%;font-size:clamp(3rem,4.2vw,4.8rem);line-height:1.08;}
+ .lab-intro h1 span {display:block;max-width:100%;}
+ .topbar-status {max-width:235px;}
+}
