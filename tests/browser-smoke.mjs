@@ -23,8 +23,12 @@ try{
  await page.locator('#exampleInputs button').first().waitFor();
  await page.locator('label[for="langPT"]').click();
  assert.equal(await page.locator('html').getAttribute('lang'),'pt-BR');
+ assert.match(await page.locator('h1').textContent(),/Transformando textos de saúde/);
+ assert.match(await page.title(),/saúde/);
  await page.locator('label[for="langEN"]').click();
  assert.equal(await page.locator('html').getAttribute('lang'),'en');
+ assert.match(await page.locator('h1').textContent(),/Transforming healthcare text/);
+ assert.match(await page.title(),/Healthcare AI/);
  assert.equal(await page.locator('#langEN').isChecked(),true);
  assert.equal(await page.locator('.language-slider').evaluate(e=>getComputedStyle(e).backgroundColor),'rgb(185, 242, 39)');
  await page.reload();
