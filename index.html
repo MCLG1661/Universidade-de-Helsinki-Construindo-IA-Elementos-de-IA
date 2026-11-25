@@ -10,15 +10,15 @@
 
     <meta
         name="description"
-        content="HealthGuardian AI — laboratório interativo de NLP, classificação lexical e explicabilidade desenvolvido como projeto educacional."
+        content="HealthGuardian AI — laboratório educacional de IA aplicada à saúde, classificação lexical e evidências textuais. Sem finalidade clínica."
     >
 
     <meta name="theme-color" content="#09090b">
 
-    <title>HealthGuardian AI — NLP Classification Lab</title>
+    <title>HealthGuardian AI — Healthcare AI & NLP Lab</title>
 
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=8">
 
     <link
         rel="preconnect"
@@ -58,7 +58,7 @@
                 </strong>
 
                 <span>
-                    NLP Classification Lab
+                    Healthcare AI & NLP Lab
                 </span>
             </div>
 
@@ -89,12 +89,13 @@
             <span class="status-dot"></span>
 
             <span>
-                Educational Prototype
+                Educational Prototype · Not for diagnostic use
             </span>
 
         </div>
 
-    </header>
+    <fieldset class="language-switch" aria-label="Idioma / Language"><legend class="sr-only">Idioma / Language</legend><input type="radio" name="interfaceLanguage" id="langPT" value="pt" checked><input type="radio" name="interfaceLanguage" id="langEN" value="en"><span class="language-slider" aria-hidden="true"></span><label for="langPT" lang="pt-BR" aria-label="Português">PT</label><label for="langEN" lang="en" aria-label="English">EN</label></fieldset>
+</header>
 
 
     <main>
@@ -110,11 +111,11 @@
                 <div class="hero-meta">
 
                     <span>
-                        NLP
+                        HEALTHCARE
                     </span>
 
                     <span>
-                        CLASSIFICATION
+                        ARTIFICIAL INTELLIGENCE
                     </span>
 
                     <span>
@@ -124,14 +125,12 @@
                 </div>
 
                 <h1>
-                    Explore how
-                    <span>text becomes data.</span>
+                    Transforming healthcare text
+                    <span>into data and textual evidence.</span>
                 </h1>
 
                 <p>
-                    Um laboratório interativo para observar como uma entrada
-                    textual pode ser normalizada, tokenizada, comparada e
-                    classificada por um sistema determinístico.
+                    Explore como regras linguísticas podem estruturar e classificar textos sintéticos de saúde e identificar evidências textuais, com transparência e responsabilidade.
                 </p>
 
                 <div class="academic-reference">
@@ -178,7 +177,8 @@
                     </div>
 
 
-                    <textarea
+                    <p id="languageScope">Use apenas textos sintéticos em português. Interface bilíngue; motor NLP em português.</p>
+<textarea
                         id="textInput"
                         maxlength="500"
                         rows="9"
@@ -817,7 +817,7 @@ classifyText()
     │
     ├── exact match
     │
-    ├── partial match
+    ├── exact phrase matching
     │
     └── scoring
     │
@@ -1029,7 +1029,7 @@ explainable UI
             </span>
 
             <span>
-                Educational NLP Classification Lab
+                Educational Healthcare AI & NLP Lab
             </span>
 
         </div>
@@ -1050,7 +1050,14 @@ explainable UI
     </footer>
 
 
-    <script src="script.js"></script>
+    <section aria-label="Evidências textuais experimentais" style="max-width: 960px; margin: 2rem auto; padding: 1rem;">
+        <details>
+            <summary>Relatório experimental de evidências (JSON)</summary>
+            <p>Use apenas textos sintéticos. Correspondências lexicais e heurísticas contextuais não confirmam fatos ou diagnósticos. Revisão humana obrigatória.</p>
+            <pre id="evidenceOutput" aria-live="polite" style="white-space: pre-wrap; overflow-wrap: anywhere;"></pre>
+        </details>
+    </section>
+    <script type="module" src="script.js?v=8"></script>
 
 </body>
 </html>

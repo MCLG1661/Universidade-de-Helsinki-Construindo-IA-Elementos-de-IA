@@ -1,14 +1,13 @@
 {
   "project": {
     "name": "HealthGuardian AI",
-    "subtitle": "Educational NLP Classification Lab",
-    "description": "Laboratório educacional para demonstrar como textos podem ser normalizados, comparados e classificados por meio de regras linguísticas e similaridade lexical.",
-    "version": "1.0.0",
+    "subtitle": "Healthcare AI & NLP Lab",
+    "description": "Explore como regras linguísticas podem estruturar e classificar textos sintéticos de saúde e identificar evidências textuais, com transparência e responsabilidade.",
+    "version": "1.1.0-rc",
     "environment": "Portfolio MVP",
     "context": "Inspired by concepts studied in Elements of AI and Building AI — University of Helsinki",
     "engine": "Rule-based lexical classification"
   },
-
   "disclaimer": {
     "title": "Projeto educacional e não clínico",
     "text": "O HealthGuardian AI é um experimento de processamento de texto desenvolvido para fins educacionais e de portfólio.",
@@ -22,7 +21,6 @@
       "Os resultados representam apenas similaridade textual entre termos."
     ]
   },
-
   "pipeline": [
     {
       "step": 1,
@@ -55,7 +53,6 @@
       "description": "A categoria com maior similaridade lexical é apresentada como resultado educacional."
     }
   ],
-
   "categories": [
     {
       "id": "respiratory",
@@ -83,7 +80,6 @@
       ],
       "educational_note": "A presença desses termos indica somente proximidade lexical com esta categoria."
     },
-
     {
       "id": "digestive",
       "label": "Vocabulário Digestivo",
@@ -113,7 +109,6 @@
       ],
       "educational_note": "O resultado não representa identificação de uma condição médica."
     },
-
     {
       "id": "headache",
       "label": "Vocabulário de Dor de Cabeça",
@@ -139,7 +134,6 @@
       ],
       "educational_note": "Termos semelhantes podem ocorrer em diferentes contextos e não permitem conclusão clínica."
     },
-
     {
       "id": "energy",
       "label": "Vocabulário de Energia e Disposição",
@@ -168,7 +162,6 @@
       ],
       "educational_note": "A classificação indica apenas ocorrência de termos associados à categoria."
     },
-
     {
       "id": "stress",
       "label": "Vocabulário de Estresse e Tensão",
@@ -197,7 +190,6 @@
       ],
       "educational_note": "Esta categoria não representa avaliação psicológica ou de saúde mental."
     },
-
     {
       "id": "general-discomfort",
       "label": "Vocabulário de Desconforto Geral",
@@ -225,7 +217,6 @@
       "educational_note": "A categoria funciona apenas como agrupamento lexical genérico."
     }
   ],
-
   "engine": {
     "name": "Lexical Similarity Engine",
     "type": "Deterministic Rule-Based System",
@@ -251,7 +242,6 @@
       }
     }
   },
-
   "example_inputs": [
     {
       "title": "Exemplo Respiratório",
@@ -270,7 +260,6 @@
       "text": "Estou sob muita pressão e me sentindo estressado."
     }
   ],
-
   "concepts": [
     {
       "name": "Natural Language Processing",
@@ -303,7 +292,6 @@
       "description": "Capacidade de apresentar ao usuário os fatores que contribuíram para determinado resultado."
     }
   ],
-
   "responsible_ai": {
     "title": "Responsible AI by Design",
     "principles": [

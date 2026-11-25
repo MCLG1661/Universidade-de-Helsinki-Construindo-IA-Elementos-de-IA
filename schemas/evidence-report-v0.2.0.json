@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HealthGuardian experimental evidence report v0.2.0",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "engine",
+    "scope",
+    "offsetUnit",
+    "claims"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.2.0"
+    },
+    "engine": {
+      "const": "deterministic-experimental"
+    },
+    "scope": {
+      "const": "synthetic textual evidence only; not clinical or semantic verification"
+    },
+    "offsetUnit": {
+      "const": "UTF-16 code units"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim",
+          "status",
+          "evidence",
+          "quality",
+          "requiresHumanReview"
+        ],
+        "properties": {
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "not_found",
+              "mixed",
+              "lexical_match",
+              "ambiguous",
+              "negated",
+              "uncertain",
+              "historical",
+              "third_party"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "keyword",
+                "normalized",
+                "start",
+                "end",
+                "quote",
+                "status",
+                "flags"
+              ],
+              "properties": {
+                "keyword": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "normalized": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "start": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "end": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "quote": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "status": {
+                  "enum": [
+                    "unmarked",
+                    "ambiguous",
+                    "negated",
+                    "uncertain",
+                    "historical",
+                    "third_party"
+                  ]
+                },
+                "flags": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "enum": [
+                      "negated",
+                      "uncertain",
+                      "historical",
+                      "third_party"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "quality": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "occurrenceCount",
+              "exactSourceOffsets",
+              "distinctContexts",
+              "conflictingContexts",
+              "contextualMarkers"
+            ],
+            "properties": {
+              "occurrenceCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "exactSourceOffsets": {
+                "type": "boolean"
+              },
+              "distinctContexts": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "conflictingContexts": {
+                "type": "boolean"
+              },
+              "contextualMarkers": {
+                "type": "boolean"
+              }
+            }
+          },
+          "requiresHumanReview": {
+            "const": true
+          }
+        }
+      }
+    }
+  }
+}

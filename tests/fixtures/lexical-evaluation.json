@@ -1,0 +1,70 @@
+[
+  {
+    "text": "O computador funciona.",
+    "expected": []
+  },
+  {
+    "text": "A decoração ficou bonita.",
+    "expected": []
+  },
+  {
+    "text": "Falta de tempo.",
+    "expected": []
+  },
+  {
+    "text": "Tenho tosse e coriza.",
+    "expected": [
+      "respiratory"
+    ]
+  },
+  {
+    "text": "Náusea e vômito.",
+    "expected": [
+      "digestive"
+    ]
+  },
+  {
+    "text": "Fadiga e fraqueza.",
+    "expected": [
+      "energy"
+    ]
+  },
+  {
+    "text": "Ansiedade e estresse.",
+    "expected": [
+      "stress"
+    ]
+  },
+  {
+    "text": "Febre e calafrios.",
+    "expected": [
+      "general-discomfort"
+    ]
+  },
+  {
+    "text": "Enxaqueca e tontura.",
+    "expected": [
+      "headache"
+    ]
+  },
+  {
+    "text": "Pressão.",
+    "expected": [
+      "headache",
+      "stress"
+    ]
+  },
+  {
+    "text": "Tosse e náusea.",
+    "expected": [
+      "respiratory",
+      "digestive"
+    ]
+  },
+  {
+    "text": "Falta de ar.",
+    "expected": [
+      "respiratory"
+    ]
+  }
+]
