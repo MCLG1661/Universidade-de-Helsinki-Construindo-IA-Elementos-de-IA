@@ -52,6 +52,10 @@ try{
  assert.ok((await page.locator('#originalText').textContent()).includes('<img'));
  await page.evaluate(async()=>{await navigator.serviceWorker.ready;});
  await page.waitForFunction(()=>Boolean(navigator.serviceWorker.controller));
+ await page.setViewportSize({width:390,height:844});
+ assert.ok(await page.locator('.language-switch').isVisible());
+ assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'mobile horizontal overflow');
+ await page.setViewportSize({width:1440,height:900});
  await page.context().setOffline(true);
  await page.reload({waitUntil:'domcontentloaded'});
  await page.locator('#exampleInputs button').first().waitFor();
