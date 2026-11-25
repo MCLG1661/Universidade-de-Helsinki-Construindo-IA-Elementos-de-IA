@@ -1,7 +1,5 @@
 name: Preview security headers
 on:
-  push:
-    branches: [feature/healthguardian-evolution]
   workflow_dispatch:
     inputs:
       preview_url:
@@ -25,7 +23,7 @@ jobs:
           assert p.scheme=='https' and p.hostname and p.hostname.endswith('.vercel.app') and not p.username and not p.password
           with urllib.request.urlopen(url, timeout=30) as r:
               assert r.status==200
-              assert urllib.parse.urlsplit(r.url).hostname==p.hostname
+              assert urllib.parse.urlsplit(r.url).hostname==p.hostname, 'Preview redirected to another host; deployed headers NOT verified'
               h=r.headers
               assert h.get('X-Frame-Options','').upper()=='DENY'
               assert h.get('X-Content-Type-Options','').lower()=='nosniff'
