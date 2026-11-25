@@ -1,6 +1,11 @@
 # Changelog
 
-## 1.1.0-rc — Unreleased
+## 1.1.1 — Unreleased
+
+- Preserve whitespace around translated inline elements in both languages.
+- Refresh versioned PWA assets and add bilingual browser regression assertions.
+
+## 1.1.0
 
 - Healthcare-focused bilingual positioning, textual evidence terminology, improved contrast and sliding PT/EN control.
 

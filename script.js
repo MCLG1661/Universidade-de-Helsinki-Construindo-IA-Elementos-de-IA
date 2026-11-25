@@ -2,7 +2,7 @@ import { normalizeText, tokenize, classifyText } from "./core/lexical-engine.mjs
 
 import { buildReport } from "./core/validator.mjs";
 
-import {chooseLanguage,applyLanguage,translate} from "./core/i18n.mjs";
+import {chooseLanguage,applyLanguage,translate} from "./core/i18n.mjs?v=9";
 let language = chooseLanguage(null,navigator.language);
 try { language=chooseLanguage(localStorage.getItem("hg-language"),navigator.language); } catch {}
 let appData = null;
