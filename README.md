@@ -9,7 +9,7 @@
 [![Responsible AI](https://img.shields.io/badge/Responsible%20AI-Educational-b9f227)]()
 [![Deploy](https://img.shields.io/badge/deploy-Vercel-black)]()
 
-## English overview
+## English Overview
 
 HealthGuardian AI is an educational browser-based laboratory for lexical classification and explainable NLP. Its Portuguese-language engine matches terms against a configured vocabulary and shows the textual evidence behind each result. The interface supports Portuguese and English. The project is intended for learning and demonstration.
 
