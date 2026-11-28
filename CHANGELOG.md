@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.1.1 — Unreleased
+## 1.1.1 — 2026-11-25
 
 - Preserve whitespace around translated inline elements in both languages.
 - Refresh versioned PWA assets and add bilingual browser regression assertions.
